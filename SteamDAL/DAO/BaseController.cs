@@ -11,7 +11,7 @@ namespace SteamDAL.DAO
     class BaseController
     {
 
-        string BASE_URL=
+        string BASE_URL = "";
         protected string ExecutePostRequest(string methodRequest, object param)
         {
             return ExecuteRequest(string.Empty, methodRequest, param, "post");
