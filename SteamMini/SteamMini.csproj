@@ -143,5 +143,11 @@
     <None Include="Resources\gta5_background.jpg" />
     <Content Include="Resources\logo-facebook.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SteamDAL\SteamDAL.csproj">
+      <Project>{d2d2da55-9a58-499a-b230-73864130bf72}</Project>
+      <Name>SteamDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
