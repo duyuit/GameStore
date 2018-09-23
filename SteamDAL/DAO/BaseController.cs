@@ -36,7 +36,6 @@ namespace SteamDAL.DAO
 
                 // Add header for request
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("ApiKey", "1234");
 
                 // Check cookie
               
