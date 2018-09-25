@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace SteamDAL.DAO
 {
-    class BaseController
+  public  class BaseController
     {
 
-        string BASE_URL = "";
-        protected string ExecutePostRequest(string methodRequest, object param)
+        public static string BASE_URL = "http://gamestorecrosplatform.azurewebsites.net/api/";
+        public static string ExecutePostRequest(string methodRequest, object param)
         {
             return ExecuteRequest(string.Empty, methodRequest, param, "post");
         }
 
-        protected string ExecuteGetRequest(string baseUrl, string methodRequest)
+        public static string ExecuteGetRequest(string baseUrl, string methodRequest)
         {
             return ExecuteRequest(baseUrl, methodRequest, null, "get");
         }
 
-        protected string ExecutePutRequest(string methodRequest, object param)
+        public static string ExecutePutRequest(string methodRequest, object param)
         {
             return ExecuteRequest(string.Empty, methodRequest, param, "put");
         }
 
-        private string ExecuteRequest(string baseUrl, string methodRequest, object param, string request)
+        public static string ExecuteRequest(string baseUrl, string methodRequest, object param, string request)
         {
             //if (true == false)
             using (var client = new HttpClient())
