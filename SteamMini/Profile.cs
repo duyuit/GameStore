@@ -41,7 +41,17 @@ namespace SteamMini
 
         private void Profile_Load(object sender, EventArgs e)
         {
+            //for (int i = 0; i < 3; i++)
+            //{
 
+            //    GamePreview temp = new GamePreview();
+            //    temp.GameNameText = "EFT";
+            //    temp.GamePriceText = "100000VND";
+            //    temp.Location = gamePreview1.Location;
+            //    temp.Visible = true;
+            //    temp.BringToFront();
+            //    panel3.Controls.Add(temp);
+            //}
         }
 
        

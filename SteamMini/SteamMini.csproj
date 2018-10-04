@@ -31,8 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +44,15 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GamePreview.Designer.cs">
+      <DependentUpon>GamePreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +85,9 @@
     <Compile Include="Store.Designer.cs">
       <DependentUpon>Store.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GamePreview.resx">
+      <DependentUpon>GamePreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +127,7 @@
     <None Include="Resources\steam-logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Star.png" />
     <None Include="Resources\search-icon-blue.png" />
     <None Include="Resources\pubg_background.jpg" />
     <None Include="Resources\pd2_background.jpg" />
@@ -138,6 +152,7 @@
     <None Include="Resources\GameImage\CSGO\csgo3.jpg" />
     <None Include="Resources\GameImage\CSGO\csgo4.png" />
     <None Include="Resources\GameImage\CSGO\csgo2.jpg" />
+    <None Include="Resources\EFTIcon.png" />
     <Content Include="Resources\gd.png" />
     <None Include="Resources\gta5.png" />
     <None Include="Resources\gta5_background.jpg" />
