@@ -163,6 +163,16 @@ namespace SteamMini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DOTA2Icon {
+            get {
+                object obj = ResourceManager.GetObject("DOTA2Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EFTIcon {
             get {
                 object obj = ResourceManager.GetObject("EFTIcon", resourceCulture);
@@ -306,16 +316,6 @@ namespace SteamMini.Properties {
         internal static System.Drawing.Bitmap search_icon_white {
             get {
                 object obj = ResourceManager.GetObject("search_icon_white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Star {
-            get {
-                object obj = ResourceManager.GetObject("Star", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

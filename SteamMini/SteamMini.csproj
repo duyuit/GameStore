@@ -53,6 +53,12 @@
     <Compile Include="GamePreview.Designer.cs">
       <DependentUpon>GamePreview.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameViewTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameViewTestForm.Designer.cs">
+      <DependentUpon>GameViewTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,7 @@
     <None Include="Resources\GameImage\CSGO\csgo4.png" />
     <None Include="Resources\GameImage\CSGO\csgo2.jpg" />
     <None Include="Resources\EFTIcon.png" />
+    <None Include="Resources\DOTA2Icon.jpg" />
     <Content Include="Resources\gd.png" />
     <None Include="Resources\gta5.png" />
     <None Include="Resources\gta5_background.jpg" />
