@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SteamDAL.DAO;
+using SteamMini.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +18,8 @@ namespace SteamMini
         public Login()
         {
             InitializeComponent();
-            pictureBox1.Image = Properties.Resources.gd;
+            pictureBox1.Image = Image.FromFile(@"..\..\Resources\" + "logo-facebook" + ".png");
+            string a =System.IO.Directory.GetCurrentDirectory();
             pictureBox2.Image = Properties.Resources.logo_facebook;
             pictureBox3.Image = Properties.Resources.steam_logo;
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -54,11 +57,36 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
-           // this.Close();
-            MyHome a = new MyHome();
-            
-            a.Show();
-           
+            // this.Close();
+            //if (txtID.Text != "" && txtPass.Text != "")
+            //{
+            //    string rs=BaseController.ExecutePostRequest("Auths", new LoginObject(txtID.Text, txtPass.Text));
+            //    if(rs.Equals("BadRequest") || rs.Equals("Unauthorized"))
+            //    {
+            //        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu","Error");
+
+            //    }
+            //    else
+            //    {
+
+            //        MyHome a = new MyHome(txtID.Text);
+            //        a.Show();
+   
+            //        this.Hide();           //Hide the main form before showing the secondary
+            //        a.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            //        this.Show();           //When frm2 is closed, continue with the code (show main form)
+            //    }
+            //}
+            //else MessageBox.Show("Chưa nhập đủ thông  tin");
+
+
+            MyHome b = new MyHome("hoa");
+           b.Show();
+
+            this.Hide();           //Hide the main form before showing the secondary
+            b.Show();     //Show secondary form, code execution stop until frm2 is closed
+            this.Hide();           //When frm2 is closed, continue with the code (show main form)
+
         }
     }
 }

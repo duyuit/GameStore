@@ -39,7 +39,7 @@ namespace SteamDAL.DAO
 
                 // Check cookie
               
-
+        
                 Task<HttpResponseMessage> reponse;
                 switch (request)
                 {

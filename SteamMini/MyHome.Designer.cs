@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +72,7 @@
             this.recommend_select3 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.recommend_panel = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label17 = new System.Windows.Forms.Label();
             this.recommend_picture1 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -298,9 +299,9 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Controls.Add(this.lib_panel);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -398,6 +399,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.InfoText;
+            this.panel6.Controls.Add(this.webBrowser1);
             this.panel6.Controls.Add(this.label27);
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.label28);
@@ -625,6 +627,14 @@
             this.recommend_panel.Name = "recommend_panel";
             this.recommend_panel.Size = new System.Drawing.Size(1031, 300);
             this.recommend_panel.TabIndex = 8;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(15, -90);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(1029, 259);
+            this.webBrowser1.TabIndex = 12;
             // 
             // label17
             // 
@@ -1064,10 +1074,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup6.Header = "ListViewGroup";
+            listViewGroup6.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup6});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);
@@ -1101,6 +1111,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MyHome";
             this.Text = "Home";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MyHome_FormClosed);
             this.Load += new System.EventHandler(this.MyHome_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1229,5 +1240,6 @@
         private System.Windows.Forms.PictureBox recommend_picture2;
         private System.Windows.Forms.PictureBox recommend_picture5;
         private System.Windows.Forms.Label recommend_game_name;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
