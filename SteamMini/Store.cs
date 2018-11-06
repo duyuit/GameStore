@@ -15,15 +15,11 @@ namespace SteamMini
         {
             InitializeComponent();
             panel1.BackColor = Color.FromArgb(21, 53, 77);
-            txtSearch.BackColor = Color.FromArgb(21, 53, 77);
-            //    btn_search.Image = Properties.Resources.search_icon_white;
-            btn_search.BackColor= Color.FromArgb(85, 159, 204);
-            pictureBox1.Image = Properties.Resources.GTAV1;
-            pictureBox2.Image = Properties.Resources.GTAV2;
-            pictureBox3.Image = Properties.Resources.GTAV3;
-            pictureBox4.Image = Properties.Resources.GTAV4;
-            pictureBox5.Image = Properties.Resources.GTAV1;
-            panel2.BackColor = Color.FromArgb(7, 17, 26);
+           
+            panel2.BackColor = Color.FromArgb(180,Color.Black);
+            panel4.BackColor  = Color.FromArgb(80, Color.Black);
+            // txt_addwishlist.BackColor = Color.FromArgb(30, 48, 62);
+            // txt_addwishlist.ForeColor= Color.FromArgb(103,193,245);
         }
 
         private void Store_Load(object sender, EventArgs e)
@@ -38,6 +34,14 @@ namespace SteamMini
 
         }
 
-      
+        private void btn_buy_MouseEnter(object sender, EventArgs e)
+        {
+            btn_buy.BackColor = Color.FromArgb(50,205,50);
+        }
+
+        private void btn_buy_MouseLeave(object sender, EventArgs e)
+        {
+            btn_buy.BackColor = Color.FromArgb(0,100,0);
+        }
     }
 }

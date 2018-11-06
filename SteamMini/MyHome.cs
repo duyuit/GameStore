@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteamMini.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,9 @@ namespace SteamMini
     {
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
-        public MyHome()
+        List<GameObject> lib_game = new List<GameObject>();
+
+        public MyHome(string username)
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -40,8 +43,9 @@ namespace SteamMini
             progressBar1.Value = 13;
             pictureBox1.Image = Properties.Resources.demo;
 
-          
 
+            
+            
             //Listview Game Library Init
             listGame.Items.Add(new ListViewItem("  GTA V", 0));
             imageList1.Images.Add(Properties.Resources.gta5);
@@ -69,7 +73,7 @@ namespace SteamMini
 
             //Recommend Game Init
             panel3.BackColor = Color.FromArgb(21, 53, 77);
-            recommend_picture1.Image = Properties.Resources.GTAV1;
+            recommend_picture1.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("GTAV1");
             recommend_picture2.Image = Properties.Resources.GTAV2;
             recommend_picture3.Image = Properties.Resources.GTAV3;
             recommend_picture4.Image = Properties.Resources.GTAV4;
@@ -85,7 +89,17 @@ namespace SteamMini
         }
         private void MyHome_Load(object sender, EventArgs e)
         {
+           var embed = "<html><head>"+
+            "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>"+
+            "</head><body>" +
+            "<iframe width=\"1026\" height=\"250\" src=\"{0}\"" +
+            "frameborder = \"0\" allow = \"autoplay; encrypted-media\" allowfullscreen></iframe>" +
+            "</body></html>";
+            var url = "https://www.youtube.com/embed/3Q6U3BSbrlY";
+               this.webBrowser1.DocumentText = string.Format(embed, url);
 
+
+            lib_game.Add(new GameObject());
         }
 
         private void steamToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
@@ -219,6 +233,15 @@ namespace SteamMini
             lb_temp.BackColor = Color.Silver;
         }
 
-
+        private void MyHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            for (int index = Application.OpenForms.Count - 1; index >= 0; index--)
+            {
+                if (Application.OpenForms[index].Name == "Login")
+                {
+                    Application.OpenForms[index].Close();
+                }
+            }
+        }
     }
 }

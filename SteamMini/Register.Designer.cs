@@ -39,7 +39,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtWarningRePass = new System.Windows.Forms.Label();
+            this.txtWarningMail = new System.Windows.Forms.Label();
+            this.txtWarningPass = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LOGO)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +57,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(362, 31);
             this.txtPass.TabIndex = 7;
+            this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // txtID
             // 
@@ -106,7 +109,7 @@
             this.txtRe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRe.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtRe.Location = new System.Drawing.Point(204, 305);
+            this.txtRe.Location = new System.Drawing.Point(204, 359);
             this.txtRe.Multiline = true;
             this.txtRe.Name = "txtRe";
             this.txtRe.PasswordChar = '*';
@@ -119,7 +122,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(33, 309);
+            this.label3.Location = new System.Drawing.Point(33, 363);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 20);
             this.label3.TabIndex = 12;
@@ -131,19 +134,20 @@
             this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMail.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtMail.Location = new System.Drawing.Point(204, 370);
+            this.txtMail.Location = new System.Drawing.Point(204, 424);
             this.txtMail.MaximumSize = new System.Drawing.Size(1001, 1000);
             this.txtMail.Multiline = true;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(362, 31);
             this.txtMail.TabIndex = 15;
+            this.txtMail.TextChanged += new System.EventHandler(this.txtMail_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(129, 380);
+            this.label4.Location = new System.Drawing.Point(129, 434);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 20);
             this.label4.TabIndex = 14;
@@ -152,7 +156,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(434, 455);
+            this.button2.Location = new System.Drawing.Point(434, 509);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 39);
             this.button2.TabIndex = 17;
@@ -163,7 +167,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(157, 455);
+            this.button1.Location = new System.Drawing.Point(157, 509);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 39);
             this.button1.TabIndex = 16;
@@ -171,17 +175,42 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label5
+            // txtWarningRePass
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(205, 339);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(319, 16);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Please enter the same word  in both password fields.";
-            this.label5.Visible = false;
+            this.txtWarningRePass.AutoSize = true;
+            this.txtWarningRePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWarningRePass.ForeColor = System.Drawing.Color.Red;
+            this.txtWarningRePass.Location = new System.Drawing.Point(205, 393);
+            this.txtWarningRePass.Name = "txtWarningRePass";
+            this.txtWarningRePass.Size = new System.Drawing.Size(319, 16);
+            this.txtWarningRePass.TabIndex = 18;
+            this.txtWarningRePass.Text = "Please enter the same word  in both password fields.";
+            this.txtWarningRePass.Visible = false;
+            // 
+            // txtWarningMail
+            // 
+            this.txtWarningMail.AutoSize = true;
+            this.txtWarningMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWarningMail.ForeColor = System.Drawing.Color.Red;
+            this.txtWarningMail.Location = new System.Drawing.Point(205, 458);
+            this.txtWarningMail.Name = "txtWarningMail";
+            this.txtWarningMail.Size = new System.Drawing.Size(351, 16);
+            this.txtWarningMail.TabIndex = 19;
+            this.txtWarningMail.Text = "Please enter correct Email pattern (Ex:abc12@gmail.com)";
+            this.txtWarningMail.Visible = false;
+            // 
+            // txtWarningPass
+            // 
+            this.txtWarningPass.AutoSize = true;
+            this.txtWarningPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWarningPass.ForeColor = System.Drawing.Color.Red;
+            this.txtWarningPass.Location = new System.Drawing.Point(205, 278);
+            this.txtWarningPass.Name = "txtWarningPass";
+            this.txtWarningPass.Size = new System.Drawing.Size(379, 80);
+            this.txtWarningPass.TabIndex = 20;
+            this.txtWarningPass.Text = "The password must contain at least three character categories \r\n- Uppercase chara" +
+    "cters (A-Z)\r\n- Lowercase characters (a-z)\r\n- Digits (0-9)\r\n- Special characters " +
+    "(~!@#$%^&*_-+=` | \\(){}[]:;\"\'<>,.?/)";
             // 
             // Register
             // 
@@ -189,7 +218,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(680, 587);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtWarningPass);
+            this.Controls.Add(this.txtWarningMail);
+            this.Controls.Add(this.txtWarningRePass);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtMail);
@@ -224,6 +255,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label txtWarningRePass;
+        private System.Windows.Forms.Label txtWarningMail;
+        private System.Windows.Forms.Label txtWarningPass;
     }
 }
