@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store));
             this.txtGameName = new System.Windows.Forms.Label();
+            this.txt_addwishlist = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btn_buy = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,11 +53,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txt_addwishlist = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_buy = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -63,8 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtGameName
@@ -77,6 +77,70 @@
             this.txtGameName.Size = new System.Drawing.Size(313, 26);
             this.txtGameName.TabIndex = 7;
             this.txtGameName.Text = "FEATURED and RECOMMENDED";
+            // 
+            // txt_addwishlist
+            // 
+            this.txt_addwishlist.AutoSize = true;
+            this.txt_addwishlist.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.txt_addwishlist.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txt_addwishlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_addwishlist.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.txt_addwishlist.Location = new System.Drawing.Point(10, 462);
+            this.txt_addwishlist.Name = "txt_addwishlist";
+            this.txt_addwishlist.Padding = new System.Windows.Forms.Padding(6);
+            this.txt_addwishlist.Size = new System.Drawing.Size(122, 32);
+            this.txt_addwishlist.TabIndex = 11;
+            this.txt_addwishlist.Text = "Add to wishlist";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.txt_addwishlist);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.txtGameName);
+            this.panel1.Location = new System.Drawing.Point(4, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1101, 709);
+            this.panel1.TabIndex = 5;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.btn_buy);
+            this.panel4.Location = new System.Drawing.Point(738, 454);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(253, 57);
+            this.panel4.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(5, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 31);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "180000đ";
+            // 
+            // btn_buy
+            // 
+            this.btn_buy.AutoSize = true;
+            this.btn_buy.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_buy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buy.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_buy.Location = new System.Drawing.Point(131, 4);
+            this.btn_buy.Name = "btn_buy";
+            this.btn_buy.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
+            this.btn_buy.Size = new System.Drawing.Size(117, 49);
+            this.btn_buy.TabIndex = 13;
+            this.btn_buy.Text = "Buy";
+            this.btn_buy.MouseEnter += new System.EventHandler(this.btn_buy_MouseEnter);
+            this.btn_buy.MouseLeave += new System.EventHandler(this.btn_buy_MouseLeave);
             // 
             // panel3
             // 
@@ -287,70 +351,6 @@
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
             // 
-            // txt_addwishlist
-            // 
-            this.txt_addwishlist.AutoSize = true;
-            this.txt_addwishlist.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txt_addwishlist.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txt_addwishlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_addwishlist.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.txt_addwishlist.Location = new System.Drawing.Point(10, 462);
-            this.txt_addwishlist.Name = "txt_addwishlist";
-            this.txt_addwishlist.Padding = new System.Windows.Forms.Padding(6);
-            this.txt_addwishlist.Size = new System.Drawing.Size(122, 32);
-            this.txt_addwishlist.TabIndex = 11;
-            this.txt_addwishlist.Text = "Add to wishlist";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.txt_addwishlist);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.txtGameName);
-            this.panel1.Location = new System.Drawing.Point(29, 13);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 641);
-            this.panel1.TabIndex = 5;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.btn_buy);
-            this.panel4.Location = new System.Drawing.Point(738, 454);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(253, 57);
-            this.panel4.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(5, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 31);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "180000đ";
-            // 
-            // btn_buy
-            // 
-            this.btn_buy.AutoSize = true;
-            this.btn_buy.BackColor = System.Drawing.Color.LimeGreen;
-            this.btn_buy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buy.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_buy.Location = new System.Drawing.Point(131, 4);
-            this.btn_buy.Name = "btn_buy";
-            this.btn_buy.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
-            this.btn_buy.Size = new System.Drawing.Size(117, 49);
-            this.btn_buy.TabIndex = 13;
-            this.btn_buy.Text = "Buy";
-            this.btn_buy.MouseEnter += new System.EventHandler(this.btn_buy_MouseEnter);
-            this.btn_buy.MouseLeave += new System.EventHandler(this.btn_buy_MouseLeave);
-            // 
             // Store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +360,10 @@
             this.Name = "Store";
             this.Text = "Store";
             this.Load += new System.EventHandler(this.Store_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -371,10 +375,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

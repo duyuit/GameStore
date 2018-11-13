@@ -54,7 +54,7 @@ namespace SteamMini
         {
             this.idText = this.txtID.Text;
             if (this.txtID.Text != "" && this.txtPass.Text != "" && this.txtRe.Text != "" && this.txtMail.Text != ""
-                && txtWarningMail.Visible && txtWarningPass.Visible)
+                && !txtWarningMail.Visible && !txtWarningPass.Visible)
             {
                 string result = BaseController.ExecutePostRequest("accounts", new RegisterObject(txtID.Text, txtPass.Text));
                 if (result != "")
