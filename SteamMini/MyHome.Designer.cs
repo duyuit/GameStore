@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,46 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.store_panel = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label27 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.recommend_select1 = new System.Windows.Forms.Label();
-            this.recommend_select5 = new System.Windows.Forms.Label();
-            this.recommend_select2 = new System.Windows.Forms.Label();
-            this.recommend_select4 = new System.Windows.Forms.Label();
-            this.recommend_select3 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.recommend_panel = new System.Windows.Forms.Panel();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.label17 = new System.Windows.Forms.Label();
-            this.recommend_picture1 = new System.Windows.Forms.PictureBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.recommend_picture4 = new System.Windows.Forms.PictureBox();
-            this.recommend_picture3 = new System.Windows.Forms.PictureBox();
-            this.recommend_picture2 = new System.Windows.Forms.PictureBox();
-            this.recommend_picture5 = new System.Windows.Forms.PictureBox();
-            this.recommend_game_name = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btn_search_store = new System.Windows.Forms.Button();
-            this.txtSearch_store = new System.Windows.Forms.TextBox();
             this.lib_panel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -114,9 +74,58 @@
             this.search_icon = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.listGame = new System.Windows.Forms.ListView();
+            this.store_panel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.recommend_select1 = new System.Windows.Forms.Label();
+            this.recommend_select5 = new System.Windows.Forms.Label();
+            this.recommend_select2 = new System.Windows.Forms.Label();
+            this.recommend_select4 = new System.Windows.Forms.Label();
+            this.recommend_select3 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.recommend_panel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.recommend_picture1 = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.recommend_picture4 = new System.Windows.Forms.PictureBox();
+            this.recommend_picture3 = new System.Windows.Forms.PictureBox();
+            this.recommend_picture2 = new System.Windows.Forms.PictureBox();
+            this.recommend_picture5 = new System.Windows.Forms.PictureBox();
+            this.recommend_game_name = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.btn_search_store = new System.Windows.Forms.Button();
+            this.txtSearch_store = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.lib_panel.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).BeginInit();
+            this.panel_play.SuspendLayout();
+            this.game_name_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_game)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
             this.store_panel.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -132,15 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture5)).BeginInit();
-            this.lib_panel.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).BeginInit();
-            this.panel_play.SuspendLayout();
-            this.game_name_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_game)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -176,31 +176,33 @@
             this.steamToolStripMenuItem.Text = "Steam";
             this.steamToolStripMenuItem.DropDownClosed += new System.EventHandler(this.steamToolStripMenuItem_DropDownClosed);
             this.steamToolStripMenuItem.DropDownOpened += new System.EventHandler(this.steamToolStripMenuItem_DropDownOpened);
+            this.steamToolStripMenuItem.Click += new System.EventHandler(this.steamToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeToolStripMenuItem.Text = "Change account";
+            this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // viewToolStripMenuItem1
@@ -217,7 +219,7 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testToolStripMenuItem.Text = "Test";
             // 
             // gameToolStripMenuItem
@@ -307,478 +309,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1055, 831);
             this.panel1.TabIndex = 4;
-            // 
-            // store_panel
-            // 
-            this.store_panel.AutoScroll = true;
-            this.store_panel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.store_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.store_panel.Controls.Add(this.panel5);
-            this.store_panel.Controls.Add(this.panel6);
-            this.store_panel.Controls.Add(this.panel3);
-            this.store_panel.Controls.Add(this.label32);
-            this.store_panel.Controls.Add(this.recommend_panel);
-            this.store_panel.Controls.Add(this.label22);
-            this.store_panel.Controls.Add(this.btn_search_store);
-            this.store_panel.Controls.Add(this.txtSearch_store);
-            this.store_panel.Location = new System.Drawing.Point(0, 0);
-            this.store_panel.Margin = new System.Windows.Forms.Padding(4);
-            this.store_panel.Name = "store_panel";
-            this.store_panel.Size = new System.Drawing.Size(1055, 831);
-            this.store_panel.TabIndex = 6;
-            this.store_panel.Visible = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel5.Controls.Add(this.label21);
-            this.panel5.Controls.Add(this.label23);
-            this.panel5.Controls.Add(this.label24);
-            this.panel5.Controls.Add(this.label25);
-            this.panel5.Controls.Add(this.label26);
-            this.panel5.Location = new System.Drawing.Point(393, 782);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(202, 34);
-            this.panel5.TabIndex = 17;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Silver;
-            this.label21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label21.Location = new System.Drawing.Point(41, 6);
-            this.label21.Name = "label21";
-            this.label21.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label21.Size = new System.Drawing.Size(20, 16);
-            this.label21.TabIndex = 9;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label23.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label23.Location = new System.Drawing.Point(145, 6);
-            this.label23.Name = "label23";
-            this.label23.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label23.Size = new System.Drawing.Size(20, 16);
-            this.label23.TabIndex = 13;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label24.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label24.Location = new System.Drawing.Point(67, 6);
-            this.label24.Name = "label24";
-            this.label24.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label24.Size = new System.Drawing.Size(20, 16);
-            this.label24.TabIndex = 10;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label25.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label25.Location = new System.Drawing.Point(119, 6);
-            this.label25.Name = "label25";
-            this.label25.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label25.Size = new System.Drawing.Size(20, 16);
-            this.label25.TabIndex = 12;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label26.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label26.Location = new System.Drawing.Point(93, 6);
-            this.label26.Name = "label26";
-            this.label26.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label26.Size = new System.Drawing.Size(20, 16);
-            this.label26.TabIndex = 11;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.SystemColors.InfoText;
-            this.panel6.Controls.Add(this.webBrowser1);
-            this.panel6.Controls.Add(this.label27);
-            this.panel6.Controls.Add(this.pictureBox2);
-            this.panel6.Controls.Add(this.label28);
-            this.panel6.Controls.Add(this.label29);
-            this.panel6.Controls.Add(this.label30);
-            this.panel6.Controls.Add(this.pictureBox3);
-            this.panel6.Controls.Add(this.pictureBox4);
-            this.panel6.Controls.Add(this.pictureBox5);
-            this.panel6.Controls.Add(this.pictureBox6);
-            this.panel6.Controls.Add(this.label31);
-            this.panel6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel6.Location = new System.Drawing.Point(11, 479);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1031, 300);
-            this.panel6.TabIndex = 16;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label27.Location = new System.Drawing.Point(694, 262);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(85, 16);
-            this.label27.TabIndex = 11;
-            this.label27.Text = "150.000 VND";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
-            this.pictureBox2.Location = new System.Drawing.Point(5, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(670, 295);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.Control;
-            this.label28.Location = new System.Drawing.Point(827, 221);
-            this.label28.Name = "label28";
-            this.label28.Padding = new System.Windows.Forms.Padding(5);
-            this.label28.Size = new System.Drawing.Size(62, 26);
-            this.label28.TabIndex = 10;
-            this.label28.Text = "Online";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.Control;
-            this.label29.Location = new System.Drawing.Point(755, 221);
-            this.label29.Name = "label29";
-            this.label29.Padding = new System.Windows.Forms.Padding(5);
-            this.label29.Size = new System.Drawing.Size(61, 26);
-            this.label29.TabIndex = 9;
-            this.label29.Text = "Action";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.SystemColors.Control;
-            this.label30.Location = new System.Drawing.Point(697, 221);
-            this.label30.Name = "label30";
-            this.label30.Padding = new System.Windows.Forms.Padding(5);
-            this.label30.Size = new System.Drawing.Size(47, 26);
-            this.label30.TabIndex = 8;
-            this.label30.Text = "FPS";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(862, 131);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(144, 79);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(696, 131);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(144, 79);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 6;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.InitialImage = global::SteamMini.Properties.Resources.GTAV2;
-            this.pictureBox5.Location = new System.Drawing.Point(861, 46);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(144, 79);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 5;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
-            this.pictureBox6.Location = new System.Drawing.Point(695, 46);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(144, 79);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 1;
-            this.pictureBox6.TabStop = false;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.Control;
-            this.label31.Location = new System.Drawing.Point(690, 5);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(95, 31);
-            this.label31.TabIndex = 0;
-            this.label31.Text = "GTA V";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel3.Controls.Add(this.recommend_select1);
-            this.panel3.Controls.Add(this.recommend_select5);
-            this.panel3.Controls.Add(this.recommend_select2);
-            this.panel3.Controls.Add(this.recommend_select4);
-            this.panel3.Controls.Add(this.recommend_select3);
-            this.panel3.Location = new System.Drawing.Point(394, 386);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(202, 34);
-            this.panel3.TabIndex = 14;
-            // 
-            // recommend_select1
-            // 
-            this.recommend_select1.AutoSize = true;
-            this.recommend_select1.BackColor = System.Drawing.Color.Silver;
-            this.recommend_select1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_select1.Location = new System.Drawing.Point(41, 6);
-            this.recommend_select1.Name = "recommend_select1";
-            this.recommend_select1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.recommend_select1.Size = new System.Drawing.Size(20, 16);
-            this.recommend_select1.TabIndex = 9;
-            this.recommend_select1.Click += new System.EventHandler(this.recommend_select1_Click);
-            // 
-            // recommend_select5
-            // 
-            this.recommend_select5.AutoSize = true;
-            this.recommend_select5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.recommend_select5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_select5.Location = new System.Drawing.Point(145, 6);
-            this.recommend_select5.Name = "recommend_select5";
-            this.recommend_select5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.recommend_select5.Size = new System.Drawing.Size(20, 16);
-            this.recommend_select5.TabIndex = 13;
-            this.recommend_select5.Click += new System.EventHandler(this.recommend_select1_Click);
-            // 
-            // recommend_select2
-            // 
-            this.recommend_select2.AutoSize = true;
-            this.recommend_select2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.recommend_select2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_select2.Location = new System.Drawing.Point(67, 6);
-            this.recommend_select2.Name = "recommend_select2";
-            this.recommend_select2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.recommend_select2.Size = new System.Drawing.Size(20, 16);
-            this.recommend_select2.TabIndex = 10;
-            this.recommend_select2.Click += new System.EventHandler(this.recommend_select1_Click);
-            // 
-            // recommend_select4
-            // 
-            this.recommend_select4.AutoSize = true;
-            this.recommend_select4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.recommend_select4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_select4.Location = new System.Drawing.Point(119, 6);
-            this.recommend_select4.Name = "recommend_select4";
-            this.recommend_select4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.recommend_select4.Size = new System.Drawing.Size(20, 16);
-            this.recommend_select4.TabIndex = 12;
-            this.recommend_select4.Click += new System.EventHandler(this.recommend_select1_Click);
-            // 
-            // recommend_select3
-            // 
-            this.recommend_select3.AutoSize = true;
-            this.recommend_select3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.recommend_select3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_select3.Location = new System.Drawing.Point(93, 6);
-            this.recommend_select3.Name = "recommend_select3";
-            this.recommend_select3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.recommend_select3.Size = new System.Drawing.Size(20, 16);
-            this.recommend_select3.TabIndex = 11;
-            this.recommend_select3.Click += new System.EventHandler(this.recommend_select1_Click);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label32.Location = new System.Drawing.Point(3, 450);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(313, 26);
-            this.label32.TabIndex = 15;
-            this.label32.Text = "FEATURED and RECOMMENDED";
-            // 
-            // recommend_panel
-            // 
-            this.recommend_panel.BackColor = System.Drawing.SystemColors.InfoText;
-            this.recommend_panel.Controls.Add(this.label17);
-            this.recommend_panel.Controls.Add(this.recommend_picture1);
-            this.recommend_panel.Controls.Add(this.label18);
-            this.recommend_panel.Controls.Add(this.label19);
-            this.recommend_panel.Controls.Add(this.label20);
-            this.recommend_panel.Controls.Add(this.recommend_picture4);
-            this.recommend_panel.Controls.Add(this.recommend_picture3);
-            this.recommend_panel.Controls.Add(this.recommend_picture2);
-            this.recommend_panel.Controls.Add(this.recommend_picture5);
-            this.recommend_panel.Controls.Add(this.recommend_game_name);
-            this.recommend_panel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_panel.Location = new System.Drawing.Point(12, 83);
-            this.recommend_panel.Name = "recommend_panel";
-            this.recommend_panel.Size = new System.Drawing.Size(1031, 300);
-            this.recommend_panel.TabIndex = 8;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(15, -90);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1029, 259);
-            this.webBrowser1.TabIndex = 12;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label17.Location = new System.Drawing.Point(694, 262);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 16);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "150.000 VND";
-            // 
-            // recommend_picture1
-            // 
-            this.recommend_picture1.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
-            this.recommend_picture1.Location = new System.Drawing.Point(5, 2);
-            this.recommend_picture1.Name = "recommend_picture1";
-            this.recommend_picture1.Size = new System.Drawing.Size(670, 295);
-            this.recommend_picture1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.recommend_picture1.TabIndex = 7;
-            this.recommend_picture1.TabStop = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.Control;
-            this.label18.Location = new System.Drawing.Point(827, 221);
-            this.label18.Name = "label18";
-            this.label18.Padding = new System.Windows.Forms.Padding(5);
-            this.label18.Size = new System.Drawing.Size(62, 26);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "Online";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.Control;
-            this.label19.Location = new System.Drawing.Point(755, 221);
-            this.label19.Name = "label19";
-            this.label19.Padding = new System.Windows.Forms.Padding(5);
-            this.label19.Size = new System.Drawing.Size(61, 26);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Action";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.Control;
-            this.label20.Location = new System.Drawing.Point(697, 221);
-            this.label20.Name = "label20";
-            this.label20.Padding = new System.Windows.Forms.Padding(5);
-            this.label20.Size = new System.Drawing.Size(47, 26);
-            this.label20.TabIndex = 8;
-            this.label20.Text = "FPS";
-            // 
-            // recommend_picture4
-            // 
-            this.recommend_picture4.Location = new System.Drawing.Point(862, 131);
-            this.recommend_picture4.Name = "recommend_picture4";
-            this.recommend_picture4.Size = new System.Drawing.Size(144, 79);
-            this.recommend_picture4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.recommend_picture4.TabIndex = 7;
-            this.recommend_picture4.TabStop = false;
-            this.recommend_picture4.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
-            // 
-            // recommend_picture3
-            // 
-            this.recommend_picture3.Location = new System.Drawing.Point(696, 131);
-            this.recommend_picture3.Name = "recommend_picture3";
-            this.recommend_picture3.Size = new System.Drawing.Size(144, 79);
-            this.recommend_picture3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.recommend_picture3.TabIndex = 6;
-            this.recommend_picture3.TabStop = false;
-            this.recommend_picture3.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
-            // 
-            // recommend_picture2
-            // 
-            this.recommend_picture2.InitialImage = global::SteamMini.Properties.Resources.GTAV2;
-            this.recommend_picture2.Location = new System.Drawing.Point(861, 46);
-            this.recommend_picture2.Name = "recommend_picture2";
-            this.recommend_picture2.Size = new System.Drawing.Size(144, 79);
-            this.recommend_picture2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.recommend_picture2.TabIndex = 5;
-            this.recommend_picture2.TabStop = false;
-            this.recommend_picture2.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
-            // 
-            // recommend_picture5
-            // 
-            this.recommend_picture5.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
-            this.recommend_picture5.Location = new System.Drawing.Point(695, 46);
-            this.recommend_picture5.Name = "recommend_picture5";
-            this.recommend_picture5.Size = new System.Drawing.Size(144, 79);
-            this.recommend_picture5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.recommend_picture5.TabIndex = 1;
-            this.recommend_picture5.TabStop = false;
-            this.recommend_picture5.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
-            // 
-            // recommend_game_name
-            // 
-            this.recommend_game_name.AutoSize = true;
-            this.recommend_game_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recommend_game_name.ForeColor = System.Drawing.SystemColors.Control;
-            this.recommend_game_name.Location = new System.Drawing.Point(690, 5);
-            this.recommend_game_name.Name = "recommend_game_name";
-            this.recommend_game_name.Size = new System.Drawing.Size(95, 31);
-            this.recommend_game_name.TabIndex = 0;
-            this.recommend_game_name.Text = "GTA V";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label22.Location = new System.Drawing.Point(4, 54);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(313, 26);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "FEATURED and RECOMMENDED";
-            // 
-            // btn_search_store
-            // 
-            this.btn_search_store.BackgroundImage = global::SteamMini.Properties.Resources.search_icon_blue;
-            this.btn_search_store.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_search_store.Location = new System.Drawing.Point(1009, 9);
-            this.btn_search_store.Name = "btn_search_store";
-            this.btn_search_store.Size = new System.Drawing.Size(33, 30);
-            this.btn_search_store.TabIndex = 5;
-            this.btn_search_store.UseVisualStyleBackColor = true;
-            // 
-            // txtSearch_store
-            // 
-            this.txtSearch_store.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch_store.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtSearch_store.Location = new System.Drawing.Point(812, 7);
-            this.txtSearch_store.Multiline = true;
-            this.txtSearch_store.Name = "txtSearch_store";
-            this.txtSearch_store.Size = new System.Drawing.Size(231, 34);
-            this.txtSearch_store.TabIndex = 3;
             // 
             // lib_panel
             // 
@@ -995,7 +525,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Font = new System.Drawing.Font("Adobe Caslon Pro Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(11, 9);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -1022,11 +552,11 @@
             // 
             this.lbl_game_name.AutoSize = true;
             this.lbl_game_name.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lbl_game_name.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_game_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_game_name.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl_game_name.Location = new System.Drawing.Point(68, 12);
             this.lbl_game_name.Name = "lbl_game_name";
-            this.lbl_game_name.Size = new System.Drawing.Size(108, 26);
+            this.lbl_game_name.Size = new System.Drawing.Size(125, 25);
             this.lbl_game_name.TabIndex = 1;
             this.lbl_game_name.Text = "PAYDAY 2";
             // 
@@ -1074,10 +604,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup6.Header = "ListViewGroup";
-            listViewGroup6.Name = "listViewGroup1";
+            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup6});
+            listViewGroup2});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);
@@ -1085,6 +615,478 @@
             this.listGame.UseCompatibleStateImageBehavior = false;
             this.listGame.View = System.Windows.Forms.View.List;
             this.listGame.SelectedIndexChanged += new System.EventHandler(this.listGame_SelectedIndexChanged);
+            // 
+            // store_panel
+            // 
+            this.store_panel.AutoScroll = true;
+            this.store_panel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.store_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.store_panel.Controls.Add(this.panel5);
+            this.store_panel.Controls.Add(this.panel6);
+            this.store_panel.Controls.Add(this.panel3);
+            this.store_panel.Controls.Add(this.label32);
+            this.store_panel.Controls.Add(this.recommend_panel);
+            this.store_panel.Controls.Add(this.label22);
+            this.store_panel.Controls.Add(this.btn_search_store);
+            this.store_panel.Controls.Add(this.txtSearch_store);
+            this.store_panel.Location = new System.Drawing.Point(0, 0);
+            this.store_panel.Margin = new System.Windows.Forms.Padding(4);
+            this.store_panel.Name = "store_panel";
+            this.store_panel.Size = new System.Drawing.Size(1055, 831);
+            this.store_panel.TabIndex = 6;
+            this.store_panel.Visible = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel5.Controls.Add(this.label21);
+            this.panel5.Controls.Add(this.label23);
+            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.label25);
+            this.panel5.Controls.Add(this.label26);
+            this.panel5.Location = new System.Drawing.Point(393, 782);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(202, 34);
+            this.panel5.TabIndex = 17;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Silver;
+            this.label21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label21.Location = new System.Drawing.Point(41, 6);
+            this.label21.Name = "label21";
+            this.label21.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label21.Size = new System.Drawing.Size(20, 16);
+            this.label21.TabIndex = 9;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label23.Location = new System.Drawing.Point(145, 6);
+            this.label23.Name = "label23";
+            this.label23.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label23.Size = new System.Drawing.Size(20, 16);
+            this.label23.TabIndex = 13;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label24.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label24.Location = new System.Drawing.Point(67, 6);
+            this.label24.Name = "label24";
+            this.label24.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label24.Size = new System.Drawing.Size(20, 16);
+            this.label24.TabIndex = 10;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label25.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label25.Location = new System.Drawing.Point(119, 6);
+            this.label25.Name = "label25";
+            this.label25.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label25.Size = new System.Drawing.Size(20, 16);
+            this.label25.TabIndex = 12;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label26.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label26.Location = new System.Drawing.Point(93, 6);
+            this.label26.Name = "label26";
+            this.label26.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.label26.Size = new System.Drawing.Size(20, 16);
+            this.label26.TabIndex = 11;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.InfoText;
+            this.panel6.Controls.Add(this.webBrowser1);
+            this.panel6.Controls.Add(this.label27);
+            this.panel6.Controls.Add(this.pictureBox2);
+            this.panel6.Controls.Add(this.label28);
+            this.panel6.Controls.Add(this.label29);
+            this.panel6.Controls.Add(this.label30);
+            this.panel6.Controls.Add(this.pictureBox3);
+            this.panel6.Controls.Add(this.pictureBox4);
+            this.panel6.Controls.Add(this.pictureBox5);
+            this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Controls.Add(this.label31);
+            this.panel6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel6.Location = new System.Drawing.Point(11, 479);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1031, 300);
+            this.panel6.TabIndex = 16;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(15, -90);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(1029, 259);
+            this.webBrowser1.TabIndex = 12;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label27.Location = new System.Drawing.Point(694, 262);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(85, 16);
+            this.label27.TabIndex = 11;
+            this.label27.Text = "150.000 VND";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(670, 295);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.Control;
+            this.label28.Location = new System.Drawing.Point(827, 221);
+            this.label28.Name = "label28";
+            this.label28.Padding = new System.Windows.Forms.Padding(5);
+            this.label28.Size = new System.Drawing.Size(62, 26);
+            this.label28.TabIndex = 10;
+            this.label28.Text = "Online";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.Control;
+            this.label29.Location = new System.Drawing.Point(755, 221);
+            this.label29.Name = "label29";
+            this.label29.Padding = new System.Windows.Forms.Padding(5);
+            this.label29.Size = new System.Drawing.Size(61, 26);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "Action";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.Control;
+            this.label30.Location = new System.Drawing.Point(697, 221);
+            this.label30.Name = "label30";
+            this.label30.Padding = new System.Windows.Forms.Padding(5);
+            this.label30.Size = new System.Drawing.Size(47, 26);
+            this.label30.TabIndex = 8;
+            this.label30.Text = "FPS";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(862, 131);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(144, 79);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(696, 131);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(144, 79);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.InitialImage = global::SteamMini.Properties.Resources.GTAV2;
+            this.pictureBox5.Location = new System.Drawing.Point(861, 46);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(144, 79);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 5;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
+            this.pictureBox6.Location = new System.Drawing.Point(695, 46);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(144, 79);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 1;
+            this.pictureBox6.TabStop = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.Control;
+            this.label31.Location = new System.Drawing.Point(690, 5);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(95, 31);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "GTA V";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel3.Controls.Add(this.recommend_select1);
+            this.panel3.Controls.Add(this.recommend_select5);
+            this.panel3.Controls.Add(this.recommend_select2);
+            this.panel3.Controls.Add(this.recommend_select4);
+            this.panel3.Controls.Add(this.recommend_select3);
+            this.panel3.Location = new System.Drawing.Point(394, 386);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(202, 34);
+            this.panel3.TabIndex = 14;
+            // 
+            // recommend_select1
+            // 
+            this.recommend_select1.AutoSize = true;
+            this.recommend_select1.BackColor = System.Drawing.Color.Silver;
+            this.recommend_select1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recommend_select1.Location = new System.Drawing.Point(41, 6);
+            this.recommend_select1.Name = "recommend_select1";
+            this.recommend_select1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.recommend_select1.Size = new System.Drawing.Size(20, 16);
+            this.recommend_select1.TabIndex = 9;
+            this.recommend_select1.Click += new System.EventHandler(this.recommend_select1_Click);
+            // 
+            // recommend_select5
+            // 
+            this.recommend_select5.AutoSize = true;
+            this.recommend_select5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.recommend_select5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recommend_select5.Location = new System.Drawing.Point(145, 6);
+            this.recommend_select5.Name = "recommend_select5";
+            this.recommend_select5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.recommend_select5.Size = new System.Drawing.Size(20, 16);
+            this.recommend_select5.TabIndex = 13;
+            this.recommend_select5.Click += new System.EventHandler(this.recommend_select1_Click);
+            // 
+            // recommend_select2
+            // 
+            this.recommend_select2.AutoSize = true;
+            this.recommend_select2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.recommend_select2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recommend_select2.Location = new System.Drawing.Point(67, 6);
+            this.recommend_select2.Name = "recommend_select2";
+            this.recommend_select2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.recommend_select2.Size = new System.Drawing.Size(20, 16);
+            this.recommend_select2.TabIndex = 10;
+            this.recommend_select2.Click += new System.EventHandler(this.recommend_select1_Click);
+            // 
+            // recommend_select4
+            // 
+            this.recommend_select4.AutoSize = true;
+            this.recommend_select4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.recommend_select4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recommend_select4.Location = new System.Drawing.Point(119, 6);
+            this.recommend_select4.Name = "recommend_select4";
+            this.recommend_select4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.recommend_select4.Size = new System.Drawing.Size(20, 16);
+            this.recommend_select4.TabIndex = 12;
+            this.recommend_select4.Click += new System.EventHandler(this.recommend_select1_Click);
+            // 
+            // recommend_select3
+            // 
+            this.recommend_select3.AutoSize = true;
+            this.recommend_select3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.recommend_select3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recommend_select3.Location = new System.Drawing.Point(93, 6);
+            this.recommend_select3.Name = "recommend_select3";
+            this.recommend_select3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.recommend_select3.Size = new System.Drawing.Size(20, 16);
+            this.recommend_select3.TabIndex = 11;
+            this.recommend_select3.Click += new System.EventHandler(this.recommend_select1_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label32.Location = new System.Drawing.Point(3, 450);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(366, 25);
+            this.label32.TabIndex = 15;
+            this.label32.Text = "FEATURED and RECOMMENDED";
+            // 
+            // recommend_panel
+            // 
+            this.recommend_panel.BackColor = System.Drawing.SystemColors.InfoText;
+            this.recommend_panel.Controls.Add(this.label17);
+            this.recommend_panel.Controls.Add(this.recommend_picture1);
+            this.recommend_panel.Controls.Add(this.label18);
+            this.recommend_panel.Controls.Add(this.label19);
+            this.recommend_panel.Controls.Add(this.label20);
+            this.recommend_panel.Controls.Add(this.recommend_picture4);
+            this.recommend_panel.Controls.Add(this.recommend_picture3);
+            this.recommend_panel.Controls.Add(this.recommend_picture2);
+            this.recommend_panel.Controls.Add(this.recommend_picture5);
+            this.recommend_panel.Controls.Add(this.recommend_game_name);
+            this.recommend_panel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recommend_panel.Location = new System.Drawing.Point(12, 83);
+            this.recommend_panel.Name = "recommend_panel";
+            this.recommend_panel.Size = new System.Drawing.Size(1031, 300);
+            this.recommend_panel.TabIndex = 8;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label17.Location = new System.Drawing.Point(694, 262);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(85, 16);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "150.000 VND";
+            // 
+            // recommend_picture1
+            // 
+            this.recommend_picture1.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
+            this.recommend_picture1.Location = new System.Drawing.Point(5, 2);
+            this.recommend_picture1.Name = "recommend_picture1";
+            this.recommend_picture1.Size = new System.Drawing.Size(670, 295);
+            this.recommend_picture1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.recommend_picture1.TabIndex = 7;
+            this.recommend_picture1.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.Control;
+            this.label18.Location = new System.Drawing.Point(827, 221);
+            this.label18.Name = "label18";
+            this.label18.Padding = new System.Windows.Forms.Padding(5);
+            this.label18.Size = new System.Drawing.Size(62, 26);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "Online";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.Control;
+            this.label19.Location = new System.Drawing.Point(755, 221);
+            this.label19.Name = "label19";
+            this.label19.Padding = new System.Windows.Forms.Padding(5);
+            this.label19.Size = new System.Drawing.Size(61, 26);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Action";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.Control;
+            this.label20.Location = new System.Drawing.Point(697, 221);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(5);
+            this.label20.Size = new System.Drawing.Size(47, 26);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "FPS";
+            // 
+            // recommend_picture4
+            // 
+            this.recommend_picture4.Location = new System.Drawing.Point(862, 131);
+            this.recommend_picture4.Name = "recommend_picture4";
+            this.recommend_picture4.Size = new System.Drawing.Size(144, 79);
+            this.recommend_picture4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.recommend_picture4.TabIndex = 7;
+            this.recommend_picture4.TabStop = false;
+            this.recommend_picture4.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            // 
+            // recommend_picture3
+            // 
+            this.recommend_picture3.Location = new System.Drawing.Point(696, 131);
+            this.recommend_picture3.Name = "recommend_picture3";
+            this.recommend_picture3.Size = new System.Drawing.Size(144, 79);
+            this.recommend_picture3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.recommend_picture3.TabIndex = 6;
+            this.recommend_picture3.TabStop = false;
+            this.recommend_picture3.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            // 
+            // recommend_picture2
+            // 
+            this.recommend_picture2.InitialImage = global::SteamMini.Properties.Resources.GTAV2;
+            this.recommend_picture2.Location = new System.Drawing.Point(861, 46);
+            this.recommend_picture2.Name = "recommend_picture2";
+            this.recommend_picture2.Size = new System.Drawing.Size(144, 79);
+            this.recommend_picture2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.recommend_picture2.TabIndex = 5;
+            this.recommend_picture2.TabStop = false;
+            this.recommend_picture2.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            // 
+            // recommend_picture5
+            // 
+            this.recommend_picture5.InitialImage = global::SteamMini.Properties.Resources.GTAV1;
+            this.recommend_picture5.Location = new System.Drawing.Point(695, 46);
+            this.recommend_picture5.Name = "recommend_picture5";
+            this.recommend_picture5.Size = new System.Drawing.Size(144, 79);
+            this.recommend_picture5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.recommend_picture5.TabIndex = 1;
+            this.recommend_picture5.TabStop = false;
+            this.recommend_picture5.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            // 
+            // recommend_game_name
+            // 
+            this.recommend_game_name.AutoSize = true;
+            this.recommend_game_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recommend_game_name.ForeColor = System.Drawing.SystemColors.Control;
+            this.recommend_game_name.Location = new System.Drawing.Point(690, 5);
+            this.recommend_game_name.Name = "recommend_game_name";
+            this.recommend_game_name.Size = new System.Drawing.Size(95, 31);
+            this.recommend_game_name.TabIndex = 0;
+            this.recommend_game_name.Text = "GTA V";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label22.Location = new System.Drawing.Point(4, 54);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(366, 25);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "FEATURED and RECOMMENDED";
+            // 
+            // btn_search_store
+            // 
+            this.btn_search_store.BackgroundImage = global::SteamMini.Properties.Resources.search_icon_blue;
+            this.btn_search_store.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_search_store.Location = new System.Drawing.Point(1009, 9);
+            this.btn_search_store.Name = "btn_search_store";
+            this.btn_search_store.Size = new System.Drawing.Size(33, 30);
+            this.btn_search_store.TabIndex = 5;
+            this.btn_search_store.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch_store
+            // 
+            this.txtSearch_store.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch_store.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtSearch_store.Location = new System.Drawing.Point(812, 7);
+            this.txtSearch_store.Multiline = true;
+            this.txtSearch_store.Name = "txtSearch_store";
+            this.txtSearch_store.Size = new System.Drawing.Size(231, 34);
+            this.txtSearch_store.TabIndex = 3;
             // 
             // imageList1
             // 
@@ -1099,7 +1101,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1055, 795);
+            this.ClientSize = new System.Drawing.Size(1055, 749);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -1110,12 +1112,26 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MyHome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MyHome_FormClosed);
             this.Load += new System.EventHandler(this.MyHome_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.lib_panel.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).EndInit();
+            this.panel_play.ResumeLayout(false);
+            this.panel_play.PerformLayout();
+            this.game_name_panel.ResumeLayout(false);
+            this.game_name_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_game)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
             this.store_panel.ResumeLayout(false);
             this.store_panel.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1136,19 +1152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture5)).EndInit();
-            this.lib_panel.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).EndInit();
-            this.panel_play.ResumeLayout(false);
-            this.panel_play.PerformLayout();
-            this.game_name_panel.ResumeLayout(false);
-            this.game_name_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_game)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

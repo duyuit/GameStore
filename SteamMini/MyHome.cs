@@ -12,6 +12,9 @@ namespace SteamMini
 {
     public partial class MyHome : Form
     {
+        private Register register = null;
+        private string mail = null;
+
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
         List<GameObject> lib_game = new List<GameObject>();
@@ -64,8 +67,6 @@ namespace SteamMini
             imageList1.Images.Add(Properties.Resources.pubg_icon);
             background.Add(Properties.Resources.pubg_background);
 
-
-
             //Store panel Init
             store_panel.BackColor = Color.FromArgb(21, 53, 77);
             txtSearch_store.BackColor = Color.FromArgb(21, 53, 77);
@@ -85,7 +86,7 @@ namespace SteamMini
             recommend_select.Add(recommend_select4);
             recommend_select.Add(recommend_select5);
 
-           
+            this.mail = username;
         }
         private void MyHome_Load(object sender, EventArgs e)
         {
@@ -242,6 +243,19 @@ namespace SteamMini
                     Application.OpenForms[index].Close();
                 }
             }
+        }
+
+        private void steamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void changeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.register = new Register(this.mail);
+            this.register.Show();
+            Register.idCheckChange = true;
+
+            //this.Enabled = false;
         }
     }
 }

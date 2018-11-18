@@ -58,6 +58,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(362, 31);
             this.txtPass.TabIndex = 7;
+            this.txtPass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPass_MouseClick);
             this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // txtID
@@ -120,6 +121,7 @@
             this.txtRe.PasswordChar = '*';
             this.txtRe.Size = new System.Drawing.Size(362, 31);
             this.txtRe.TabIndex = 13;
+            this.txtRe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRe_MouseClick);
             this.txtRe.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
@@ -145,7 +147,9 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(362, 31);
             this.txtMail.TabIndex = 15;
+            this.txtMail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtMail_MouseClick);
             this.txtMail.TextChanged += new System.EventHandler(this.txtMail_TextChanged);
+            this.txtMail.MouseHover += new System.EventHandler(this.txtMail_MouseHover);
             // 
             // label4
             // 
@@ -252,6 +256,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Register_FormClosed);
             this.Load += new System.EventHandler(this.Register_Load);

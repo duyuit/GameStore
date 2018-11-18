@@ -41,6 +41,8 @@ namespace SteamMini
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
+
             this.register = new Register();
 
             //FormA subscribes to FormB's event
@@ -57,6 +59,7 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //txtID: mail
             if (txtID.Text != "" && txtPass.Text != "")
             {
                 LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
@@ -90,5 +93,46 @@ namespace SteamMini
             //this.Hide();           //When frm2 is closed, continue with the code (show main form)
 
         }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
+
+        private void txtPass_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void txtPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if (!txtID.Text.Equals("") && !txtPass.Text.Equals(""))
+            //{
+            //    if (e.KeyCode == Keys.Enter)
+            //    {
+            //        LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
+            //        string rs = AuthsControllerShould.LoginController(loginObject);
+            //        if (rs.Equals("Bad Request"))
+            //        {
+            //            MessageBox.Show("Account does not exist!", "Error");
+            //        }
+            //        else if (rs.Equals("Unauthorized"))
+            //        {
+            //            MessageBox.Show("Password incorrect!", "Error");
+            //        }
+            //        else // login correctly, received token
+            //        {
+            //            MyHome a = new MyHome(txtID.Text);
+            //            a.Show();
+            //            this.Hide();          
+            //        }
+            //    }
+            //}
+        }
+
+
     }
 }
