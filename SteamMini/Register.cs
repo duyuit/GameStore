@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SteamMini
@@ -29,11 +30,21 @@ namespace SteamMini
      
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if(txtPass.Text.Equals(txtRe.Text))
+            if (txtWarningRePass.Visible == false && !txtPass.Text.Equals(txtRe.Text))
+            {
+                txtWarningRePass.Visible = true;
+            }
+            else if (txtWarningRePass.Visible == true && txtPass.Text.Equals(txtRe.Text))
             {
                 txtWarningRePass.Visible = false;
             }
-            else txtWarningRePass.Visible = true;
+            else if(txtWarningRePass.Visible == true && txtRe.Text.Length == 0)
+            {
+                txtWarningRePass.Visible = false;
+            }
+
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,35 +63,43 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.idText = this.txtID.Text;
-            if (this.txtID.Text != "" && this.txtPass.Text != "" && this.txtRe.Text != "" && this.txtMail.Text != ""
-                && !txtWarningMail.Visible && !txtWarningPass.Visible)
-            {
-                string result = BaseController.ExecutePostRequest("accounts", new RegisterObject(txtID.Text, txtPass.Text));
-                if (result != "")
-                {
-                    if (result.Contains(txtID.Text))
-                    {
-                        if (result.Contains("DuplicateUserName"))
-                            MessageBox.Show("Tài khoản này đã được đăng kí, vui lòng chọn ID khác");
-                        else
-                            MessageBox.Show("Đăng kí thành công");
-                    }
-                   
-                    else
-                    {
-                        MessageBox.Show("Đăng kí lỗi");
-                    }
-                }
-                if (OnDataAvailable != null)
-                    OnDataAvailable(this, EventArgs.Empty);
+            this.idText = this.txtMail.Text; // idText = mailText
 
-                this.Close();
+            Regex reg = new Regex(@"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$", RegexOptions.IgnoreCase);
+
+            if (txtID.Text.Length == 0)
+            {
+                MessageBox.Show("Display name is required!");
             }
-            
-            
-          
-          
+            else if (!reg.IsMatch(this.idText))
+            {
+                MessageBox.Show("Mail not yet entered or wrong format!");
+            }
+            else if (this.txtPass.Text.Length < 8)
+            {
+                MessageBox.Show("Password not yet entered or wrong format!");
+            }
+            else if(!this.txtPass.Text.Equals(this.txtRe.Text))
+            {
+                MessageBox.Show("Passwords not match!");
+            }
+            else //register account
+            {
+                string result = "";
+                result = AccountsControllerShould.PostNewAccountController(
+                    new RegisterObject(txtMail.Text, txtPass.Text, "hobbies",
+                    "fullname", "0363538331", txtID.Text));
+
+                if (result == "False")
+                {
+                    MessageBox.Show("Register failed. This mail is duplicate!");
+                }
+                else
+                {
+                    MessageBox.Show("Register success!");
+                    this.Close();
+                }
+            }
         }
 
         private void Register_FormClosed(object sender, FormClosedEventArgs e)
@@ -93,31 +112,43 @@ namespace SteamMini
 
         private void txtPass_TextChanged(object sender, EventArgs e)
         {
-            bool containSpecial = false;
-            bool containNormal = false;
-            for (int i=33;i<=96;i++)
+            if (this.txtPass.Text.Length > 0 && this.txtPass.Text.Length < 8)
             {
-                if (txtPass.Text.Contains((char)i))
-                {
-                    containSpecial = true;
-                    break;
-                }
-                   
+                txtWarningPass.Visible = true;
             }
-            for (int i = 65; i <= 122; i++)
-            {
-                if (txtPass.Text.Contains((char)i))
-                {
-                    containNormal = true;
-                    break;
-                }
-
-            }
-            if (containNormal && containSpecial)
+            else if(txtWarningPass.Visible == true && this.txtPass.Text.Length == 0)
             {
                 txtWarningPass.Visible = false;
             }
-            else txtWarningPass.Visible = true;
+            else
+            {
+                txtWarningPass.Visible = false;
+            }
+
+            //bool containSpecial = false;
+            //bool containNormal = false;
+            //for (int i=33;i<=96;i++)
+            //{
+            //    if (txtPass.Text.Contains((char)i))
+            //    {
+            //        containSpecial = true;
+            //        break;
+            //    }
+
+            //}
+            //for (int i = 65; i <= 122; i++)
+            //{
+            //    if (txtPass.Text.Contains((char)i))
+            //    {
+            //        containNormal = true;
+            //        break;
+            //    }
+            //}
+            //if (containNormal && containSpecial)
+            //{
+            //    txtWarningPass.Visible = false;
+            //}
+            //else txtWarningPass.Visible = true;
         }
 
         private void txtMail_TextChanged(object sender, EventArgs e)
@@ -127,6 +158,55 @@ namespace SteamMini
                 txtWarningMail.Visible = false;
             }
             else txtWarningMail.Visible = true;
+
+            if(txtWarningMail.Visible == true && txtMail.Text.Length == 0)
+            {
+                txtWarningMail.Visible = false;
+            }
+        }
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtWarningPass_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void txtWarningName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtWarningName.Visible == true && txtID.Text.Length > 0)
+            {
+                txtWarningName.Visible = false;
+            }
+            else if (txtWarningName.Visible == false && txtID.Text.Length == 0)
+            {
+                txtWarningName.Visible = true;
+            }
+        }
+
+        private void txtID_MouseEnter(object sender, EventArgs e)
+        {
+        }
+
+        private void txtWarningName_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void txtID_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(txtID.Text.Length == 0)
+            {
+                txtWarningName.Visible = true;
+            }
         }
     }
 }

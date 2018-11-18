@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Common\IServiceResult.cs" />
     <Compile Include="Common\ServiceResult.cs" />
+    <Compile Include="Controller\AuthsControllerShould.cs" />
     <Compile Include="Controller\AccountsControllerShould.cs" />
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\CategoryControllerShould.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Model\ImageGame.cs" />
     <Compile Include="Model\ImagePublisher.cs" />
     <Compile Include="Model\ImageUser.cs" />
+    <Compile Include="Model\LoginObject.cs" />
     <Compile Include="Model\Publisher.cs" />
     <Compile Include="Model\RefreshToken.cs" />
     <Compile Include="Model\Resource\GameResource.cs" />

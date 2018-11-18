@@ -57,35 +57,37 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // this.Close();
-            //if (txtID.Text != "" && txtPass.Text != "")
-            //{
-            //    string rs=BaseController.ExecutePostRequest("Auths", new LoginObject(txtID.Text, txtPass.Text));
-            //    if(rs.Equals("BadRequest") || rs.Equals("Unauthorized"))
-            //    {
-            //        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu","Error");
+            if (txtID.Text != "" && txtPass.Text != "")
+            {
+                LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
+                string rs = AuthsControllerShould.LoginController(loginObject);
+                if (rs.Equals("Bad Request"))
+                {
+                    MessageBox.Show("Account does not exist!", "Error");
+                }
+                else if (rs.Equals("Unauthorized"))
+                {
+                    MessageBox.Show("Password incorrect!", "Error");
+                }
+                else // login correctly, received token
+                {
+                    MyHome a = new MyHome(txtID.Text);
+                    a.Show();
 
-            //    }
-            //    else
-            //    {
-
-            //        MyHome a = new MyHome(txtID.Text);
-            //        a.Show();
-   
-            //        this.Hide();           //Hide the main form before showing the secondary
-            //        a.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
-            //        this.Show();           //When frm2 is closed, continue with the code (show main form)
-            //    }
-            //}
-            //else MessageBox.Show("Chưa nhập đủ thông  tin");
+                    this.Hide();           //Hide the main form before showing the secondary
+                    //a.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+                    //this.Show();           //When frm2 is closed, continue with the code (show main form)
+                }
+            }
+            else MessageBox.Show("Information is not enough!");
 
 
-            MyHome b = new MyHome("hoa");
-           b.Show();
+            //MyHome b = new MyHome("hoa");
+            //b.Show();
 
-            this.Hide();           //Hide the main form before showing the secondary
-            b.Show();     //Show secondary form, code execution stop until frm2 is closed
-            this.Hide();           //When frm2 is closed, continue with the code (show main form)
+            //this.Hide();           //Hide the main form before showing the secondary
+            //b.Show();     //Show secondary form, code execution stop until frm2 is closed
+            //this.Hide();           //When frm2 is closed, continue with the code (show main form)
 
         }
     }
