@@ -59,39 +59,27 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //txtID: mail
+            //txtID: username/email
             if (txtID.Text != "" && txtPass.Text != "")
             {
                 LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
                 string rs = AuthsControllerShould.LoginController(loginObject);
-                if (rs.Equals("Bad Request"))
+                if (rs.Equals("user"))
                 {
-                    MessageBox.Show("Account does not exist!", "Error");
+                    MessageBox.Show("Account does not exist! You should register account!", "Error");
                 }
-                else if (rs.Equals("Unauthorized"))
+                else if (rs.Equals("pass"))
                 {
                     MessageBox.Show("Password incorrect!", "Error");
                 }
-                else // login correctly, received token
+                else // login correctly, received token, id
                 {
                     MyHome a = new MyHome(txtID.Text);
                     a.Show();
-
-                    this.Hide();           //Hide the main form before showing the secondary
-                    //a.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
-                    //this.Show();           //When frm2 is closed, continue with the code (show main form)
+                    this.Hide();    
                 }
             }
             else MessageBox.Show("Information is not enough!");
-
-
-            //MyHome b = new MyHome("hoa");
-            //b.Show();
-
-            //this.Hide();           //Hide the main form before showing the secondary
-            //b.Show();     //Show secondary form, code execution stop until frm2 is closed
-            //this.Hide();           //When frm2 is closed, continue with the code (show main form)
-
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)

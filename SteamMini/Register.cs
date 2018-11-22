@@ -29,6 +29,8 @@ namespace SteamMini
             txtPass.BackColor = Color.FromArgb(42, 46, 51);
             txtRe.BackColor = Color.FromArgb(42, 46, 51);
             txtMail.BackColor = Color.FromArgb(42, 46, 51);
+            txtFullname.BackColor = Color.FromArgb(42, 46, 51);
+            txtPhone.BackColor = Color.FromArgb(42, 46, 51);
         }
 
         public Register(string username)
@@ -40,6 +42,8 @@ namespace SteamMini
             txtPass.BackColor = Color.FromArgb(42, 46, 51);
             txtRe.BackColor = Color.FromArgb(42, 46, 51);
             txtMail.BackColor = Color.FromArgb(42, 46, 51);
+            txtFullname.BackColor = Color.FromArgb(42, 46, 51);
+            txtPhone.BackColor = Color.FromArgb(42, 46, 51);
 
             this.txtMail.Text = username;
             this.Text = "Change Account";
@@ -57,10 +61,11 @@ namespace SteamMini
             {
                 txtWarningRePass.Visible = false;
             }
-            //else if(txtWarningRePass.Visible == true && txtRe.Text.Length == 0)
-            //{
-            //    txtWarningRePass.Visible = false;
-            //}
+
+            if (txtWarningRePass.Visible == false && txtRe.Text.Length == 0)
+            {
+                txtWarningRePass.Visible = true;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,10 +100,15 @@ namespace SteamMini
             {
                 this.idText = this.txtMail.Text; // idText = mailText
 
-                if (txtID.Text.Length == 0)
+                if (txtFullname.Text.Length == 0)
+                {
+                    txtWarningFullName.Visible = true;
+                    MessageBox.Show("Full name is required!");
+                }
+                else if (txtID.Text.Length == 0)
                 {
                     txtWarningName.Visible = true;
-                    MessageBox.Show("Display name is required!");
+                    MessageBox.Show("User name is required!");
                 }
                 else if (!reg.IsMatch(this.idText))
                 {
@@ -115,24 +125,36 @@ namespace SteamMini
                     txtWarningRePass.Visible = true;
                     MessageBox.Show("Passwords not match!");
                 }
+                else if (txtPhone.Text.Length == 0)
+                {
+                    txtWarningPhone.Visible = true;
+                    MessageBox.Show("Phone number is required!");
+                }
                 else //register account
                 {
                     string result = "";
                     result = AccountsControllerShould.PostNewAccountController(
-                        new RegisterObject(txtMail.Text, txtPass.Text, "hobbies",
-                        "fullname", "0363538331", txtID.Text));
+                        new RegisterObject(txtMail.Text, txtPass.Text, "defaulthobbies",
+                        txtFullname.Text, txtPhone.Text, txtID.Text));
 
-                    if (result == "False")
-                    {
-                        MessageBox.Show("Register failed. This mail is duplicate!");
-                    }
-                    else
+                    if (result == "True") //rs = isSuccess
                     {
                         MessageBox.Show("Register success!");
                         this.Close();
 
                         this.login = new Login();
                         this.login.Show();
+                    }
+                    else //rs = failed msg
+                    {
+                        if (result.Equals("System.Collections.Generic.List`1[Microsoft.AspNetCore.Identity.IdentityError]"))
+                        {
+                            MessageBox.Show("Register failed. User name already exists!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Register failed. Email already exists!");
+                        }
                     }
                 }
             }
@@ -206,11 +228,21 @@ namespace SteamMini
 
         private void txtMail_TextChanged(object sender, EventArgs e)
         {
-            if(txtMail.Text.Contains('@') && txtMail.Text.Contains('.'))
+            Regex reg = new Regex(@"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$", RegexOptions.IgnoreCase);
+
+            if (reg.IsMatch(this.txtMail.Text))
             {
                 txtWarningMail.Visible = false;
             }
-            else txtWarningMail.Visible = true;
+            else
+            {
+                txtWarningMail.Visible = true;
+            }
+
+            //if (txtMail.Text.Contains('@') && txtMail.Text.Contains('.'))
+            //{
+            //    txtWarningMail.Visible = false;
+            //}
 
             //if(txtWarningMail.Visible == true && txtMail.Text.Length == 0)
             //{
@@ -288,6 +320,56 @@ namespace SteamMini
             {
                 txtWarningRePass.Visible = true;
             }
+        }
+
+        private void txtFullname_TextChanged(object sender, EventArgs e)
+        {
+            if (txtWarningFullName.Visible == true && txtFullname.Text.Length > 0)
+            {
+                txtWarningFullName.Visible = false;
+            }
+            else if (txtWarningFullName.Visible == false && txtFullname.Text.Length == 0)
+            {
+                txtWarningFullName.Visible = true;
+            }
+        }
+
+        private void txtFullname_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtFullname.Text.Length == 0)
+            {
+                txtWarningFullName.Visible = true;
+            }
+        }
+
+        private void txtPhone_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtPhone.Text.Length == 0)
+            {
+                txtWarningPhone.Visible = true;
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            if (txtWarningPhone.Visible == true && txtPhone.Text.Length > 0)
+            {
+                txtWarningPhone.Visible = false;
+            }
+            else if (txtWarningPhone.Visible == false && txtPhone.Text.Length == 0)
+            {
+                txtWarningPhone.Visible = true;
+            }
+
         }
     }
 }

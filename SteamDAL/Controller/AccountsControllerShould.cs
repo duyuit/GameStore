@@ -24,36 +24,14 @@ namespace SteamMini
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<string> response = JsonConvert.DeserializeObject<Response<string>>(content);
                 var rs = response.IsSuccess.ToString();
+
+                if(rs != "True")
+                {
+                    rs = response.Message.ToString();
+                }
                 return rs;
             }
         }
-
-        //public static string LoginController(object loginObject)
-        //{
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        Uri baseAddress = new Uri("http://localhost:49911/");
-        //        client.BaseAddress = baseAddress;
-
-        //        HttpResponseMessage result = client.PostAsJsonAsync("api/auths", loginObject).Result;
-        //        //var content = result.Content.ReadAsStringAsync().Result;
-        //        //Response<string> loginResponse = JsonConvert.DeserializeObject<Response<string>>(content);
-
-        //        var content = "";
-        //        if (result.ReasonPhrase.Equals("Bad Request") || result.ReasonPhrase.Equals("Unauthorized"))
-        //        {
-        //            content = result.ReasonPhrase;
-        //        }
-        //        else //result.ReasonPhrase.Equals("OK"), get token
-        //        {
-        //            content = result.ReasonPhrase;
-        //        }
-
-        //        return content;
-        //    }
-        //}
-
-
 
         public void TestGetAllUsersController()
         {

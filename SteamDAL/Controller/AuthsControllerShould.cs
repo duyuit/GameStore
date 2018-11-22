@@ -20,21 +20,37 @@ namespace SteamMini
                 Uri baseAddress = new Uri("http://localhost:49911/");
                 client.BaseAddress = baseAddress;
 
-                HttpResponseMessage result = client.PostAsJsonAsync("api/auths", loginObject).Result;
-                //var content = result.Content.ReadAsStringAsync().Result;
-                //Response<string> loginResponse = JsonConvert.DeserializeObject<Response<string>>(content);
-
-                var content = "";
-                if (result.ReasonPhrase.Equals("Bad Request") || result.ReasonPhrase.Equals("Unauthorized"))
+                var rs = "";
+                try
                 {
-                    content = result.ReasonPhrase;
+                    HttpResponseMessage result = client.PostAsJsonAsync("api/auths", loginObject).Result;
+                    var content = result.Content.ReadAsStringAsync().Result;
+
+                    //trong TH success thì lỗi payload nên phóng ra Ex.
+                    Response<string> loginResponse = JsonConvert.DeserializeObject<Response<string>>(content);
+                    
+                    if (loginResponse.Message != null && loginResponse.Message.Equals("UserName or Password Incorrect"))
+                    {
+                        rs = "user";
+                    }
+                    else if (loginResponse.Message != null && loginResponse.Message.Equals("Password Incorrect"))
+                    {
+                        rs = "pass";
+                    }
+                    else //result.ReasonPhrase.Equals("OK"), get token
+                    {
+                        rs = "success";
+                    }
+
+                    
                 }
-                else //result.ReasonPhrase.Equals("OK"), get token
+                catch(Exception ex)
                 {
-                    content = result.ReasonPhrase;
+                    //throw;
+                    rs = "success";
                 }
 
-                return content;
+                return rs;
             }
         }
 
