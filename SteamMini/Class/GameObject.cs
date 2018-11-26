@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace SteamMini.Class
 {
-    class GameObject
+    public class GameObject
     {
         public Guid Id { get; set; }
-        public int Money { get; set; }
+        public int Price { get; set; }
         public string Name { get; set; }
         public Guid PublisherId { get; set; }
         public float Rating { get; set; }
-        public string Logo { get; set; }
+        public PictureBox Logo { get; set; }
         public string VideoUrl { get; set; }
         public string Content { get; set; }
         public DateTime PurchaseDate { get; set; }
+        public List<String> GameImages { get; set; }
 
 
         public GameObject()
@@ -26,7 +29,7 @@ namespace SteamMini.Class
         {
             PurchaseDate = DateTime.Now;
             Name = name;
-            Money = money;
+            Price = money;
             Content = content;
             
         }

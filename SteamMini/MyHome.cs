@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using GameStore.DTOs;
 namespace SteamMini
 {
     public partial class MyHome : Form
@@ -15,10 +15,97 @@ namespace SteamMini
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
         List<GameObject> lib_game = new List<GameObject>();
+        Responses<GameDTOs> GameResponse;
+        Response<UserDTOs> User;
+        GameObject currGame;
 
+        public void LoadDatabase(string UserId)
+        {
+            GameControllerShould Gamecontroller = new GameControllerShould();
+            GameResponse = Gamecontroller.GetAllGamesController();
+            AccountsControllerShould AccControl = new AccountsControllerShould();
+            //User = AccControl.GetUserByIdController(UserId);
+
+            List<GameDTOs> gameDTOs = GameResponse.Payload;
+            foreach (GameDTOs a in gameDTOs)
+            {
+                GameObject temp1 = new GameObject();
+                temp1.Id = a.Id;
+                temp1.Name = a.Name;
+                temp1.Rating = a.Rating;
+                temp1.Price = Convert.ToInt32(a.Price);
+                temp1.PurchaseDate = Convert.ToDateTime(a.PurchaseDate);
+                temp1.PublisherId = a.Publisher.Id;
+                temp1.Content = a.Content;
+                temp1.VideoUrl = a.VideoUrl;
+                temp1.Logo = new PictureBox();
+                temp1.Logo.Load(a.ImageGames.ElementAt(0).UrlOnline);
+                for (int i = 0; i < a.ImageGames.Count(); i++)
+                {
+                    if (temp1.GameImages == null)
+                    {
+                        temp1.GameImages = new List<String>();
+                    }
+                    temp1.GameImages.Add(a.ImageGames.ElementAt(0).UrlOnline);
+                }
+                lib_game.Add(temp1);
+            }
+        }
+
+        public void LoadGameBuyPanel(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+            
+            GamePreview gPre = (GamePreview)sender;
+            currGame = gPre.GetGameObject();
+            this.GameIcon.Image = currGame.Logo.Image;
+            this.GameNameLabel.Text = currGame.Name;
+            this.GameDescription.Text = currGame.Content;
+            this.RatingText.Text = currGame.Rating.ToString();
+            this.Price.Text = "Price: " + currGame.Price.ToString();
+            this.GameImages.Load(currGame.GameImages.ElementAt(0));
+            //Uri videolink = new Uri(temp.VideoUrl);
+            //this.GameVid.Url = videolink;
+
+        }
+        public void LoadGamePreview()
+        {
+            int i = 0;
+            int lastY = 0;
+            foreach (GameObject gO in lib_game)
+            {
+                GamePreview temp = new GamePreview();
+                temp.SetGameObject(gO);
+                temp.GameIcon = gO.Logo.Image;
+                temp.GameNameText = gO.Name;
+                temp.Rating = gO.Rating.ToString();
+                temp.Click += LoadGameBuyPanel;
+                if (gO.Price == 0)
+                {
+                    temp.GamePriceText = "Free";
+                }
+                else
+                    temp.GamePriceText = gO.Price.ToString();
+                if (i == 0)
+                {
+                    temp.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * temp.Height) + 40);
+                    lastY = temp.Location.Y;
+                }
+                else
+                {
+                    temp.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + temp.Height + 10);
+                    lastY = temp.Location.Y;
+                }
+                i++;
+                store_panel.Controls.Add(temp);
+            }
+        }
         public MyHome(string username)
         {
             InitializeComponent();
+            LoadDatabase("");
+            LoadGamePreview();
             this.BackColor = Color.FromArgb(42, 46, 51);
             menuStrip1.BackColor = Color.FromArgb(27, 32, 54);
             steamToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
@@ -89,17 +176,6 @@ namespace SteamMini
         }
         private void MyHome_Load(object sender, EventArgs e)
         {
-           var embed = "<html><head>"+
-            "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>"+
-            "</head><body>" +
-            "<iframe width=\"1026\" height=\"250\" src=\"{0}\"" +
-            "frameborder = \"0\" allow = \"autoplay; encrypted-media\" allowfullscreen></iframe>" +
-            "</body></html>";
-            var url = "https://www.youtube.com/embed/3Q6U3BSbrlY";
-               this.webBrowser1.DocumentText = string.Format(embed, url);
-
-
-            lib_game.Add(new GameObject());
         }
 
         private void steamToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
@@ -240,6 +316,59 @@ namespace SteamMini
                 if (Application.OpenForms[index].Name == "Login")
                 {
                     Application.OpenForms[index].Close();
+                }
+            }
+        }
+
+        private void Purchase_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            this.GameDetailPanel.Visible = false;
+            this.store_panel.Visible = true;
+            currGame = null;
+        }
+
+        private void NextImage_Click(object sender, EventArgs e)
+        {
+            
+            for (int i = 0; i < currGame.GameImages.Count(); i++)
+            {
+                if (this.GameImages.ImageLocation == currGame.GameImages.ElementAt(i))
+                {
+                    if (i == currGame.GameImages.Count() - 1)
+                    {
+                        this.GameImages.Load(currGame.GameImages.ElementAt(0));
+                        break;
+                    }
+                    else
+                    {
+                        this.GameImages.Load(currGame.GameImages.ElementAt(i + 1));
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void PrevImage_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < currGame.GameImages.Count(); i++)
+            {
+                if (this.GameImages.ImageLocation == currGame.GameImages.ElementAt(i))
+                {
+                    if (i == 0)
+                    {
+                        this.GameImages.Load(currGame.GameImages.ElementAt(currGame.GameImages.Count() - 1));
+                        break;
+                    }
+                    else
+                    {
+                        this.GameImages.Load(currGame.GameImages.ElementAt(i - 1));
+                        break;
+                    }
                 }
             }
         }

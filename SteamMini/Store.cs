@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GameStore.DTOs;
 
 namespace SteamMini
 {
+    
     public partial class Store : Form
     {
+        public static Responses<GameDTOs> Games;
         public Store()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace SteamMini
 
         private void Store_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox2_MouseEnter(object sender, EventArgs e)

@@ -118,14 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="csgo4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameImage\CSGO\csgo4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="video_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_icon_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search-icon-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\achievements\100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo_facebook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo-facebook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="search_icon_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search-icon-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background_profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_profile.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GTAV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameImage\GTAV\GTAV2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pd2_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pd2_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="csgo_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\csgo_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GTAV4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameImage\GTAV\GTAV4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="payday2_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\payday2_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,8 +157,17 @@
   <data name="gta5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gta5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="csgo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameImage\CSGO\csgo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gta5_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gta5_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="csgo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameImage\CSGO\csgo2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GTAV3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameImage\GTAV\GTAV3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="csgo_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\csgo_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,58 +175,28 @@
   <data name="steam_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\steam-logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search_icon_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search-icon-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background_strip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_strip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pubg_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pubg_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pubg_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pubg_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pd2_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pd2_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background_profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_profile.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="demo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\achievements\demo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\achievements\100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="csgo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameImage\CSGO\csgo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="csgo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameImage\CSGO\csgo2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="csgo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GameImage\CSGO\csgo3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="csgo4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameImage\CSGO\csgo4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="demo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\achievements\demo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background_strip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_strip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GTAV1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GameImage\GTAV\GTAV1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GTAV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameImage\GTAV\GTAV2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pubg_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pubg_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GTAV3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameImage\GTAV\GTAV3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pubg_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pubg_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GTAV4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameImage\GTAV\GTAV4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search_icon_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search-icon-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="video_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\video_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1024px-Gold_Star.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1024px-Gold_Star.svg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

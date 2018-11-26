@@ -12,8 +12,7 @@ namespace SteamMini
 {
     public class AccountsControllerShould : Controller
     {
-
-        public void TestGetAllUsersController()
+        public Responses<UserDTOs> GetAllUsersController()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -21,11 +20,12 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync("api/accounts").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<UserDTOs> freeCodeResponse = JsonConvert.DeserializeObject<Responses<UserDTOs>>(content);
+                return freeCodeResponse;
             }
 
         }
 
-        public void TestGetUserByIdController(string Id)
+        public Response<UserDTOs> GetUserByIdController(string Id)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -33,6 +33,7 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync($"api/accounts/{Id}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<UserDTOs> freeCodeResponse = JsonConvert.DeserializeObject<Response<UserDTOs>>(content);
+                return freeCodeResponse;
             }
 
         }

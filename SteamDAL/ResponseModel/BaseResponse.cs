@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SteamMini
 {
-    class BaseResponse
+    public class BaseResponse
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; }

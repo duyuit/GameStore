@@ -12,7 +12,7 @@ namespace SteamMini
 {
     public class CategoryControllerShould : Controller
     {
-        public void TestGetAllCategoriesController()
+        public Responses<CategoryDTOs> GetAllCategoriesController()
         {
             Init(49913);
             using (HttpClient client = new HttpClient())
@@ -21,6 +21,7 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync("api/categories").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<CategoryDTOs> categoriesResponse = JsonConvert.DeserializeObject<Responses<CategoryDTOs>>(content);
+                return categoriesResponse;
             }
         }
 

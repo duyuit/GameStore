@@ -7,11 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SteamDAL.DAO;
+using SteamMini.Class;
 
 namespace SteamMini
 {
     public partial class GamePreview : UserControl
     {
+        Color defColor;
+        public GameObject gameO;
+        public void SetGameObject(GameObject input)
+        {
+            gameO = input;
+
+        }
+        public GameObject GetGameObject()
+        {
+            return gameO;
+        }
         [Description("Text display the Game's name"), Category("Appearance")]
         public string GameNameText
         {
@@ -67,9 +79,27 @@ namespace SteamMini
             get { return picBox.SizeMode; }
             set { picBox.SizeMode = value; }
         }
+
+        public string Rating
+        {
+            get { return RatingText.Text; }
+            set { RatingText.Text = value; }
+        }
+
         public GamePreview()
         {
             InitializeComponent();
+            defColor = this.BackColor;
+        }
+
+        private void GamePreview_MouseEnter(object sender, EventArgs e)
+        {
+            this.BackColor = Color.RoyalBlue;
+        }
+
+        private void GamePreview_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = defColor;
         }
     }
 }

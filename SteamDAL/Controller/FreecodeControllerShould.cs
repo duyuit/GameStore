@@ -12,7 +12,7 @@ namespace SteamMini
     public  class FreecodeControllerShould : Controller
     {
 
-        public void TestGetAllFreeCodesController()
+        public Responses<FreeCodeDTOs> GetAllFreeCodesController()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -20,11 +20,12 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync("api/freecodes").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<FreeCodeDTOs> freeCodeResponse = JsonConvert.DeserializeObject<Responses<FreeCodeDTOs>>(content);
+                return freeCodeResponse;
             }
 
         }
 
-        public void TestGetFreeCodeByIdGameController(string gameId)
+        public Responses<FreeCodeDTOs> GetFreeCodeByIdGameController(string gameId)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -32,10 +33,11 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync($"api/freecodes/{gameId}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<FreeCodeDTOs> freeCodeResponse = JsonConvert.DeserializeObject<Responses<FreeCodeDTOs>>(content);
+                return freeCodeResponse;
             }
         }
 
-        public void TestPostNewFreeCodeController(string id)
+        public void PostNewFreeCodeController(string id)
         {
 
             SavedFreeCodeDTOs savedFreeCodeDTOsDemo = new SavedFreeCodeDTOs()

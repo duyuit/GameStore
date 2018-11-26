@@ -12,7 +12,7 @@ namespace SteamMini
 {
     public class GameControllerShould : Controller
     {
-        public void TestGetAllGamesController()
+        public Responses<GameDTOs> GetAllGamesController()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -20,24 +20,25 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync("api/games").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<GameDTOs> gamesResponse = JsonConvert.DeserializeObject<Responses<GameDTOs>>(content);
+                return gamesResponse;
             }
 
         }
 
-        public void TestGetGameByIdController(string Id)
+        public Response<GameDTOs> GetGameByIdController(string Id)
         {
-            Init(49914);
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = BASE_URI;
                 HttpResponseMessage result = client.GetAsync($"api/games/{Id}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<GameDTOs> gamesResponse = JsonConvert.DeserializeObject<Response<GameDTOs>>(content);
+                return gamesResponse;
             }
 
         }
 
-        public void TestPostNewGameController(string name, string publisherId,
+        public void PostNewGameController(string name, string publisherId,
                                               string members1, string members2,
                                               string favoriteMembers1, string favoriteMembers2,
                                               float rating,string logo,
@@ -45,7 +46,7 @@ namespace SteamMini
                                               string categories1,string categories2,
                                               float price)
         {
-            Init(49914);
+        //    Init(49914);
 
             SavedGameDTOs savedGameDTOs = new SavedGameDTOs()
             {

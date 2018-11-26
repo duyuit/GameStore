@@ -19,6 +19,7 @@ namespace GameStore.DTOs
         public string Content { get; set; }
         public virtual ICollection<TitleCategory> Categories { get; set; }
         public DateTime PurchaseDate { get; set; }
+        public string Price { get; set; }
         public ICollection<TitleImagePublisher> ImageGames { get; set; }
         public GameDTOs()
         {
