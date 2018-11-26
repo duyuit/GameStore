@@ -65,8 +65,8 @@ namespace SteamMini
             this.RatingText.Text = currGame.Rating.ToString();
             this.Price.Text = "Price: " + currGame.Price.ToString();
             this.GameImages.Load(currGame.GameImages.ElementAt(0));
-            //Uri videolink = new Uri(temp.VideoUrl);
-            //this.GameVid.Url = videolink;
+            Uri videolink = new Uri("https://youtu.be/rOaYAwxPXNE");
+            this.GameVid.Url = videolink;
 
         }
         public void LoadGamePreview()
