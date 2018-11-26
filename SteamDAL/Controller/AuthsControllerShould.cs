@@ -2,6 +2,7 @@
 using GameStore.DTOs;
 using GameStore.Model;
 using Newtonsoft.Json;
+using SteamMini.Class;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -26,31 +27,29 @@ namespace SteamMini
                     HttpResponseMessage result = client.PostAsJsonAsync("api/auths", loginObject).Result;
                     var content = result.Content.ReadAsStringAsync().Result;
 
-                    //trong TH success thì lỗi payload nên phóng ra Ex.
-                    Response<string> loginResponse = JsonConvert.DeserializeObject<Response<string>>(content);
-                    
-                    if (loginResponse.Message != null && loginResponse.Message.Equals("UserName or Password Incorrect"))
-                    {
-                        rs = "user";
-                    }
-                    else if (loginResponse.Message != null && loginResponse.Message.Equals("Password Incorrect"))
-                    {
-                        rs = "pass";
-                    }
-                    else //result.ReasonPhrase.Equals("OK"), get token
-                    {
-                        rs = "success";
-                    }
+                    //Response<string> loginResponse = JsonConvert.DeserializeObject<Response<string>>(content);
+                    var loginResponse = JsonConvert.DeserializeObject<LoginResponse>(content);
 
-                    
+                    if (loginResponse.IsSuccess.Equals("True"))
+                    {
+                        return rs = loginResponse.Payload.Id;
+                    }
+                    else 
+                    {
+                        if (loginResponse.Message.Equals("Password Incorrect"))
+                        {
+                            return rs = "pass";
+                        }
+                        else
+                        {
+                            return rs = "user";
+                        }
+                    }
                 }
                 catch(Exception ex)
                 {
-                    //throw;
-                    rs = "success";
+                    throw;
                 }
-
-                return rs;
             }
         }
 

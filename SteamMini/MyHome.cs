@@ -13,13 +13,13 @@ namespace SteamMini
     public partial class MyHome : Form
     {
         private Register register = null;
-        private string mail = null;
+        private string id = null;
 
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
         List<GameObject> lib_game = new List<GameObject>();
 
-        public MyHome(string username)
+        public MyHome(string Id)
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -86,7 +86,7 @@ namespace SteamMini
             recommend_select.Add(recommend_select4);
             recommend_select.Add(recommend_select5);
 
-            this.mail = username;
+            this.id = Id;
         }
         private void MyHome_Load(object sender, EventArgs e)
         {
@@ -251,10 +251,8 @@ namespace SteamMini
 
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.register = new Register(this.mail);
+            this.register = new Register(this.id);
             this.register.Show();
-            Register.idCheckChange = true;
-
             //this.Enabled = false;
         }
     }

@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
+
 namespace SteamMini
 {
     public partial class Register : Form
@@ -17,8 +18,8 @@ namespace SteamMini
         private Login login = null;
 
         public event EventHandler OnDataAvailable;
-        public string idText { get; private set; }
-        public static bool idCheckChange = false;
+        public string idChange { get; set; }
+        public bool idCheckChange = false;
 
         public Register()
         {
@@ -33,7 +34,7 @@ namespace SteamMini
             txtPhone.BackColor = Color.FromArgb(42, 46, 51);
         }
 
-        public Register(string username)
+        public Register(string id)
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -44,12 +45,20 @@ namespace SteamMini
             txtMail.BackColor = Color.FromArgb(42, 46, 51);
             txtFullname.BackColor = Color.FromArgb(42, 46, 51);
             txtPhone.BackColor = Color.FromArgb(42, 46, 51);
-
-            this.txtMail.Text = username;
+            this.idCheckChange = true;
+            this.idChange = id;
             this.Text = "Change Account";
-            this.txtMail.Enabled = false;
-        }
+            this.button1.Text = "UPDATE";
 
+            //get account by id
+            var resultGet = AccountsControllerShould.GetUserByIdController(this.idChange);
+
+            txtFullname.Text = resultGet.FullName;
+            txtID.Text = resultGet.UserName;
+            txtMail.Text = resultGet.Email;
+            txtPhone.Text = resultGet.PhoneNumber;
+            //this.txtPass.Text = ""
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -70,7 +79,6 @@ namespace SteamMini
 
         private void button2_Click(object sender, EventArgs e)
         {
-            idText = "";
             if (OnDataAvailable != null)
                 OnDataAvailable(this, EventArgs.Empty);
 
@@ -88,7 +96,6 @@ namespace SteamMini
 
         private void Register_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -98,19 +105,17 @@ namespace SteamMini
             //register
             if (!idCheckChange)
             {
-                this.idText = this.txtMail.Text; // idText = mailText
-
                 if (txtFullname.Text.Length == 0)
                 {
                     txtWarningFullName.Visible = true;
                     MessageBox.Show("Full name is required!");
                 }
-                else if (txtID.Text.Length == 0)
+                else if (txtID.Text.Length == 0) //usernam
                 {
                     txtWarningName.Visible = true;
                     MessageBox.Show("User name is required!");
                 }
-                else if (!reg.IsMatch(this.idText))
+                else if (!reg.IsMatch(this.txtMail.Text))
                 {
                     txtWarningMail.Visible = true;
                     MessageBox.Show("Mail not yet entered or wrong format!");
@@ -132,12 +137,11 @@ namespace SteamMini
                 }
                 else //register account
                 {
-                    string result = "";
-                    result = AccountsControllerShould.PostNewAccountController(
+                    string result = AccountsControllerShould.PostNewAccountController(
                         new RegisterObject(txtMail.Text, txtPass.Text, "defaulthobbies",
                         txtFullname.Text, txtPhone.Text, txtID.Text));
 
-                    if (result == "True") //rs = isSuccess
+                    if (result == "true") //rs = isSuccess
                     {
                         MessageBox.Show("Register success!");
                         this.Close();
@@ -147,32 +151,85 @@ namespace SteamMini
                     }
                     else //rs = failed msg
                     {
-                        if (result.Equals("System.Collections.Generic.List`1[Microsoft.AspNetCore.Identity.IdentityError]"))
+                        if (result == "user")
                         {
-                            MessageBox.Show("Register failed. User name already exists!");
+                            MessageBox.Show("User name already exists!", "Error");
                         }
                         else
                         {
-                            MessageBox.Show("Register failed. Email already exists!");
+                            MessageBox.Show("Email already exists!", "Error");
                         }
                     }
                 }
             }
-            //change
+            //change account, received id
             else
             {
-                //MessageBox.Show(txtMail.Text);
-                this.Close();
+                if (txtFullname.Text.Length == 0)
+                {
+                    txtWarningFullName.Visible = true;
+                    MessageBox.Show("Full name is required!");
+                }
+                else if (txtID.Text.Length == 0) //usernam
+                {
+                    txtWarningName.Visible = true;
+                    MessageBox.Show("User name is required!");
+                }
+                else if (!reg.IsMatch(this.txtMail.Text))
+                {
+                    txtWarningMail.Visible = true;
+                    MessageBox.Show("Mail not yet entered or wrong format!");
+                }
+                else if (this.txtPass.Text.Length < 8)
+                {
+                    txtWarningPass.Visible = true;
+                    MessageBox.Show("Password not yet entered or wrong format!");
+                }
+                else if (!this.txtPass.Text.Equals(this.txtRe.Text))
+                {
+                    txtWarningRePass.Visible = true;
+                    MessageBox.Show("Passwords not match!");
+                }
+                else if (txtPhone.Text.Length == 0)
+                {
+                    txtWarningPhone.Visible = true;
+                    MessageBox.Show("Phone number is required!");
+                }
+                else //change begining
+                {
+                    var response = AccountsControllerShould.UpdateAccountController(
+                        new RegisterObject(txtMail.Text, txtPass.Text, "defaulthobbies",
+                        txtFullname.Text, txtPhone.Text, txtID.Text), this.idChange);
+
+                    var rs = response.IsSuccess.ToString();
+
+                    if (rs == "False" && response.Message.Equals("Username exited on db"))
+                    {
+                        MessageBox.Show("User name already exists!", "Error");
+                    }
+
+                    if (rs == "False" && response.Message.Equals(" Email exited on db"))
+                    {
+                        MessageBox.Show("Email already exists!", "Error");
+                    }
+
+                    if (rs == "True") //rs = isSuccess
+                    {
+                        txtFullname.Text = response.Payload.FullName;
+                        txtID.Text = response.Payload.UserName;
+                        txtMail.Text = response.Payload.Email;
+                        txtPhone.Text = response.Payload.PhoneNumber;
+
+                        MessageBox.Show("Update success!");
+                        this.Close();
+                    }
+                }
             }
-
-
-
 
         }
 
         private void Register_FormClosed(object sender, FormClosedEventArgs e)
         {
-            idText = "";
             if (OnDataAvailable != null)
                 OnDataAvailable(this, EventArgs.Empty);
 

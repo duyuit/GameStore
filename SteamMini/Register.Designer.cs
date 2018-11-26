@@ -59,10 +59,9 @@
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.ForeColor = System.Drawing.SystemColors.Control;
             this.txtPass.Location = new System.Drawing.Point(204, 320);
-            this.txtPass.Multiline = true;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(362, 31);
+            this.txtPass.Size = new System.Drawing.Size(362, 26);
             this.txtPass.TabIndex = 4;
             this.txtPass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPass_MouseClick);
             this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
@@ -74,9 +73,8 @@
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.SystemColors.Control;
             this.txtID.Location = new System.Drawing.Point(204, 193);
-            this.txtID.Multiline = true;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(362, 31);
+            this.txtID.Size = new System.Drawing.Size(362, 26);
             this.txtID.TabIndex = 2;
             this.txtID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtID_MouseClick);
             this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
@@ -122,10 +120,9 @@
             this.txtRe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRe.ForeColor = System.Drawing.SystemColors.Control;
             this.txtRe.Location = new System.Drawing.Point(204, 384);
-            this.txtRe.Multiline = true;
             this.txtRe.Name = "txtRe";
             this.txtRe.PasswordChar = '*';
-            this.txtRe.Size = new System.Drawing.Size(362, 31);
+            this.txtRe.Size = new System.Drawing.Size(362, 26);
             this.txtRe.TabIndex = 5;
             this.txtRe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRe_MouseClick);
             this.txtRe.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -149,9 +146,8 @@
             this.txtMail.ForeColor = System.Drawing.SystemColors.Control;
             this.txtMail.Location = new System.Drawing.Point(204, 257);
             this.txtMail.MaximumSize = new System.Drawing.Size(1001, 1000);
-            this.txtMail.Multiline = true;
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(362, 31);
+            this.txtMail.Size = new System.Drawing.Size(362, 26);
             this.txtMail.TabIndex = 3;
             this.txtMail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtMail_MouseClick);
             this.txtMail.TextChanged += new System.EventHandler(this.txtMail_TextChanged);
@@ -259,9 +255,8 @@
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.ForeColor = System.Drawing.SystemColors.Control;
             this.txtPhone.Location = new System.Drawing.Point(204, 447);
-            this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(362, 31);
+            this.txtPhone.Size = new System.Drawing.Size(362, 26);
             this.txtPhone.TabIndex = 6;
             this.txtPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPhone_MouseClick);
             this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
@@ -297,9 +292,8 @@
             this.txtFullname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullname.ForeColor = System.Drawing.SystemColors.Control;
             this.txtFullname.Location = new System.Drawing.Point(204, 128);
-            this.txtFullname.Multiline = true;
             this.txtFullname.Name = "txtFullname";
-            this.txtFullname.Size = new System.Drawing.Size(362, 31);
+            this.txtFullname.Size = new System.Drawing.Size(362, 26);
             this.txtFullname.TabIndex = 1;
             this.txtFullname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtFullname_MouseClick);
             this.txtFullname.TextChanged += new System.EventHandler(this.txtFullname_TextChanged);

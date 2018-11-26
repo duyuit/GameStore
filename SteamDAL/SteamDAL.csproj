@@ -66,9 +66,11 @@
     <Compile Include="DTOs\FreeCodeDTOs.cs" />
     <Compile Include="DTOs\GameDTOs.cs" />
     <Compile Include="DTOs\LikeGameDTOs.cs" />
+    <Compile Include="DTOs\LoginResponse.cs" />
     <Compile Include="DTOs\MapGame.cs" />
     <Compile Include="DTOs\PublisherDTOs.cs" />
     <Compile Include="DTOs\RegisterDTOs.cs" />
+    <Compile Include="DTOs\RegistorResponse.cs" />
     <Compile Include="DTOs\SavedCategoryDTOs.cs" />
     <Compile Include="DTOs\SavedFreeCodeDTOs.cs" />
     <Compile Include="DTOs\SavedGameDTOs.cs" />

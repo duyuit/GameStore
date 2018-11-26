@@ -29,7 +29,7 @@ namespace SteamMini
         void formB_OnDataAvailable(object sender, EventArgs e)
         {
             //Event handler for when FormB fires off the event
-            this.txtID.Text = register.idText;
+            //this.txtID.Text = register.idText;
             this.Enabled = true;
         }
 
@@ -66,7 +66,7 @@ namespace SteamMini
                 string rs = AuthsControllerShould.LoginController(loginObject);
                 if (rs.Equals("user"))
                 {
-                    MessageBox.Show("Account does not exist! You should register account!", "Error");
+                    MessageBox.Show("Account does not exist!\nYou should register it!", "Error");
                 }
                 else if (rs.Equals("pass"))
                 {
@@ -74,7 +74,8 @@ namespace SteamMini
                 }
                 else // login correctly, received token, id
                 {
-                    MyHome a = new MyHome(txtID.Text);
+                    string id = rs;
+                    MyHome a = new MyHome(id);
                     a.Show();
                     this.Hide();    
                 }
@@ -97,30 +98,47 @@ namespace SteamMini
 
         private void txtPass_KeyUp(object sender, KeyEventArgs e)
         {
-            //if (!txtID.Text.Equals("") && !txtPass.Text.Equals(""))
-            //{
-            //    if (e.KeyCode == Keys.Enter)
-            //    {
-            //        LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
-            //        string rs = AuthsControllerShould.LoginController(loginObject);
-            //        if (rs.Equals("Bad Request"))
-            //        {
-            //            MessageBox.Show("Account does not exist!", "Error");
-            //        }
-            //        else if (rs.Equals("Unauthorized"))
-            //        {
-            //            MessageBox.Show("Password incorrect!", "Error");
-            //        }
-            //        else // login correctly, received token
-            //        {
-            //            MyHome a = new MyHome(txtID.Text);
-            //            a.Show();
-            //            this.Hide();          
-            //        }
-            //    }
-            //}
+            if (e.KeyCode == Keys.Enter)
+            {
+                //txtID: username/email
+                if (txtID.Text != "" && txtPass.Text != "")
+                {
+                    LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
+                    string rs = AuthsControllerShould.LoginController(loginObject);
+                    //if (rs.Equals("user"))
+                    //{
+                    //    MessageBox.Show("Account does not exist!\nYou should register it!", "Error");
+                    //}
+                    //else if (rs.Equals("pass"))
+                    //{
+                    //    MessageBox.Show("Password incorrect!", "Error");
+                    //}
+                    //else // login correctly, received token, id
+                    //{
+                    //    string id = rs;
+                    //    MyHome a = new MyHome(id);
+                    //    a.Show();
+                    //    this.Hide();
+                    //}
+
+                    if (!rs.Equals("user") && !rs.Equals("pass"))
+                    {
+                        string id = rs;
+                        MyHome a = new MyHome(id);
+                        a.Show();
+                        this.Hide();
+                    }
+                }
+                //else MessageBox.Show("Information is not enough!");
+            }
         }
 
-
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+            //if (!char.IsControl(Keys.Enter) && !char.IsDigit(Keys.Enter))
+            //{
+            //    e.Handled = true;
+            //}
+        }
     }
 }
