@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +38,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.storeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,12 +100,11 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.GameDetailPanel = new System.Windows.Forms.Panel();
+            this.GameImages2 = new System.Windows.Forms.PictureBox();
             this.RatingText = new System.Windows.Forms.Label();
             this.RatingPic = new System.Windows.Forms.PictureBox();
             this.Rating = new System.Windows.Forms.Label();
             this.Price = new System.Windows.Forms.Label();
-            this.NextImage = new System.Windows.Forms.Button();
-            this.PrevImage = new System.Windows.Forms.Button();
             this.GameImages = new System.Windows.Forms.PictureBox();
             this.GameVid = new System.Windows.Forms.WebBrowser();
             this.GameDescription = new System.Windows.Forms.RichTextBox();
@@ -131,6 +132,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
             this.GameDetailPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GameImages2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatingPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameIcon)).BeginInit();
@@ -199,7 +201,9 @@
             // viewToolStripMenuItem1
             // 
             this.viewToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testToolStripMenuItem});
+            this.testToolStripMenuItem,
+            this.storeToolStripMenuItem,
+            this.profileToolStripMenuItem});
             this.viewToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
             this.viewToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
@@ -210,8 +214,23 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.testToolStripMenuItem.Text = "Library";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // storeToolStripMenuItem
+            // 
+            this.storeToolStripMenuItem.Name = "storeToolStripMenuItem";
+            this.storeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.storeToolStripMenuItem.Text = "Store";
+            this.storeToolStripMenuItem.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // profileToolStripMenuItem
+            // 
+            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.profileToolStripMenuItem.Text = "Profile";
+            this.profileToolStripMenuItem.Click += new System.EventHandler(this.label3_Click);
             // 
             // gameToolStripMenuItem
             // 
@@ -229,6 +248,7 @@
             this.libToolStripMenuItem.Name = "libToolStripMenuItem";
             this.libToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.libToolStripMenuItem.Text = "Lib";
+            this.libToolStripMenuItem.Click += new System.EventHandler(this.label2_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -292,9 +312,9 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Controls.Add(this.lib_panel);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -354,7 +374,7 @@
             this.recommend_select5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.recommend_select5.Size = new System.Drawing.Size(20, 16);
             this.recommend_select5.TabIndex = 13;
-            this.recommend_select5.Click += new System.EventHandler(this.recommend_select1_Click);
+            this.recommend_select5.Click += new System.EventHandler(this.recommend_select5_Click);
             // 
             // recommend_select2
             // 
@@ -366,7 +386,7 @@
             this.recommend_select2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.recommend_select2.Size = new System.Drawing.Size(20, 16);
             this.recommend_select2.TabIndex = 10;
-            this.recommend_select2.Click += new System.EventHandler(this.recommend_select1_Click);
+            this.recommend_select2.Click += new System.EventHandler(this.recommend_select2_Click);
             // 
             // recommend_select4
             // 
@@ -378,7 +398,7 @@
             this.recommend_select4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.recommend_select4.Size = new System.Drawing.Size(20, 16);
             this.recommend_select4.TabIndex = 12;
-            this.recommend_select4.Click += new System.EventHandler(this.recommend_select1_Click);
+            this.recommend_select4.Click += new System.EventHandler(this.recommend_select4_Click);
             // 
             // recommend_select3
             // 
@@ -390,7 +410,7 @@
             this.recommend_select3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.recommend_select3.Size = new System.Drawing.Size(20, 16);
             this.recommend_select3.TabIndex = 11;
-            this.recommend_select3.Click += new System.EventHandler(this.recommend_select1_Click);
+            this.recommend_select3.Click += new System.EventHandler(this.recommend_select3_Click);
             // 
             // label32
             // 
@@ -442,6 +462,7 @@
             this.recommend_picture1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recommend_picture1.TabIndex = 7;
             this.recommend_picture1.TabStop = false;
+            this.recommend_picture1.Click += new System.EventHandler(this.recommend_picture1_Click);
             // 
             // label18
             // 
@@ -490,7 +511,8 @@
             this.recommend_picture4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recommend_picture4.TabIndex = 7;
             this.recommend_picture4.TabStop = false;
-            this.recommend_picture4.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            this.recommend_picture4.Click += new System.EventHandler(this.recommend_picture4_Click);
+            this.recommend_picture4.MouseEnter += new System.EventHandler(this.recommend_image4_MouseEnter);
             // 
             // recommend_picture3
             // 
@@ -500,7 +522,8 @@
             this.recommend_picture3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recommend_picture3.TabIndex = 6;
             this.recommend_picture3.TabStop = false;
-            this.recommend_picture3.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            this.recommend_picture3.Click += new System.EventHandler(this.recommend_picture3_Click);
+            this.recommend_picture3.MouseEnter += new System.EventHandler(this.recommend_image3_MouseEnter);
             // 
             // recommend_picture2
             // 
@@ -511,7 +534,8 @@
             this.recommend_picture2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recommend_picture2.TabIndex = 5;
             this.recommend_picture2.TabStop = false;
-            this.recommend_picture2.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            this.recommend_picture2.Click += new System.EventHandler(this.recommend_picture2_Click);
+            this.recommend_picture2.MouseEnter += new System.EventHandler(this.recommend_image2_MouseEnter);
             // 
             // recommend_picture5
             // 
@@ -522,7 +546,8 @@
             this.recommend_picture5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.recommend_picture5.TabIndex = 1;
             this.recommend_picture5.TabStop = false;
-            this.recommend_picture5.MouseEnter += new System.EventHandler(this.recommend_image_MouseEnter);
+            this.recommend_picture5.Click += new System.EventHandler(this.recommend_picture5_Click);
+            this.recommend_picture5.MouseEnter += new System.EventHandler(this.recommend_image5_MouseEnter);
             // 
             // recommend_game_name
             // 
@@ -841,10 +866,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup1";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5});
+            listViewGroup1});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);
@@ -881,12 +906,11 @@
             // GameDetailPanel
             // 
             this.GameDetailPanel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.GameDetailPanel.Controls.Add(this.GameImages2);
             this.GameDetailPanel.Controls.Add(this.RatingText);
             this.GameDetailPanel.Controls.Add(this.RatingPic);
             this.GameDetailPanel.Controls.Add(this.Rating);
             this.GameDetailPanel.Controls.Add(this.Price);
-            this.GameDetailPanel.Controls.Add(this.NextImage);
-            this.GameDetailPanel.Controls.Add(this.PrevImage);
             this.GameDetailPanel.Controls.Add(this.GameImages);
             this.GameDetailPanel.Controls.Add(this.GameVid);
             this.GameDetailPanel.Controls.Add(this.GameDescription);
@@ -896,9 +920,19 @@
             this.GameDetailPanel.Controls.Add(this.GameNameLabel);
             this.GameDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.GameDetailPanel.Name = "GameDetailPanel";
-            this.GameDetailPanel.Size = new System.Drawing.Size(1040, 926);
+            this.GameDetailPanel.Size = new System.Drawing.Size(1040, 923);
             this.GameDetailPanel.TabIndex = 16;
             this.GameDetailPanel.Visible = false;
+            // 
+            // GameImages2
+            // 
+            this.GameImages2.Location = new System.Drawing.Point(704, 489);
+            this.GameImages2.Name = "GameImages2";
+            this.GameImages2.Size = new System.Drawing.Size(330, 239);
+            this.GameImages2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GameImages2.TabIndex = 13;
+            this.GameImages2.TabStop = false;
+            this.GameImages2.Click += new System.EventHandler(this.GameImages2_Click);
             // 
             // RatingText
             // 
@@ -906,7 +940,7 @@
             this.RatingText.AutoSize = true;
             this.RatingText.BackColor = System.Drawing.Color.Silver;
             this.RatingText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RatingText.Location = new System.Drawing.Point(145, 820);
+            this.RatingText.Location = new System.Drawing.Point(145, 817);
             this.RatingText.Name = "RatingText";
             this.RatingText.Size = new System.Drawing.Size(31, 20);
             this.RatingText.TabIndex = 12;
@@ -917,7 +951,7 @@
             this.RatingPic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RatingPic.BackColor = System.Drawing.Color.Transparent;
             this.RatingPic.Image = global::SteamMini.Properties.Resources._1024px_Gold_Star_svg;
-            this.RatingPic.Location = new System.Drawing.Point(111, 788);
+            this.RatingPic.Location = new System.Drawing.Point(111, 785);
             this.RatingPic.Name = "RatingPic";
             this.RatingPic.Size = new System.Drawing.Size(100, 80);
             this.RatingPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -930,7 +964,7 @@
             this.Rating.AutoSize = true;
             this.Rating.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rating.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Rating.Location = new System.Drawing.Point(6, 810);
+            this.Rating.Location = new System.Drawing.Point(6, 807);
             this.Rating.Name = "Rating";
             this.Rating.Size = new System.Drawing.Size(99, 31);
             this.Rating.TabIndex = 10;
@@ -942,47 +976,28 @@
             this.Price.AutoSize = true;
             this.Price.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Price.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Price.Location = new System.Drawing.Point(2, 885);
+            this.Price.Location = new System.Drawing.Point(2, 882);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(98, 31);
             this.Price.TabIndex = 9;
             this.Price.Text = "Price: ";
             // 
-            // NextImage
-            // 
-            this.NextImage.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.NextImage.Location = new System.Drawing.Point(803, 483);
-            this.NextImage.Name = "NextImage";
-            this.NextImage.Size = new System.Drawing.Size(39, 23);
-            this.NextImage.TabIndex = 8;
-            this.NextImage.UseVisualStyleBackColor = false;
-            this.NextImage.Click += new System.EventHandler(this.NextImage_Click);
-            // 
-            // PrevImage
-            // 
-            this.PrevImage.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PrevImage.Location = new System.Drawing.Point(758, 483);
-            this.PrevImage.Name = "PrevImage";
-            this.PrevImage.Size = new System.Drawing.Size(39, 23);
-            this.PrevImage.TabIndex = 7;
-            this.PrevImage.UseVisualStyleBackColor = false;
-            this.PrevImage.Click += new System.EventHandler(this.PrevImage_Click);
-            // 
             // GameImages
             // 
-            this.GameImages.Location = new System.Drawing.Point(532, 197);
+            this.GameImages.Location = new System.Drawing.Point(704, 268);
             this.GameImages.Name = "GameImages";
-            this.GameImages.Size = new System.Drawing.Size(499, 279);
+            this.GameImages.Size = new System.Drawing.Size(330, 215);
             this.GameImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.GameImages.TabIndex = 6;
             this.GameImages.TabStop = false;
+            this.GameImages.Click += new System.EventHandler(this.GameImages_Click);
             // 
             // GameVid
             // 
-            this.GameVid.Location = new System.Drawing.Point(6, 197);
+            this.GameVid.Location = new System.Drawing.Point(3, 268);
             this.GameVid.MinimumSize = new System.Drawing.Size(20, 20);
             this.GameVid.Name = "GameVid";
-            this.GameVid.Size = new System.Drawing.Size(520, 279);
+            this.GameVid.Size = new System.Drawing.Size(697, 460);
             this.GameVid.TabIndex = 5;
             // 
             // GameDescription
@@ -990,10 +1005,10 @@
             this.GameDescription.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.GameDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GameDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GameDescription.Location = new System.Drawing.Point(216, 88);
+            this.GameDescription.Location = new System.Drawing.Point(249, 88);
             this.GameDescription.Name = "GameDescription";
             this.GameDescription.ReadOnly = true;
-            this.GameDescription.Size = new System.Drawing.Size(802, 103);
+            this.GameDescription.Size = new System.Drawing.Size(785, 174);
             this.GameDescription.TabIndex = 4;
             this.GameDescription.Text = "";
             // 
@@ -1001,7 +1016,8 @@
             // 
             this.GameIcon.Location = new System.Drawing.Point(6, 88);
             this.GameIcon.Name = "GameIcon";
-            this.GameIcon.Size = new System.Drawing.Size(204, 103);
+            this.GameIcon.Size = new System.Drawing.Size(237, 174);
+            this.GameIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.GameIcon.TabIndex = 3;
             this.GameIcon.TabStop = false;
             // 
@@ -1010,7 +1026,7 @@
             this.Back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Back.BackColor = System.Drawing.Color.Red;
             this.Back.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Back.Location = new System.Drawing.Point(915, 885);
+            this.Back.Location = new System.Drawing.Point(915, 882);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(106, 38);
             this.Back.TabIndex = 2;
@@ -1023,7 +1039,7 @@
             this.Purchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Purchase.BackColor = System.Drawing.Color.LawnGreen;
             this.Purchase.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Purchase.Location = new System.Drawing.Point(798, 885);
+            this.Purchase.Location = new System.Drawing.Point(798, 882);
             this.Purchase.Name = "Purchase";
             this.Purchase.Size = new System.Drawing.Size(106, 38);
             this.Purchase.TabIndex = 1;
@@ -1033,11 +1049,10 @@
             // 
             // GameNameLabel
             // 
-            this.GameNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.GameNameLabel.AutoSize = true;
             this.GameNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GameNameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.GameNameLabel.Location = new System.Drawing.Point(334, 7);
+            this.GameNameLabel.Location = new System.Drawing.Point(8, 9);
             this.GameNameLabel.Name = "GameNameLabel";
             this.GameNameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.GameNameLabel.Size = new System.Drawing.Size(360, 51);
@@ -1095,6 +1110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
             this.GameDetailPanel.ResumeLayout(false);
             this.GameDetailPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GameImages2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatingPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameImages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameIcon)).EndInit();
@@ -1180,11 +1196,12 @@
         private System.Windows.Forms.PictureBox GameIcon;
         private System.Windows.Forms.WebBrowser GameVid;
         private System.Windows.Forms.PictureBox GameImages;
-        private System.Windows.Forms.Button NextImage;
-        private System.Windows.Forms.Button PrevImage;
         private System.Windows.Forms.Label Price;
         private System.Windows.Forms.Label Rating;
         private System.Windows.Forms.Label RatingText;
         private System.Windows.Forms.PictureBox RatingPic;
+        private System.Windows.Forms.PictureBox GameImages2;
+        private System.Windows.Forms.ToolStripMenuItem storeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
     }
 }

@@ -18,6 +18,7 @@ namespace SteamMini
         Responses<GameDTOs> GameResponse;
         UserDTOs User;
         GameObject currGame;
+        int currRecommend = 0;
 
         public void LoadDatabase(string UserId)
         {
@@ -52,21 +53,34 @@ namespace SteamMini
             }
         }
 
-        public void LoadGameBuyPanel(object sender, EventArgs e)
+        public void LoadGamePanel(GameObject gameobject)
+        {
+            this.GameIcon.Image = gameobject.Logo.Image;
+            this.GameNameLabel.Text = gameobject.Name;
+            this.GameDescription.Text = gameobject.Content;
+            this.RatingText.Text = gameobject.Rating.ToString();
+            this.Price.Text = "Price: " + gameobject.Price.ToString() + "VND";
+            this.GameImages.Load(gameobject.GameImages.ElementAt(0));
+            this.GameImages2.Load(gameobject.GameImages.ElementAt(1));
+
+            var embed = "<html><head>" +
+ "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
+ "</head><body>" +
+ "<iframe width=\"1026\" height=\"250\" src=\"{0}\"" +
+ "frameborder = \"0\" allow = \"autoplay; encrypted-media\" allowfullscreen></iframe>" +
+ "</body></html>";
+            var url = "https://www.youtube.com/embed/3Q6U3BSbrlY";
+            this.GameVid.DocumentText = string.Format(embed, url);
+        }
+
+        public void GamePreviewClick(object sender, EventArgs e)
         {
             this.store_panel.Visible = false;
             this.GameDetailPanel.Visible = true;
             
             GamePreview gPre = (GamePreview)sender;
             currGame = gPre.GetGameObject();
-            this.GameIcon.Image = currGame.Logo.Image;
-            this.GameNameLabel.Text = currGame.Name;
-            this.GameDescription.Text = currGame.Content;
-            this.RatingText.Text = currGame.Rating.ToString();
-            this.Price.Text = "Price: " + currGame.Price.ToString();
-            this.GameImages.Load(currGame.GameImages.ElementAt(0));
-            Uri videolink = new Uri("https://youtu.be/rOaYAwxPXNE");
-            this.GameVid.Url = videolink;
+            LoadGamePanel(currGame);
 
         }
         public void LoadGamePreview()
@@ -80,7 +94,7 @@ namespace SteamMini
                 temp.GameIcon = gO.Logo.Image;
                 temp.GameNameText = gO.Name;
                 temp.Rating = gO.Rating.ToString();
-                temp.Click += LoadGameBuyPanel;
+                temp.Click += GamePreviewClick;
                 if (gO.Price == 0)
                 {
                     temp.GamePriceText = "Free";
@@ -160,19 +174,14 @@ namespace SteamMini
 
             //Recommend Game Init
             panel3.BackColor = Color.FromArgb(21, 53, 77);
-            recommend_picture1.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("GTAV1");
-            recommend_picture2.Image = Properties.Resources.GTAV2;
-            recommend_picture3.Image = Properties.Resources.GTAV3;
-            recommend_picture4.Image = Properties.Resources.GTAV4;
-            recommend_picture5.Image = Properties.Resources.GTAV1;
-            recommend_panel.BackColor = Color.FromArgb(7, 17, 26);
-            recommend_select.Add(recommend_select1);
-            recommend_select.Add(recommend_select2);
-            recommend_select.Add(recommend_select3);
-            recommend_select.Add(recommend_select4);
-            recommend_select.Add(recommend_select5);
+            recommend_picture1.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
+            recommend_picture2.Load(lib_game.ElementAt(1).GameImages.ElementAt(0));
+            recommend_picture3.Load(lib_game.ElementAt(2).GameImages.ElementAt(0));
+            recommend_picture4.Load(lib_game.ElementAt(3).GameImages.ElementAt(0));
+            recommend_picture5.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
+            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(0).Name;
 
-           
         }
         private void MyHome_Load(object sender, EventArgs e)
         {
@@ -247,6 +256,7 @@ namespace SteamMini
         private void label3_Click(object sender, EventArgs e)
         {
             Profile a = new Profile();
+            a.SetUser(User);
             a.Show();
         }
 
@@ -264,51 +274,6 @@ namespace SteamMini
             panel2.Visible = true;
         }
 
-        private void recommend_image_MouseEnter(object sender, EventArgs e)
-        {
-            PictureBox a = (PictureBox)sender;
-            recommend_picture1.Image = a.Image;
-
-        }
-        private void Select_Recommend(int selected)
-        {
-            if(selected % 2==0)
-            {
-                recommend_picture1.Image = Properties.Resources.GTAV1;
-                recommend_picture2.Image = Properties.Resources.GTAV2;
-                recommend_picture3.Image = Properties.Resources.GTAV3;
-                recommend_picture4.Image = Properties.Resources.GTAV4;
-                recommend_picture5.Image = Properties.Resources.GTAV1;
-                recommend_game_name.Text = "GTA V";
-            }
-            else
-            {
-                recommend_picture1.Image = Properties.Resources.csgo1;
-                recommend_picture2.Image = Properties.Resources.csgo2;
-                recommend_picture3.Image = Properties.Resources.csgo3;
-                recommend_picture4.Image = Properties.Resources.csgo4;
-                recommend_picture5.Image = Properties.Resources.csgo1;
-                recommend_game_name.Text = "CSGO";
-            }
-        }
-
-        private void recommend_select1_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-            int last = 0;
-            Label lb_temp = (Label)sender;
-            foreach (Label lb in recommend_select)
-            {
-                lb.BackColor = Color.Black;
-                if (lb_temp == lb)
-                    last = i;
-                i++;
-            }
-            Select_Recommend(last);
-         
-            lb_temp.BackColor = Color.Silver;
-        }
-
         private void MyHome_FormClosed(object sender, FormClosedEventArgs e)
         {
             for (int index = Application.OpenForms.Count - 1; index >= 0; index--)
@@ -322,7 +287,10 @@ namespace SteamMini
 
         private void Purchase_Click(object sender, EventArgs e)
         {
-
+            TitleGame purGame = new TitleGame();
+            purGame.Name = currGame.Name;
+            
+            User.Games.Add(purGame);
         }
 
         private void Back_Click(object sender, EventArgs e)
@@ -332,45 +300,168 @@ namespace SteamMini
             currGame = null;
         }
 
-        private void NextImage_Click(object sender, EventArgs e)
+        private void GameImages_Click(object sender, EventArgs e)
         {
-            
             for (int i = 0; i < currGame.GameImages.Count(); i++)
             {
-                if (this.GameImages.ImageLocation == currGame.GameImages.ElementAt(i))
+                if (GameImages.ImageLocation == currGame.GameImages.ElementAt(i))
                 {
                     if (i == currGame.GameImages.Count() - 1)
                     {
-                        this.GameImages.Load(currGame.GameImages.ElementAt(0));
+                        GameImages.Load(currGame.GameImages.ElementAt(0));
                         break;
                     }
                     else
                     {
-                        this.GameImages.Load(currGame.GameImages.ElementAt(i + 1));
+                        GameImages.Load(currGame.GameImages.ElementAt(i + 1));
                         break;
                     }
                 }
             }
         }
 
-        private void PrevImage_Click(object sender, EventArgs e)
+        private void GameImages2_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < currGame.GameImages.Count(); i++)
             {
-                if (this.GameImages.ImageLocation == currGame.GameImages.ElementAt(i))
+                if (GameImages2.ImageLocation == currGame.GameImages.ElementAt(i))
                 {
-                    if (i == 0)
+                    if (i == currGame.GameImages.Count() - 1)
                     {
-                        this.GameImages.Load(currGame.GameImages.ElementAt(currGame.GameImages.Count() - 1));
+                        GameImages2.Load(currGame.GameImages.ElementAt(0));
                         break;
                     }
                     else
                     {
-                        this.GameImages.Load(currGame.GameImages.ElementAt(i - 1));
+                        GameImages2.Load(currGame.GameImages.ElementAt(i + 1));
                         break;
                     }
                 }
             }
+        }
+
+        private void recommend_picture1_Click(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+            currGame = lib_game.ElementAt(0);
+            LoadGamePanel(currGame);
+        }
+
+        private void recommend_picture5_Click(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+            currGame = lib_game.ElementAt(0);
+            LoadGamePanel(currGame);
+        }
+
+        private void recommend_picture2_Click(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+            currGame = lib_game.ElementAt(1);
+            LoadGamePanel(currGame);
+        }
+
+        private void recommend_picture3_Click(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+            currGame = lib_game.ElementAt(2);
+            LoadGamePanel(currGame);
+        }
+
+        private void recommend_picture4_Click(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+            currGame = lib_game.ElementAt(3);
+            LoadGamePanel(currGame);
+        }
+
+        private void recommend_select1_Click(object sender, EventArgs e)
+        {
+            recommend_picture1.Image = recommend_picture5.Image;
+            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(0).Name;
+            currRecommend = 0;
+        }
+
+        private void recommend_select2_Click(object sender, EventArgs e)
+        {
+            recommend_picture1.Image = recommend_picture2.Image;
+            label17.Text = lib_game.ElementAt(1).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(1).Name;
+            currRecommend = 1;
+        }
+
+        private void recommend_select3_Click(object sender, EventArgs e)
+        {
+            recommend_picture1.Image = recommend_picture3.Image;
+            label17.Text = lib_game.ElementAt(2).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(2).Name;
+            currRecommend = 2;
+        }
+
+        private void recommend_select4_Click(object sender, EventArgs e)
+        {
+            recommend_picture1.Image = recommend_picture4.Image;
+            label17.Text = lib_game.ElementAt(3).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(3).Name;
+            currRecommend = 3;
+        }
+
+        private void recommend_select5_Click(object sender, EventArgs e)
+        {
+            recommend_picture1.Image = recommend_picture5.Image;
+            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(0).Name;
+            currRecommend = 0;
+        }
+
+        private void recommend_image_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox a = (PictureBox)sender;
+            recommend_picture1.Image = a.Image;
+            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+        }
+
+        private void recommend_image5_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox a = (PictureBox)sender;
+            recommend_picture1.Image = a.Image;
+            currRecommend = 0;
+            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+        }
+
+        private void recommend_image2_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox a = (PictureBox)sender;
+            recommend_picture1.Image = a.Image;
+            currRecommend = 1;
+            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+        }
+
+        private void recommend_image3_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox a = (PictureBox)sender;
+            recommend_picture1.Image = a.Image;
+            currRecommend = 2;
+            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+        }
+
+        private void recommend_image4_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox a = (PictureBox)sender;
+            recommend_picture1.Image = a.Image;
+            currRecommend = 3;
+            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
         }
     }
 }

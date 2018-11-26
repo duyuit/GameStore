@@ -6,13 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GameStore.DTOs;
 
 namespace SteamMini
 {
     public partial class Profile : Form
     {
         List<Image> background = new List<Image>();
+        UserDTOs user = null;
 
+        public void SetUser(UserDTOs input)
+        {
+            user = input;
+        }
         public Profile()
         {
             InitializeComponent();
@@ -41,19 +47,13 @@ namespace SteamMini
 
         private void Profile_Load(object sender, EventArgs e)
         {
-            //for (int i = 0; i < 3; i++)
-            //{
-
-            //    GamePreview temp = new GamePreview();
-            //    temp.GameNameText = "EFT";
-            //    temp.GamePriceText = "100000VND";
-            //    temp.Location = gamePreview1.Location;
-            //    temp.Visible = true;
-            //    temp.BringToFront();
-            //    panel3.Controls.Add(temp);
-            //}
+            UserName.Text = user.UserName;
+            //avatar.Load(user.ImageUser.UrlOnline);
         }
 
-       
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
