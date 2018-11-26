@@ -16,7 +16,7 @@ namespace SteamMini
         List<Label> recommend_select = new List<Label>();
         List<GameObject> lib_game = new List<GameObject>();
         Responses<GameDTOs> GameResponse;
-        Response<UserDTOs> User;
+        UserDTOs User;
         GameObject currGame;
 
         public void LoadDatabase(string UserId)
@@ -24,7 +24,7 @@ namespace SteamMini
             GameControllerShould Gamecontroller = new GameControllerShould();
             GameResponse = Gamecontroller.GetAllGamesController();
             AccountsControllerShould AccControl = new AccountsControllerShould();
-            //User = AccControl.GetUserByIdController(UserId);
+            User = AccControl.GetAllUsersController().Payload.ElementAt(0);
 
             List<GameDTOs> gameDTOs = GameResponse.Payload;
             foreach (GameDTOs a in gameDTOs)
