@@ -18,41 +18,55 @@ namespace SteamMini
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
         List<GameObject> lib_game = new List<GameObject>();
+        List<GameObject> user_game = new List<GameObject>();
         Responses<GameDTOs> GameResponse;
         GameStore.DTOs.PayloadBody User;
         GameObject currGame;
         int currRecommend = 0;
 
+        public GameObject toGameObject(GameDTOs a)
+        {
+            GameObject temp1 = new GameObject();
+            temp1.Id = a.Id;
+            temp1.Name = a.Name;
+            temp1.Rating = a.Rating;
+            temp1.Price = Convert.ToInt32(a.Price);
+            temp1.PurchaseDate = Convert.ToDateTime(a.PurchaseDate);
+            temp1.PublisherId = a.Publisher.Id;
+            temp1.Content = a.Content;
+            temp1.VideoUrl = a.VideoUrl;
+            temp1.Logo = new PictureBox();
+            temp1.Logo.Load(a.ImageGames.ElementAt(0).UrlOnline);
+            for (int i = 0; i < a.ImageGames.Count(); i++)
+            {
+                if (temp1.GameImages == null)
+                {
+                    temp1.GameImages = new List<String>();
+                }
+                temp1.GameImages.Add(a.ImageGames.ElementAt(0).UrlOnline);
+            }
+            return temp1;
+        }
+
         public void LoadDatabase(string UserId)
         {
-            GameControllerShould Gamecontroller = new GameControllerShould();
-            GameResponse = Gamecontroller.GetAllGamesController();
-            AccountsControllerShould AccControl = new AccountsControllerShould();
+            GameControllerShould gameControl = new GameControllerShould();
+            GameResponse = gameControl.GetAllGamesController();
             User = AccountsControllerShould.GetUserByIdController(UserId);
 
             List<GameDTOs> gameDTOs = GameResponse.Payload;
             foreach (GameDTOs a in gameDTOs)
             {
-                GameObject temp1 = new GameObject();
-                temp1.Id = a.Id;
-                temp1.Name = a.Name;
-                temp1.Rating = a.Rating;
-                temp1.Price = Convert.ToInt32(a.Price);
-                temp1.PurchaseDate = Convert.ToDateTime(a.PurchaseDate);
-                temp1.PublisherId = a.Publisher.Id;
-                temp1.Content = a.Content;
-                temp1.VideoUrl = a.VideoUrl;
-                temp1.Logo = new PictureBox();
-                temp1.Logo.Load(a.ImageGames.ElementAt(0).UrlOnline);
-                for (int i = 0; i < a.ImageGames.Count(); i++)
-                {
-                    if (temp1.GameImages == null)
-                    {
-                        temp1.GameImages = new List<String>();
-                    }
-                    temp1.GameImages.Add(a.ImageGames.ElementAt(0).UrlOnline);
-                }
+                GameObject temp1 = toGameObject(a);
                 lib_game.Add(temp1);
+            }
+
+            foreach (TitleGame a in User.Games)
+            {
+                GameControllerShould gameControl2 = new GameControllerShould();
+                Response<GameDTOs> temp = gameControl2.GetGameByIdController(a.Id.ToString());
+                GameObject gameobj = toGameObject(temp.Payload);
+                user_game.Add(gameobj);
             }
         }
 
@@ -121,11 +135,14 @@ namespace SteamMini
                 store_panel.Controls.Add(temp);
             }
         }
-        public MyHome(string username)
+        public MyHome(string Id)
         {
             InitializeComponent();
-            LoadDatabase("");
+            LoadDatabase(Id);
+            this.id = Id;
             LoadGamePreview();
+
+
             this.BackColor = Color.FromArgb(42, 46, 51);
             menuStrip1.BackColor = Color.FromArgb(27, 32, 54);
             steamToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
