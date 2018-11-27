@@ -87,6 +87,9 @@
     <EmbeddedResource Include="GamePreview.resx">
       <DependentUpon>GamePreview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GamePreviewTest.resx">
+      <DependentUpon>GamePreviewTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

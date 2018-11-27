@@ -70,11 +70,11 @@
             // txtGameName
             // 
             this.txtGameName.AutoSize = true;
-            this.txtGameName.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtGameName.Location = new System.Drawing.Point(3, 10);
             this.txtGameName.Name = "txtGameName";
-            this.txtGameName.Size = new System.Drawing.Size(313, 26);
+            this.txtGameName.Size = new System.Drawing.Size(366, 25);
             this.txtGameName.TabIndex = 7;
             this.txtGameName.Text = "FEATURED and RECOMMENDED";
             // 
@@ -358,6 +358,7 @@
             this.ClientSize = new System.Drawing.Size(1108, 715);
             this.Controls.Add(this.panel1);
             this.Name = "Store";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store";
             this.Load += new System.EventHandler(this.Store_Load);
             this.panel1.ResumeLayout(false);

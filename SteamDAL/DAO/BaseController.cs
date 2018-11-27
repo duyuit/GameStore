@@ -10,8 +10,7 @@ namespace SteamDAL.DAO
 {
   public  class BaseController
     {
-
-        public static string BASE_URL = "http://localhost:49911";
+        public static string BASE_URL = $"http://localhost:49911/api/";
         public static string ExecutePostRequest(string methodRequest, object param)
         {
             return ExecuteRequest(string.Empty, methodRequest, param, "post");

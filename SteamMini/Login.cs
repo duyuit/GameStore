@@ -29,7 +29,7 @@ namespace SteamMini
         void formB_OnDataAvailable(object sender, EventArgs e)
         {
             //Event handler for when FormB fires off the event
-            this.txtID.Text = register.idText;
+            //this.txtID.Text = register.idText;
             this.Enabled = true;
         }
 
@@ -41,6 +41,8 @@ namespace SteamMini
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
+
             this.register = new Register();
 
             //FormA subscribes to FormB's event
@@ -57,36 +59,86 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // this.Close();
-            //if (txtID.Text != "" && txtPass.Text != "")
+            //txtID: username/email
+            if (txtID.Text != "" && txtPass.Text != "")
+            {
+                LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
+                string rs = AuthsControllerShould.LoginController(loginObject);
+                if (rs.Equals("user"))
+                {
+                    MessageBox.Show("Account does not exist!\nYou should register it!", "Error");
+                }
+                else if (rs.Equals("pass"))
+                {
+                    MessageBox.Show("Password incorrect!", "Error");
+                }
+                else // login correctly, received token, id
+                {
+                    string id = rs;
+                    MyHome a = new MyHome(id);
+                    a.Show();
+                    this.Hide();    
+                }
+            }
+            else MessageBox.Show("Information is not enough!");
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
+
+        private void txtPass_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void txtPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //txtID: username/email
+                if (txtID.Text != "" && txtPass.Text != "")
+                {
+                    LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
+                    string rs = AuthsControllerShould.LoginController(loginObject);
+                    //if (rs.Equals("user"))
+                    //{
+                    //    MessageBox.Show("Account does not exist!\nYou should register it!", "Error");
+                    //}
+                    //else if (rs.Equals("pass"))
+                    //{
+                    //    MessageBox.Show("Password incorrect!", "Error");
+                    //}
+                    //else // login correctly, received token, id
+                    //{
+                    //    string id = rs;
+                    //    MyHome a = new MyHome(id);
+                    //    a.Show();
+                    //    this.Hide();
+                    //}
+
+                    if (!rs.Equals("user") && !rs.Equals("pass"))
+                    {
+                        string id = rs;
+                        MyHome a = new MyHome(id);
+                        a.Show();
+                        this.Hide();
+                    }
+                }
+                //else MessageBox.Show("Information is not enough!");
+            }
+        }
+
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+            //if (!char.IsControl(Keys.Enter) && !char.IsDigit(Keys.Enter))
             //{
-            //    string rs=BaseController.ExecutePostRequest("Auths", new LoginObject(txtID.Text, txtPass.Text));
-            //    if(rs.Equals("BadRequest") || rs.Equals("Unauthorized"))
-            //    {
-            //        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu","Error");
-
-            //    }
-            //    else
-            //    {
-
-            //        MyHome a = new MyHome(txtID.Text);
-            //        a.Show();
-   
-            //        this.Hide();           //Hide the main form before showing the secondary
-            //        a.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
-            //        this.Show();           //When frm2 is closed, continue with the code (show main form)
-            //    }
+            //    e.Handled = true;
             //}
-            //else MessageBox.Show("Chưa nhập đủ thông  tin");
-
-
-            MyHome b = new MyHome("hoa");
-           b.Show();
-
-            this.Hide();           //Hide the main form before showing the secondary
-            b.Show();     //Show secondary form, code execution stop until frm2 is closed
-            this.Hide();           //When frm2 is closed, continue with the code (show main form)
-
         }
     }
 }

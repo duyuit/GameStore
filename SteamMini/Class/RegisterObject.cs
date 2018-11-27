@@ -7,13 +7,21 @@ namespace SteamMini.Class
 {
     class RegisterObject
     {
-        public RegisterObject(string mail,string pass)
+        public RegisterObject(string mail,string pass, string hobbies, string fullName, 
+            string phoneNumber, string displayName)
         {
             Email = mail;
-            PassWord = ConfirmPassWord = pass;
+            PassWord = pass;
+            Hobbies = hobbies; //none
+            FullName = fullName; //none
+            PhoneNumber = phoneNumber; //none
+            UserName = displayName;
         }
         public string Email { get; set; }
         public string PassWord { get; set; }
-        public string ConfirmPassWord { get; set; }
+        public string Hobbies { get; set; } //none
+        public string FullName { get; set; } //none
+        public string PhoneNumber { get; set; } //none
+        public string UserName { get; set; }
     }
 }
