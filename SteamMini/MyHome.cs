@@ -59,7 +59,10 @@ namespace SteamMini
             this.GameNameLabel.Text = gameobject.Name;
             this.GameDescription.Text = gameobject.Content;
             this.RatingText.Text = gameobject.Rating.ToString();
-            this.Price.Text = "Price: " + gameobject.Price.ToString() + "VND";
+            if (gameobject.Price == 0)
+                this.Price.Text = "FREE";
+            else
+                this.Price.Text = "Price: " + gameobject.Price.ToString() + " VND";
             this.GameImages.Load(gameobject.GameImages.ElementAt(0));
             this.GameImages2.Load(gameobject.GameImages.ElementAt(1));
 
@@ -100,7 +103,7 @@ namespace SteamMini
                     temp.GamePriceText = "Free";
                 }
                 else
-                    temp.GamePriceText = gO.Price.ToString();
+                    temp.GamePriceText = gO.Price.ToString() + " VND";
                 if (i == 0)
                 {
                     temp.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * temp.Height) + 40);
