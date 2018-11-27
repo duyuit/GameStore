@@ -174,9 +174,10 @@ namespace SteamMini
             foreach (GameObject a in user_game)
             {
                 ListViewItem item = new ListViewItem();
-                item.Name = a.Name;
+                item.Name = a.Id.ToString();
                 item.Text = a.Name;
 
+                //add logo cho itemlistview
                 System.Net.WebRequest request = System.Net.WebRequest.Create(a.Logo.ImageLocation);
                 System.Net.WebResponse resp = request.GetResponse();
                 System.IO.Stream respStream = resp.GetResponseStream();
@@ -187,25 +188,10 @@ namespace SteamMini
                 item.ImageKey = "Icon" + a.Name;
 
                 listGame.Items.Add(item);
+
+                //add background
             }
-            background.Add(Properties.Resources.pubg_background);
-
-            //listgame.items.add(new listviewitem("  gta v", 0));
-            //imagelist1.images.add(properties.resources.gta5);
-            //background.add(properties.resources.gta5_background);
-
-
-            //listGame.Items.Add(new ListViewItem("  CS:GO", 1));
-            //imageList1.Images.Add(Properties.Resources.csgo_icon);
-            //background.Add(Properties.Resources.csgo_background);
-
-            //listGame.Items.Add(new ListViewItem("  PAYDAY 2", 2));
-            //imageList1.Images.Add(Properties.Resources.payday2_icon);
-            //background.Add(Properties.Resources.pd2_background);
-
-            //listGame.Items.Add(new ListViewItem("  PUBG", 3));
-            //imageList1.Images.Add(Properties.Resources.pubg_icon);
-            //background.Add(Properties.Resources.pubg_background);
+            
 
 
 
@@ -267,9 +253,24 @@ namespace SteamMini
             if (listGame.SelectedItems.Count > 0)
             {
                 var item = listGame.SelectedItems[0];
+                GameObject selectedgame = null;
+                foreach (GameObject a in user_game)
+                {
+                    if (a.Id.ToString() == item.Name)
+                    {
+                        selectedgame = a;
+                    }
+                }
                 lbl_game_name.Text = item.Text;
-                img_game.Image = imageList1.Images[item.ImageIndex];
-                //lib_panel.BackgroundImage = background[item.ImageIndex];
+                img_game.Image = selectedgame.Logo.Image;
+
+                System.Net.WebRequest request1 = System.Net.WebRequest.Create(selectedgame.GameImages.ElementAt(1));
+                System.Net.WebResponse resp1 = request1.GetResponse();
+                System.IO.Stream respStream1 = resp1.GetResponseStream();
+                Bitmap bmp1 = new Bitmap(respStream1);
+                respStream1.Dispose();
+
+                lib_panel.BackgroundImage = bmp1;
                 item.Focused = false;
                 //rest of your logic
             }
