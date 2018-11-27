@@ -12,11 +12,14 @@ namespace SteamMini
 {
     public partial class MyHome : Form
     {
+        private Register register = null;
+        private string id = null;
+
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
         List<GameObject> lib_game = new List<GameObject>();
         Responses<GameDTOs> GameResponse;
-        UserDTOs User;
+        GameStore.DTOs.PayloadBody User;
         GameObject currGame;
         int currRecommend = 0;
 
@@ -25,7 +28,7 @@ namespace SteamMini
             GameControllerShould Gamecontroller = new GameControllerShould();
             GameResponse = Gamecontroller.GetAllGamesController();
             AccountsControllerShould AccControl = new AccountsControllerShould();
-            User = AccControl.GetAllUsersController().Payload.ElementAt(0);
+            User = AccountsControllerShould.GetUserByIdController(UserId);
 
             List<GameDTOs> gameDTOs = GameResponse.Payload;
             foreach (GameDTOs a in gameDTOs)

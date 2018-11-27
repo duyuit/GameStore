@@ -13,9 +13,9 @@ namespace SteamMini
     public partial class Profile : Form
     {
         List<Image> background = new List<Image>();
-        UserDTOs user = null;
+        GameStore.DTOs.PayloadBody user = null;
 
-        public void SetUser(UserDTOs input)
+        public void SetUser(GameStore.DTOs.PayloadBody input)
         {
             user = input;
         }
@@ -47,7 +47,7 @@ namespace SteamMini
 
         private void Profile_Load(object sender, EventArgs e)
         {
-            UserName.Text = user.UserName;
+            label3.Text = user.UserName;
             //avatar.Load(user.ImageUser.UrlOnline);
         }
 
