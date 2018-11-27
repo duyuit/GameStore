@@ -47,11 +47,16 @@ namespace SteamMini
 
         private void Profile_Load(object sender, EventArgs e)
         {
-            label3.Text = user.UserName;
+            label1.Text = user.UserName;
             //avatar.Load(user.ImageUser.UrlOnline);
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

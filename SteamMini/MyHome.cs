@@ -171,22 +171,41 @@ namespace SteamMini
             
             
             //Listview Game Library Init
-            listGame.Items.Add(new ListViewItem("  GTA V", 0));
-            imageList1.Images.Add(Properties.Resources.gta5);
-            background.Add(Properties.Resources.gta5_background);
+            foreach (GameObject a in user_game)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Name = a.Name;
+                item.Text = a.Name;
 
+                System.Net.WebRequest request = System.Net.WebRequest.Create(a.Logo.ImageLocation);
+                System.Net.WebResponse resp = request.GetResponse();
+                System.IO.Stream respStream = resp.GetResponseStream();
+                Bitmap bmp = new Bitmap(respStream);
+                respStream.Dispose();
 
-            listGame.Items.Add(new ListViewItem("  CS:GO", 1));
-            imageList1.Images.Add(Properties.Resources.csgo_icon);
-            background.Add(Properties.Resources.csgo_background);
+                imageList1.Images.Add("Icon" + a.Name, bmp);
+                item.ImageKey = "Icon" + a.Name;
 
-            listGame.Items.Add(new ListViewItem("  PAYDAY 2", 2));
-            imageList1.Images.Add(Properties.Resources.payday2_icon);
-            background.Add(Properties.Resources.pd2_background);
-
-            listGame.Items.Add(new ListViewItem("  PUBG", 3));
-            imageList1.Images.Add(Properties.Resources.pubg_icon);
+                listGame.Items.Add(item);
+            }
             background.Add(Properties.Resources.pubg_background);
+
+            //listgame.items.add(new listviewitem("  gta v", 0));
+            //imagelist1.images.add(properties.resources.gta5);
+            //background.add(properties.resources.gta5_background);
+
+
+            //listGame.Items.Add(new ListViewItem("  CS:GO", 1));
+            //imageList1.Images.Add(Properties.Resources.csgo_icon);
+            //background.Add(Properties.Resources.csgo_background);
+
+            //listGame.Items.Add(new ListViewItem("  PAYDAY 2", 2));
+            //imageList1.Images.Add(Properties.Resources.payday2_icon);
+            //background.Add(Properties.Resources.pd2_background);
+
+            //listGame.Items.Add(new ListViewItem("  PUBG", 3));
+            //imageList1.Images.Add(Properties.Resources.pubg_icon);
+            //background.Add(Properties.Resources.pubg_background);
 
 
 
@@ -250,7 +269,7 @@ namespace SteamMini
                 var item = listGame.SelectedItems[0];
                 lbl_game_name.Text = item.Text;
                 img_game.Image = imageList1.Images[item.ImageIndex];
-                lib_panel.BackgroundImage = background[item.ImageIndex];
+                //lib_panel.BackgroundImage = background[item.ImageIndex];
                 item.Focused = false;
                 //rest of your logic
             }
