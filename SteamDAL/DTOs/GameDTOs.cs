@@ -29,4 +29,13 @@ namespace GameStore.DTOs
             ImageGames = new Collection<TitleImagePublisher>();
         }
     }
+
+    public class BuyGameObject
+    {
+        public string IdGame { get; set; }
+        public BuyGameObject(string idgame)
+        {
+            IdGame = idgame;
+        }
+    }
 }

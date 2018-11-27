@@ -51,6 +51,28 @@ namespace SteamMini
             }
         }
 
+        public static string UserBuyGameController(object accountObject, string iduser)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                Uri baseAddress = new Uri("http://localhost:49911/");
+                client.BaseAddress = baseAddress;
+
+                //accountObject: contain id game
+                HttpResponseMessage result = client.PostAsJsonAsync($"api/Accounts/buy/{iduser}", accountObject).Result;
+
+                var content = result.Content.ReadAsStringAsync().Result;
+
+                var response = JsonConvert.DeserializeObject<Responses<string>>(content);
+
+                if(response.IsSuccess.ToString() == "False")
+                {
+                    return "false";
+                }
+                return response.Payload.ToString(); //game id buy
+            }
+        }
+
         public static GameStore.DTOs.PayloadBody GetUserByIdController(string Id)
         {
             using (HttpClient client = new HttpClient())
