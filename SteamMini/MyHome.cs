@@ -142,7 +142,7 @@ namespace SteamMini
             this.id = Id;
             LoadGamePreview();
 
-
+            //myhome binh thuong a ui
             this.BackColor = Color.FromArgb(42, 46, 51);
             menuStrip1.BackColor = Color.FromArgb(27, 32, 54);
             steamToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
