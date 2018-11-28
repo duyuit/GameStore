@@ -330,21 +330,29 @@ namespace SteamMini
 
         private void Purchase_Click(object sender, EventArgs e)
         {
-            var response = AccountsControllerShould.UserBuyGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
+            if (User.Money >= currGame.Price)
+            { 
+                var response = AccountsControllerShould.UserBuyGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
 
-            if (response == "false")
-            {
-                MessageBox.Show("Buy game failed!", "Error");
+                if (response == "false")
+                {
+                    MessageBox.Show("Buy game failed!", "Error");
+                }
+                else
+                {
+                    MessageBox.Show("Buy game success!\nThe game was moved to the library!", "Success");
+                    User.Money -= currGame.Price;
+                    //trở về store mua tiếp
+                    this.GameDetailPanel.Visible = false;
+                    this.store_panel.Visible = true;
+                    currGame = null;
+                }
             }
             else
             {
-                MessageBox.Show("Buy game success!\nThe game was moved to the library!", "Success");
-
-                //trở về store mua tiếp
-                this.GameDetailPanel.Visible = false;
-                this.store_panel.Visible = true;
-                currGame = null;
+                MessageBox.Show("Failure", "Not enough money");
             }
+
         }
 
         private void Back_Click(object sender, EventArgs e)

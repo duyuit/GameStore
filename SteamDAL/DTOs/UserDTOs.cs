@@ -17,6 +17,7 @@ namespace GameStore.DTOs
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public TitleImagePublisher ImageUser { get; set; }
+        public float Money { get; set; }
         public UserDTOs()
         {
             Games = new Collection<TitleGame>();
@@ -43,5 +44,6 @@ namespace GameStore.DTOs
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public TitleImagePublisher ImageUser { get; set; }
+        public float Money { get; set; }
     }
 }
