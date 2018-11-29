@@ -32,10 +32,10 @@ namespace GameStore.DTOs
 
     public class BuyGameObject
     {
-        public string IdGame { get; set; }
+        public string id { get; set; }
         public BuyGameObject(string idgame)
         {
-            IdGame = idgame;
+            id = idgame;
         }
     }
 }

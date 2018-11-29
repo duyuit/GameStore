@@ -167,10 +167,30 @@ namespace SteamMini
             progressBar1.Value = 13;
             pictureBox1.Image = Properties.Resources.demo;
 
-
-            
-            
             //Listview Game Library Init
+            this.showListGame();
+
+            //Store panel Init
+            store_panel.BackColor = Color.FromArgb(21, 53, 77);
+            txtSearch_store.BackColor = Color.FromArgb(21, 53, 77);
+            btn_search_store.BackColor = Color.FromArgb(85, 159, 204);
+
+            //Recommend Game Init
+            panel3.BackColor = Color.FromArgb(21, 53, 77);
+            recommend_picture1.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
+            recommend_picture2.Load(lib_game.ElementAt(1).GameImages.ElementAt(0));
+            recommend_picture3.Load(lib_game.ElementAt(2).GameImages.ElementAt(0));
+            recommend_picture4.Load(lib_game.ElementAt(3).GameImages.ElementAt(0));
+            recommend_picture5.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
+            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
+            recommend_game_name.Text = lib_game.ElementAt(0).Name;
+
+        }
+
+        private void showListGame()
+        {
+            listGame.Clear();
+            imageList1.Images.Clear();
             foreach (GameObject a in user_game)
             {
                 ListViewItem item = new ListViewItem();
@@ -191,26 +211,8 @@ namespace SteamMini
 
                 //add background
             }
-            
-
-
-
-            //Store panel Init
-            store_panel.BackColor = Color.FromArgb(21, 53, 77);
-            txtSearch_store.BackColor = Color.FromArgb(21, 53, 77);
-            btn_search_store.BackColor = Color.FromArgb(85, 159, 204);
-
-            //Recommend Game Init
-            panel3.BackColor = Color.FromArgb(21, 53, 77);
-            recommend_picture1.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
-            recommend_picture2.Load(lib_game.ElementAt(1).GameImages.ElementAt(0));
-            recommend_picture3.Load(lib_game.ElementAt(2).GameImages.ElementAt(0));
-            recommend_picture4.Load(lib_game.ElementAt(3).GameImages.ElementAt(0));
-            recommend_picture5.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
-            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(0).Name;
-
         }
+
         private void MyHome_Load(object sender, EventArgs e)
         {
         }
@@ -330,29 +332,47 @@ namespace SteamMini
 
         private void Purchase_Click(object sender, EventArgs e)
         {
-            if (User.Money >= currGame.Price)
-            { 
-                var response = AccountsControllerShould.UserBuyGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
+            var response = AccountsControllerShould.UserBuyGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
 
-                if (response == "false")
-                {
-                    MessageBox.Show("Buy game failed!", "Error");
-                }
-                else
-                {
-                    MessageBox.Show("Buy game success!\nThe game was moved to the library!", "Success");
-                    User.Money -= currGame.Price;
-                    //trở về store mua tiếp
-                    this.GameDetailPanel.Visible = false;
-                    this.store_panel.Visible = true;
-                    currGame = null;
-                }
+            if (response == "iduserwrong")
+            {
+                MessageBox.Show("User Id is wrong!", "Error");
+            }
+            else if (response == "notenoughmoney")
+            {
+                MessageBox.Show("Your account don't enought money to buy this game!\n" 
+                    + "You have to recharge!", "Error");
+            }
+            else if (response == "youhavepurchase")
+            {
+                MessageBox.Show("This game already exists in your game library!\n" +
+                    "You should buy another game!", "Error");
             }
             else
             {
-                MessageBox.Show("Failure", "Not enough money");
-            }
+                MessageBox.Show("Buy game success!\nThe game was moved to the library!", "Success");
+                User.Money -= currGame.Price;
 
+                //add and re-show listgame in lib
+                user_game.Add(this.currGame);
+                this.showListGame();
+
+                //chuyển tiền cho publisher?
+                //Gọi put: /api/Publishers/{id} : LÀM SAU
+
+                //Get publiser theo publisherId = this.currGame.PublisherId.ToString()
+                //put update money .
+
+
+
+
+
+
+                //trở về store mua tiếp
+                this.GameDetailPanel.Visible = false;
+                this.store_panel.Visible = true;
+                currGame = null;
+            }
         }
 
         private void Back_Click(object sender, EventArgs e)

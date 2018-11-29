@@ -46,4 +46,11 @@ namespace GameStore.DTOs
         public TitleImagePublisher ImageUser { get; set; }
         public float Money { get; set; }
     }
+
+    public class BuyGameDTO
+    {
+        public string IsSuccess { get; set; }
+        public string Message { get; set; }
+        public string Payload { get; set; }
+    }
 }

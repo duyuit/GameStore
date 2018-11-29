@@ -63,13 +63,24 @@ namespace SteamMini
 
                 var content = result.Content.ReadAsStringAsync().Result;
 
-                var response = JsonConvert.DeserializeObject<Responses<string>>(content);
+                var response = JsonConvert.DeserializeObject<BuyGameDTO>(content);
 
                 if(response.IsSuccess.ToString() == "False")
                 {
-                    return "false";
+                    if (response.Message.Equals("The input is not in right format"))
+                    {
+                        return "iduserwrong";
+                    }
+                    else if (response.Message.Equals("Your account don't enought money to buy this game"))
+                    {
+                        return "notenoughmoney";
+                    }
+                    else
+                    {
+                        return "youhavepurchase";
+                    }
                 }
-                return response.Payload.ToString(); //game id buy
+                return response.Payload; //game id buy
             }
         }
 
