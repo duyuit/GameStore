@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,6 +112,7 @@
             this.Back = new System.Windows.Forms.Button();
             this.Purchase = new System.Windows.Forms.Button();
             this.GameNameLabel = new System.Windows.Forms.Label();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.lib_panel.SuspendLayout();
@@ -163,9 +164,10 @@
             this.changeToolStripMenuItem,
             this.refreshToolStripMenuItem,
             this.settingsToolStripMenuItem,
+            this.logOutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.steamToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.steamToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.steamToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.steamToolStripMenuItem.Name = "steamToolStripMenuItem";
             this.steamToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.steamToolStripMenuItem.Text = "Steam";
@@ -176,27 +178,29 @@
             // 
             this.changeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeToolStripMenuItem.Text = "Change account";
+            this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem1
             // 
@@ -214,21 +218,21 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testToolStripMenuItem.Text = "Library";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.label2_Click);
             // 
             // storeToolStripMenuItem
             // 
             this.storeToolStripMenuItem.Name = "storeToolStripMenuItem";
-            this.storeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.storeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.storeToolStripMenuItem.Text = "Store";
             this.storeToolStripMenuItem.Click += new System.EventHandler(this.label1_Click);
             // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.profileToolStripMenuItem.Text = "Profile";
             this.profileToolStripMenuItem.Click += new System.EventHandler(this.label3_Click);
             // 
@@ -246,7 +250,7 @@
             // libToolStripMenuItem
             // 
             this.libToolStripMenuItem.Name = "libToolStripMenuItem";
-            this.libToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.libToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.libToolStripMenuItem.Text = "Lib";
             this.libToolStripMenuItem.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -264,7 +268,7 @@
             // contactToolStripMenuItem
             // 
             this.contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            this.contactToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.contactToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contactToolStripMenuItem.Text = "Contact";
             // 
             // label1
@@ -597,10 +601,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup2.Header = "ListViewGroup";
-            listViewGroup2.Name = "listViewGroup1";
+            listViewGroup4.Header = "ListViewGroup";
+            listViewGroup4.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup2});
+            listViewGroup4});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);
@@ -1060,6 +1064,13 @@
             this.GameNameLabel.TabIndex = 0;
             this.GameNameLabel.Text = "GameNameLabel";
             // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
             // MyHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1205,5 +1216,6 @@
         private System.Windows.Forms.PictureBox GameImages2;
         private System.Windows.Forms.ToolStripMenuItem storeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

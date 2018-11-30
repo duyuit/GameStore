@@ -80,6 +80,12 @@ namespace SteamMini
             set { picBox.SizeMode = value; }
         }
 
+        public PictureBox GamePictureBox
+        {
+            get { return picBox; }
+            set { picBox = value; }
+        }
+
         public string Rating
         {
             get { return RatingText.Text; }

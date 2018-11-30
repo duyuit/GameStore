@@ -24,6 +24,17 @@ namespace SteamMini
         GameObject currGame;
         int currRecommend = 0;
 
+        public void GamePreviewClick(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+
+            GamePreview gPre = (GamePreview)sender;
+            currGame = gPre.GetGameObject();
+            LoadGamePanel(currGame);
+
+        }
+
         public GameObject toGameObject(GameDTOs a)
         {
             GameObject temp1 = new GameObject();
@@ -93,16 +104,6 @@ namespace SteamMini
             this.GameVid.DocumentText = string.Format(embed, url);
         }
 
-        public void GamePreviewClick(object sender, EventArgs e)
-        {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
-            
-            GamePreview gPre = (GamePreview)sender;
-            currGame = gPre.GetGameObject();
-            LoadGamePanel(currGame);
-
-        }
         public void LoadGamePreview()
         {
             int i = 0;
@@ -115,6 +116,7 @@ namespace SteamMini
                 temp.GameNameText = gO.Name;
                 temp.Rating = gO.Rating.ToString();
                 temp.Click += GamePreviewClick;
+                temp.GamePictureBox.Click += GamePreviewClick; //thai.caodu them event khi click cho picture cua game se thuc hien thao tac tuong tu nhu khi click vao control
                 if (gO.Price == 0)
                 {
                     temp.GamePriceText = "Free";
@@ -554,6 +556,23 @@ namespace SteamMini
             {
                 MessageBox.Show($"Recharge success!\nYour account has ${response.Payload.Money}!", "Success");
             }
+        }
+        //thai.caodu logoutevent khi click
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login a = new Login();
+            a.Show();
+            this.Hide();
+        }
+        //thai.caodu changeaccount event khi click
+        private void changeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        //thai.caodu exit event khi click
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

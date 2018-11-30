@@ -36,11 +36,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.EditQuote = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.UserName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listGame = new System.Windows.Forms.ListView();
+            this.SoDuText = new System.Windows.Forms.Label();
+            this.RechargeTextBox = new System.Windows.Forms.TextBox();
+            this.RechargeButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
@@ -66,13 +69,16 @@
             // panel3
             // 
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Controls.Add(this.RechargeButton);
+            this.panel3.Controls.Add(this.RechargeTextBox);
+            this.panel3.Controls.Add(this.SoDuText);
             this.panel3.Controls.Add(this.avatar);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.EditQuote);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.UserName);
             this.panel3.Location = new System.Drawing.Point(0, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(797, 214);
@@ -121,39 +127,39 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "\"We are Developer\"";
             // 
-            // label5
+            // EditQuote
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(726, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 16);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Edit quote";
+            this.EditQuote.AutoSize = true;
+            this.EditQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditQuote.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.EditQuote.Location = new System.Drawing.Point(11, 150);
+            this.EditQuote.Name = "EditQuote";
+            this.EditQuote.Size = new System.Drawing.Size(68, 16);
+            this.EditQuote.TabIndex = 5;
+            this.EditQuote.Text = "Edit quote";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(707, 8);
+            this.label4.Location = new System.Drawing.Point(152, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 24);
             this.label4.TabIndex = 6;
             this.label4.Text = "Level 13";
             // 
-            // label1
+            // UserName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(151, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "DUYKKXM92";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.UserName.AutoSize = true;
+            this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserName.ForeColor = System.Drawing.SystemColors.Control;
+            this.UserName.Location = new System.Drawing.Point(151, 7);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(141, 25);
+            this.UserName.TabIndex = 1;
+            this.UserName.Text = "DUYKKXM92";
+            this.UserName.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -178,6 +184,37 @@
             this.listGame.UseCompatibleStateImageBehavior = false;
             this.listGame.View = System.Windows.Forms.View.List;
             // 
+            // SoDuText
+            // 
+            this.SoDuText.AutoSize = true;
+            this.SoDuText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoDuText.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SoDuText.Location = new System.Drawing.Point(153, 66);
+            this.SoDuText.Name = "SoDuText";
+            this.SoDuText.Size = new System.Drawing.Size(78, 24);
+            this.SoDuText.TabIndex = 9;
+            this.SoDuText.Text = "Money: ";
+            // 
+            // RechargeTextBox
+            // 
+            this.RechargeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.RechargeTextBox.Location = new System.Drawing.Point(661, 116);
+            this.RechargeTextBox.Name = "RechargeTextBox";
+            this.RechargeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.RechargeTextBox.TabIndex = 10;
+            this.RechargeTextBox.TextChanged += new System.EventHandler(this.RechargeTextBox_TextChanged);
+            this.RechargeTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RechargeTextBox_KeyUp);
+            // 
+            // RechargeButton
+            // 
+            this.RechargeButton.Location = new System.Drawing.Point(673, 150);
+            this.RechargeButton.Name = "RechargeButton";
+            this.RechargeButton.Size = new System.Drawing.Size(75, 23);
+            this.RechargeButton.TabIndex = 11;
+            this.RechargeButton.Text = "Recharge";
+            this.RechargeButton.UseVisualStyleBackColor = true;
+            this.RechargeButton.Click += new System.EventHandler(this.RechargeButton_Click);
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,15 +238,18 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox avatar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label UserName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label EditQuote;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listGame;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label SoDuText;
+        private System.Windows.Forms.TextBox RechargeTextBox;
+        private System.Windows.Forms.Button RechargeButton;
     }
 }

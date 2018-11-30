@@ -43,11 +43,13 @@ namespace SteamMini
             listGame.Items.Add(new ListViewItem("  PUBG", 3));
             imageList1.Images.Add(Properties.Resources.pubg_icon);
             background.Add(Properties.Resources.pubg_background);
+
+            SoDuText.Text = "Money: " + user.Money.ToString();
         }
 
         private void Profile_Load(object sender, EventArgs e)
         {
-            label1.Text = user.UserName;
+            UserName.Text = user.UserName;
             //avatar.Load(user.ImageUser.UrlOnline);
         }
 
@@ -55,8 +57,24 @@ namespace SteamMini
         {
 
         }
-
+        
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //thai.caodu nut nap tien
+        private void RechargeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        //thai.caodu textbox text change
+        private void RechargeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        //thai.caodu textbox key up
+        private void RechargeTextBox_KeyUp(object sender, KeyEventArgs e)
         {
 
         }
