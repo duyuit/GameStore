@@ -35,6 +35,18 @@ namespace SteamMini
 
         }
 
+        public void GamePreviewPicClick(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+
+            PictureBox picbox = (PictureBox)sender;
+            GamePreview gPre = (GamePreview)picbox.Parent;
+            currGame = gPre.GetGameObject();
+            LoadGamePanel(currGame);
+
+        }
+
         public GameObject toGameObject(GameDTOs a)
         {
             GameObject temp1 = new GameObject();
@@ -116,7 +128,7 @@ namespace SteamMini
                 temp.GameNameText = gO.Name;
                 temp.Rating = gO.Rating.ToString();
                 temp.Click += GamePreviewClick;
-                temp.GamePictureBox.Click += GamePreviewClick; //thai.caodu them event khi click cho picture cua game se thuc hien thao tac tuong tu nhu khi click vao control
+                temp.GamePictureBox.Click += GamePreviewPicClick; //thai.caodu them event khi click cho picture cua game se thuc hien thao tac tuong tu nhu khi click vao control
                 if (gO.Price == 0)
                 {
                     temp.GamePriceText = "Free";
