@@ -51,6 +51,22 @@ namespace SteamMini
             }
         }
 
+        public static GameStore.DTOs.PayloadBody GetUserByIdController(string Id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                Uri baseAddress = new Uri("http://localhost:49911/");
+                client.BaseAddress = baseAddress;
+
+                HttpResponseMessage result = client.GetAsync($"api/accounts/{Id}").Result;
+                var content = result.Content.ReadAsStringAsync().Result;
+                var response = JsonConvert.DeserializeObject<GetUserResponse>(content);
+
+                return response.Payload;
+            }
+        }
+
+
         public static string UserBuyGameController(object accountObject, string iduser)
         {
             using (HttpClient client = new HttpClient())
@@ -84,20 +100,24 @@ namespace SteamMini
             }
         }
 
-        public static GameStore.DTOs.PayloadBody GetUserByIdController(string Id)
+
+        public static GetUserResponse UpdateMoneyAccountController(object accountObject, string Id)
         {
             using (HttpClient client = new HttpClient())
             {
                 Uri baseAddress = new Uri("http://localhost:49911/");
                 client.BaseAddress = baseAddress;
 
-                HttpResponseMessage result = client.GetAsync($"api/accounts/{Id}").Result;
+                HttpResponseMessage result = client.PutAsJsonAsync($"api/Accounts/edit-user/{Id}", accountObject).Result;
+
                 var content = result.Content.ReadAsStringAsync().Result;
+
                 var response = JsonConvert.DeserializeObject<GetUserResponse>(content);
 
-                return response.Payload;
+                return response;
             }
         }
+
 
 
         public void TestGetAllUsersController()
