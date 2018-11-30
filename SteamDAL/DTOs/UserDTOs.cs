@@ -53,4 +53,14 @@ namespace GameStore.DTOs
         public string Message { get; set; }
         public string Payload { get; set; }
     }
+
+    public class RechargeObject
+    {
+        public float money { get; set; }
+
+        public RechargeObject(float money)
+        {
+            this.money = money;
+        }
+    }
 }

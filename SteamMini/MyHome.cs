@@ -357,16 +357,7 @@ namespace SteamMini
                 user_game.Add(this.currGame);
                 this.showListGame();
 
-                //chuyển tiền cho publisher?
-                //Gọi put: /api/Publishers/{id} : LÀM SAU
-
-                //Get publiser theo publisherId = this.currGame.PublisherId.ToString()
-                //put update money .
-
-
-
-
-
+                //tiền đã đc api auto chuyển cho publisher
 
                 //trở về store mua tiếp
                 this.GameDetailPanel.Visible = false;
@@ -544,6 +535,25 @@ namespace SteamMini
             currRecommend = 3;
             label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+        }
+
+        private void testNapTienUser()
+        {
+            //nhớ validate chỉ nhập đc số thập phân.
+            // kiểm tra nếu tiền < 0 thì báo lỗi
+            //tiền nhập vào + tiền có sẵn của user => đưa xuống update tiền, api ko cộng dồn đc.
+
+            float money = 100.5F; // tiền nhập vào từ txtMoney.Text
+            var response = AccountsControllerShould.UpdateMoneyAccountController(new RechargeObject(money + User.Money), this.id);
+
+            if (response.IsSuccess.ToString() == "False")
+            {
+                MessageBox.Show("Recharge failed!\nUser Id is wrong!", "Error");
+            }
+            else
+            {
+                MessageBox.Show($"Recharge success!\nYour account has ${response.Payload.Money}!", "Success");
+            }
         }
     }
 }

@@ -101,6 +101,7 @@ namespace SteamMini
         }
 
 
+        //add money user
         public static GetUserResponse UpdateMoneyAccountController(object accountObject, string Id)
         {
             using (HttpClient client = new HttpClient())
@@ -108,7 +109,7 @@ namespace SteamMini
                 Uri baseAddress = new Uri("http://localhost:49911/");
                 client.BaseAddress = baseAddress;
 
-                HttpResponseMessage result = client.PutAsJsonAsync($"api/Accounts/edit-user/{Id}", accountObject).Result;
+                HttpResponseMessage result = client.PutAsJsonAsync($"api/Accounts/recharge/{Id}", accountObject).Result;
 
                 var content = result.Content.ReadAsStringAsync().Result;
 
@@ -117,6 +118,28 @@ namespace SteamMini
                 return response;
             }
         }
+
+        //{
+        //  "isSuccess": true,
+        //  "message": null,
+        //  "payload": {
+        //    "games": [],
+        //    "hobbies": "defaulthobbies",
+        //    "fullName": "TMT",
+        //    "wishGames": [],
+        //    "userName": "tien",
+        //    "email": "tien@gmail.com",
+        //    "phoneNumber": "012525",
+        //    "imageUser": null,
+        //    "money": 20000
+        //  }
+        //}
+
+        //{
+        //  "isSuccess": false,
+        //  "message": "The input is not in right format",
+        //  "payload": null
+        //}
 
 
 
