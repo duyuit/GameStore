@@ -314,8 +314,9 @@ namespace SteamMini
 
         private void label3_Click(object sender, EventArgs e)
         {
+            Profile.SetUser(User, id);
+
             Profile a = new Profile();
-            a.SetUser(User);
             a.Show();
         }
 
@@ -551,24 +552,7 @@ namespace SteamMini
             recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
         }
 
-        private void testNapTienUser()
-        {
-            //nhớ validate chỉ nhập đc số thập phân.
-            // kiểm tra nếu tiền < 0 thì báo lỗi
-            //tiền nhập vào + tiền có sẵn của user => đưa xuống update tiền, api ko cộng dồn đc.
 
-            float money = 100.5F; // tiền nhập vào từ txtMoney.Text
-            var response = AccountsControllerShould.UpdateMoneyAccountController(new RechargeObject(money + User.Money), this.id);
-
-            if (response.IsSuccess.ToString() == "False")
-            {
-                MessageBox.Show("Recharge failed!\nUser Id is wrong!", "Error");
-            }
-            else
-            {
-                MessageBox.Show($"Recharge success!\nYour account has ${response.Payload.Money}!", "Success");
-            }
-        }
         //thai.caodu logoutevent khi click
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -579,7 +563,9 @@ namespace SteamMini
         //thai.caodu changeaccount event khi click
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.register = new Register(this.id);
+            this.register.Show();
+            //this.Enabled = false;
         }
         //thai.caodu exit event khi click
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
