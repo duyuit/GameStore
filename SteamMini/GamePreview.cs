@@ -86,6 +86,12 @@ namespace SteamMini
             set { picBox = value; }
         }
 
+        public RichTextBox GameDescription
+        {
+            get { return Description; }
+            set { Description = value; }
+        }
+
         public string Rating
         {
             get { return RatingText.Text; }

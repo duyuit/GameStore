@@ -24,6 +24,9 @@ namespace SteamMini
         GameObject currGame;
         int currRecommend = 0;
 
+
+        //3 event nay se hien thi chi tiet game khi nguoi choi nhan vao cac phan tu tuong ung' cua gamepreview
+        //do object la khac nhau, nen phai co 3 event xu ly khac nhau, tranh loi
         public void GamePreviewClick(object sender, EventArgs e)
         {
             this.store_panel.Visible = false;
@@ -41,6 +44,18 @@ namespace SteamMini
             this.GameDetailPanel.Visible = true;
 
             PictureBox picbox = (PictureBox)sender;
+            GamePreview gPre = (GamePreview)picbox.Parent;
+            currGame = gPre.GetGameObject();
+            LoadGamePanel(currGame);
+
+        }
+
+        public void GamePreviewDescriptonClick(object sender, EventArgs e)
+        {
+            this.store_panel.Visible = false;
+            this.GameDetailPanel.Visible = true;
+
+            RichTextBox picbox = (RichTextBox)sender;
             GamePreview gPre = (GamePreview)picbox.Parent;
             currGame = gPre.GetGameObject();
             LoadGamePanel(currGame);
@@ -127,8 +142,10 @@ namespace SteamMini
                 temp.GameIcon = gO.Logo.Image;
                 temp.GameNameText = gO.Name;
                 temp.Rating = gO.Rating.ToString();
+                temp.GameDescription.Text = gO.Content;
                 temp.Click += GamePreviewClick;
                 temp.GamePictureBox.Click += GamePreviewPicClick; //thai.caodu them event khi click cho picture cua game se thuc hien thao tac tuong tu nhu khi click vao control
+                temp.GameDescription.Click += GamePreviewDescriptonClick;
                 if (gO.Price == 0)
                 {
                     temp.GamePriceText = "Free";
@@ -247,8 +264,6 @@ namespace SteamMini
 
 
         }
-
-
 
         private void label1_MouseEnter(object sender, EventArgs e)
         {
@@ -469,6 +484,11 @@ namespace SteamMini
 
         private void recommend_select1_Click(object sender, EventArgs e)
         {
+            recommend_select1.BackColor = Color.Silver;
+            recommend_select2.BackColor = Color.Black;
+            recommend_select3.BackColor = Color.Black;
+            recommend_select4.BackColor = Color.Black;
+            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture5.Image;
             label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(0).Name;
@@ -477,6 +497,11 @@ namespace SteamMini
 
         private void recommend_select2_Click(object sender, EventArgs e)
         {
+            recommend_select1.BackColor = Color.Black;
+            recommend_select2.BackColor = Color.Silver;
+            recommend_select3.BackColor = Color.Black;
+            recommend_select4.BackColor = Color.Black;
+            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture2.Image;
             label17.Text = lib_game.ElementAt(1).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(1).Name;
@@ -485,6 +510,11 @@ namespace SteamMini
 
         private void recommend_select3_Click(object sender, EventArgs e)
         {
+            recommend_select1.BackColor = Color.Black;
+            recommend_select2.BackColor = Color.Black;
+            recommend_select3.BackColor = Color.Silver;
+            recommend_select4.BackColor = Color.Black;
+            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture3.Image;
             label17.Text = lib_game.ElementAt(2).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(2).Name;
@@ -493,6 +523,11 @@ namespace SteamMini
 
         private void recommend_select4_Click(object sender, EventArgs e)
         {
+            recommend_select1.BackColor = Color.Black;
+            recommend_select2.BackColor = Color.Black;
+            recommend_select3.BackColor = Color.Black;
+            recommend_select4.BackColor = Color.Silver;
+            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture4.Image;
             label17.Text = lib_game.ElementAt(3).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(3).Name;
@@ -501,6 +536,11 @@ namespace SteamMini
 
         private void recommend_select5_Click(object sender, EventArgs e)
         {
+            recommend_select1.BackColor = Color.Black;
+            recommend_select2.BackColor = Color.Black;
+            recommend_select3.BackColor = Color.Black;
+            recommend_select4.BackColor = Color.Black;
+            recommend_select5.BackColor = Color.Silver;
             recommend_picture1.Image = recommend_picture5.Image;
             label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(0).Name;
