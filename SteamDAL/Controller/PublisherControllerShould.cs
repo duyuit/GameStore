@@ -23,7 +23,7 @@ namespace SteamMini
 
         }
 
-        public Response<PublisherDTOs> GetPublisherByIdController(string Id)
+        public static Response<PublisherDTOs> GetPublisherByIdController(string Id)
         {
             using (HttpClient client = new HttpClient())
             {

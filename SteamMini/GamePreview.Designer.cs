@@ -96,7 +96,7 @@
             // 
             // Description
             // 
-            this.Description.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.Description.BackColor = System.Drawing.Color.DarkGray;
             this.Description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Description.Dock = System.Windows.Forms.DockStyle.Left;
             this.Description.Location = new System.Drawing.Point(272, 25);
@@ -105,12 +105,14 @@
             this.Description.Size = new System.Drawing.Size(566, 123);
             this.Description.TabIndex = 5;
             this.Description.Text = "";
+            this.Description.MouseEnter += new System.EventHandler(this.GamePreview_MouseEnter);
+            this.Description.MouseLeave += new System.EventHandler(this.GamePreview_MouseLeave);
             // 
             // GamePreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.Controls.Add(this.Description);
             this.Controls.Add(this.RatingText);
             this.Controls.Add(this.pictureBox1);

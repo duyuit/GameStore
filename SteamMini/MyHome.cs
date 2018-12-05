@@ -81,7 +81,7 @@ namespace SteamMini
                 {
                     temp1.GameImages = new List<String>();
                 }
-                temp1.GameImages.Add(a.ImageGames.ElementAt(0).UrlOnline);
+                temp1.GameImages.Add(a.ImageGames.ElementAt(i).UrlOnline);
             }
             return temp1;
         }
@@ -113,13 +113,31 @@ namespace SteamMini
             this.GameIcon.Image = gameobject.Logo.Image;
             this.GameNameLabel.Text = gameobject.Name;
             this.GameDescription.Text = gameobject.Content;
-            this.RatingText.Text = gameobject.Rating.ToString();
+            this.ReleaseDate.Text = "Release Date: " + gameobject.PurchaseDate;
+            this.Publisher.Text = "Publisher: " + PublisherControllerShould.GetPublisherByIdController(gameobject.PublisherId.ToString()).Payload.Name;
+            this.Rating.Text = "Rating: " + gameobject.Rating.ToString();
             if (gameobject.Price == 0)
-                this.Price.Text = "FREE";
+                this.PriceLabel.Text = "FREE";
             else
-                this.Price.Text = "Price: " + gameobject.Price.ToString() + " VND";
-            this.GameImages.Load(gameobject.GameImages.ElementAt(0));
-            this.GameImages2.Load(gameobject.GameImages.ElementAt(1));
+                this.PriceLabel.Text = "Price: " + gameobject.Price.ToString() + " VND";
+            try
+            {
+                this.GameDetailPicBox1.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox2.Load(gameobject.GameImages.ElementAt(1));
+                this.GameDetailPicBox3.Load(gameobject.GameImages.ElementAt(2));
+                this.GameDetailPicBox4.Load(gameobject.GameImages.ElementAt(3));
+                this.GameDetailPicBox5.Load(gameobject.GameImages.ElementAt(4));
+                this.GameDetailPicBox6.Load(gameobject.GameImages.ElementAt(5));
+            }
+            catch (Exception e)
+            {
+                this.GameDetailPicBox1.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox2.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox3.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox4.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox5.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox6.Load(gameobject.GameImages.ElementAt(0));
+            }
 
             var embed = "<html><head>" +
  "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
@@ -222,6 +240,10 @@ namespace SteamMini
         {
             listGame.Clear();
             imageList1.Images.Clear();
+            if (user_game == null)
+                this.panel2.Visible = false;
+            else
+                this.panel2.Visible = true;
             foreach (GameObject a in user_game)
             {
                 ListViewItem item = new ListViewItem();
@@ -359,88 +381,15 @@ namespace SteamMini
             }
         }
 
-        private void Purchase_Click(object sender, EventArgs e)
-        {
-            var response = AccountsControllerShould.UserBuyGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
-
-            if (response == "iduserwrong")
-            {
-                MessageBox.Show("User Id is wrong!", "Error");
-            }
-            else if (response == "notenoughmoney")
-            {
-                MessageBox.Show("Your account don't enought money to buy this game!\n" 
-                    + "You have to recharge!", "Error");
-            }
-            else if (response == "youhavepurchase")
-            {
-                MessageBox.Show("This game already exists in your game library!\n" +
-                    "You should buy another game!", "Error");
-            }
-            else
-            {
-                MessageBox.Show("Buy game success!\nThe game was moved to the library!", "Success");
-                User.Money -= currGame.Price;
-
-                //add and re-show listgame in lib
-                user_game.Add(this.currGame);
-                this.showListGame();
-
-                //tiền đã đc api auto chuyển cho publisher
-
-                //trở về store mua tiếp
-                this.GameDetailPanel.Visible = false;
-                this.store_panel.Visible = true;
-                currGame = null;
-            }
-        }
-
-        private void Back_Click(object sender, EventArgs e)
-        {
-            this.GameDetailPanel.Visible = false;
-            this.store_panel.Visible = true;
-            currGame = null;
-        }
-
         private void GameImages_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < currGame.GameImages.Count(); i++)
-            {
-                if (GameImages.ImageLocation == currGame.GameImages.ElementAt(i))
-                {
-                    if (i == currGame.GameImages.Count() - 1)
-                    {
-                        GameImages.Load(currGame.GameImages.ElementAt(0));
-                        break;
-                    }
-                    else
-                    {
-                        GameImages.Load(currGame.GameImages.ElementAt(i + 1));
-                        break;
-                    }
-                }
-            }
+            PictureBox temp = (PictureBox)sender;
+            this.GameDetailPicBox1.Visible = true;
+            this.GameVid.Visible = false;
+            this.GameVid.Stop();
+            this.GameDetailPicBox1.Image = temp.Image;
         }
 
-        private void GameImages2_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < currGame.GameImages.Count(); i++)
-            {
-                if (GameImages2.ImageLocation == currGame.GameImages.ElementAt(i))
-                {
-                    if (i == currGame.GameImages.Count() - 1)
-                    {
-                        GameImages2.Load(currGame.GameImages.ElementAt(0));
-                        break;
-                    }
-                    else
-                    {
-                        GameImages2.Load(currGame.GameImages.ElementAt(i + 1));
-                        break;
-                    }
-                }
-            }
-        }
 
         private void recommend_picture1_Click(object sender, EventArgs e)
         {
@@ -625,6 +574,60 @@ namespace SteamMini
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_buy_Click(object sender, EventArgs e)
+        {
+            var response = AccountsControllerShould.UserBuyGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
+
+            if (response == "iduserwrong")
+            {
+                MessageBox.Show("User Id is wrong!", "Error");
+            }
+            else if (response == "notenoughmoney")
+            {
+                MessageBox.Show("Your account don't enought money to buy this game!\n"
+                    + "You have to recharge!", "Error");
+            }
+            else if (response == "youhavepurchase")
+            {
+                MessageBox.Show("This game already exists in your game library!\n" +
+                    "You should buy another game!", "Error");
+            }
+            else
+            {
+                MessageBox.Show("Buy game success!\nThe game was moved to the library!", "Success");
+                User.Money -= currGame.Price;
+
+                //add and re-show listgame in lib
+                user_game.Add(this.currGame);
+                this.showListGame();
+
+                //tiền đã đc api auto chuyển cho publisher
+
+                //trở về store mua tiếp
+                this.GameDetailPanel.Visible = false;
+                this.store_panel.Visible = true;
+                currGame = null;
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.GameDetailPanel.Visible = false;
+            this.store_panel.Visible = true;
+            currGame = null;
+        }
+
+        private void btn_AddWishList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GameDetailPicBox2_Click(object sender, EventArgs e)
+        {
+            this.GameDetailPicBox1.Visible = false;
+            this.GameVid.Visible = true;
         }
     }
 }

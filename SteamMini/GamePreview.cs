@@ -101,17 +101,22 @@ namespace SteamMini
         public GamePreview()
         {
             InitializeComponent();
+            this.BackColor = Color.FromArgb(21, 53, 77);
+            if (this.BackColor != null)
+            this.Description.BackColor = this.BackColor;
             defColor = this.BackColor;
         }
 
         private void GamePreview_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.RoyalBlue;
+            this.BackColor = Color.FromArgb(42, 46, 51);
+            this.Description.BackColor = Color.FromArgb(42, 46, 51);
         }
 
         private void GamePreview_MouseLeave(object sender, EventArgs e)
         {
             this.BackColor = defColor;
+            this.Description.BackColor = defColor;
         }
     }
 }
