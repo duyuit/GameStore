@@ -621,7 +621,7 @@ namespace SteamMini
 
         private void btn_AddWishList_Click(object sender, EventArgs e)
         {
-
+            // Tien123
         }
 
         private void GameDetailPicBox2_Click(object sender, EventArgs e)
