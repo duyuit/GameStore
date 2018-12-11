@@ -54,6 +54,8 @@ namespace SteamMini
             imageGameController.PostImage(image2);
             imageGameController.PostImage(image3);
             imageGameController.PostImage(image4);
+
+          
         }
         private void PushGame_Load(object sender, EventArgs e)
         {
@@ -85,6 +87,24 @@ namespace SteamMini
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             publisherIndex = comboBox1.SelectedIndex;
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            List<string> listImage = new List<string>();
+            listImage.Add(txtLink1.Text);
+            listImage.Add(txtLink2.Text);
+            listImage.Add(txtLink3.Text);
+            listImage.Add(txtLink4.Text);
+
+            GameDTOs gameDTO = new GameDTOs();
+            gameDTO.Name = txtName.Text;
+            gameDTO.Price = txtPrice.Text;
+            gameDTO.Content = txtContent.Text;
+            string Pub = comboBox1.Text;
+            PushPreview a = new PushPreview(gameDTO, listImage, Pub);
+            a.Show();
+            
         }
     }
 }

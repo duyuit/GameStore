@@ -78,6 +78,12 @@
     <Compile Include="PushGame.Designer.cs">
       <DependentUpon>PushGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="PushPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PushPreview.Designer.cs">
+      <DependentUpon>PushPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PushGame.resx">
       <DependentUpon>PushGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PushPreview.resx">
+      <DependentUpon>PushPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

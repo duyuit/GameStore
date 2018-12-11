@@ -27,6 +27,7 @@ namespace SteamMini
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<PublisherDTOs> publishersResponse = JsonConvert.DeserializeObject<Responses<PublisherDTOs>>(content);
 
+                if(publishersResponse.IsSuccess)
                 callback.Invoke(null, new PublisherEventArgs(publishersResponse));
                 return publishersResponse;
             }

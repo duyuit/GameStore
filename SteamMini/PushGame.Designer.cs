@@ -46,6 +46,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtContent
@@ -227,7 +228,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(363, 400);
+            this.btnCancel.Location = new System.Drawing.Point(409, 400);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(133, 38);
             this.btnCancel.TabIndex = 21;
@@ -237,7 +238,7 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(133, 400);
+            this.btnOK.Location = new System.Drawing.Point(46, 400);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(144, 38);
             this.btnOK.TabIndex = 20;
@@ -245,12 +246,24 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // btnPreview
+            // 
+            this.btnPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Location = new System.Drawing.Point(228, 400);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(133, 38);
+            this.btnPreview.TabIndex = 22;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
             // PushGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(567, 473);
+            this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.comboBox1);
@@ -297,5 +310,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnPreview;
     }
 }
