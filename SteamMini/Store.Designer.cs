@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.GameIcon = new System.Windows.Forms.PictureBox();
+            this.btnFreeCode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,7 +73,7 @@
             this.txtGameName.AutoSize = true;
             this.txtGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGameName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtGameName.Location = new System.Drawing.Point(3, 10);
+            this.txtGameName.Location = new System.Drawing.Point(3, 62);
             this.txtGameName.Name = "txtGameName";
             this.txtGameName.Size = new System.Drawing.Size(366, 25);
             this.txtGameName.TabIndex = 7;
@@ -85,7 +86,7 @@
             this.txt_addwishlist.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt_addwishlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_addwishlist.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.txt_addwishlist.Location = new System.Drawing.Point(10, 462);
+            this.txt_addwishlist.Location = new System.Drawing.Point(10, 514);
             this.txt_addwishlist.Name = "txt_addwishlist";
             this.txt_addwishlist.Padding = new System.Windows.Forms.Padding(6);
             this.txt_addwishlist.Size = new System.Drawing.Size(122, 32);
@@ -96,6 +97,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btnFreeCode);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.txt_addwishlist);
             this.panel1.Controls.Add(this.panel3);
@@ -110,7 +112,7 @@
             // 
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.btn_buy);
-            this.panel4.Location = new System.Drawing.Point(738, 454);
+            this.panel4.Location = new System.Drawing.Point(738, 506);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(253, 57);
             this.panel4.TabIndex = 14;
@@ -147,7 +149,7 @@
             this.panel3.BackgroundImage = global::SteamMini.Properties.Resources.GTAV1;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Controls.Add(this.panel2);
-            this.panel3.Location = new System.Drawing.Point(8, 56);
+            this.panel3.Location = new System.Drawing.Point(8, 108);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(980, 392);
             this.panel3.TabIndex = 10;
@@ -351,6 +353,17 @@
             this.GameIcon.TabIndex = 22;
             this.GameIcon.TabStop = false;
             // 
+            // btnFreeCode
+            // 
+            this.btnFreeCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnFreeCode.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFreeCode.Location = new System.Drawing.Point(8, 9);
+            this.btnFreeCode.Name = "btnFreeCode";
+            this.btnFreeCode.Size = new System.Drawing.Size(354, 37);
+            this.btnFreeCode.TabIndex = 0;
+            this.btnFreeCode.Text = "ENTER GAME FREE CODE";
+            this.btnFreeCode.UseVisualStyleBackColor = true;
+            // 
             // Store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,5 +419,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnFreeCode;
     }
 }
