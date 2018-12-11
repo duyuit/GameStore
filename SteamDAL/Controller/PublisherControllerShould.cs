@@ -8,9 +8,17 @@ using System.Text;
 
 namespace SteamMini
 {
+    public class PublisherEventArgs:EventArgs
+    {
+        public Responses<PublisherDTOs> respone { get; set; }
+        public PublisherEventArgs(Responses<PublisherDTOs> a)
+        {
+            respone = a;
+        }
+    }
   public  class PublisherControllerShould : Controller
     {
-        public Responses<PublisherDTOs> GetAllPublishersController()
+        public Responses<PublisherDTOs> GetAllPublishersController(EventHandler callback = null)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -18,8 +26,11 @@ namespace SteamMini
                 HttpResponseMessage result = client.GetAsync("api/publishers").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<PublisherDTOs> publishersResponse = JsonConvert.DeserializeObject<Responses<PublisherDTOs>>(content);
+
+                callback.Invoke(null, new PublisherEventArgs(publishersResponse));
                 return publishersResponse;
             }
+            
 
         }
 

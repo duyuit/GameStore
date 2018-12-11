@@ -92,6 +92,8 @@ namespace SteamMini
             GameResponse = gameControl.GetAllGamesController();
             User = AccountsControllerShould.GetUserByIdController(UserId);
 
+
+
             List<GameDTOs> gameDTOs = GameResponse.Payload;
             foreach (GameDTOs a in gameDTOs)
             {

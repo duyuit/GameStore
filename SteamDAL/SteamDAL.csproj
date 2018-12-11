@@ -58,6 +58,7 @@
     <Compile Include="Controller\AccountsControllerShould.cs" />
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\CategoryControllerShould.cs" />
+    <Compile Include="Controller\ImageGameController.cs" />
     <Compile Include="DAO\BaseController.cs" />
     <Compile Include="Controller\FreecodeControllerShould.cs" />
     <Compile Include="Controller\GameControllerShould.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Model\ImageCategory.cs" />
     <Compile Include="Model\ImageGame.cs" />
     <Compile Include="Model\ImagePublisher.cs" />
+    <Compile Include="Model\ImageToPushGame.cs" />
     <Compile Include="Model\ImageUser.cs" />
     <Compile Include="Model\LoginObject.cs" />
     <Compile Include="Model\Publisher.cs" />

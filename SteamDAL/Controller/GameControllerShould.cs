@@ -44,7 +44,8 @@ namespace SteamMini
                                               float rating,string logo,
                                               string videoUrl,string content,
                                               string categories1,string categories2,
-                                              float price)
+                                              float price,
+                                              EventHandler callback = null)
         {
         //    Init(49914);
 
@@ -52,13 +53,13 @@ namespace SteamMini
             {
                 Name = name,
                 PublisherId = publisherId.ToGuid(),
-                Members = new Collection<Guid>{ members1.ToGuid(), members2.ToGuid()},
-                FavoriteMembers= new Collection<Guid> { favoriteMembers1.ToGuid(), favoriteMembers2.ToGuid() },
+                Members = new Collection<Guid>{},
+                FavoriteMembers= new Collection<Guid> {},
                 Rating=rating,
                 Logo=logo,
                 VideoUrl=videoUrl,
                 Content=content,
-                Categories=new Collection<Guid> { categories1.ToGuid(),categories2.ToGuid()},
+                Categories=new Collection<Guid> {},
                 Price=price,
                 PurchaseDate=DateTime.Now
             };
@@ -68,7 +69,9 @@ namespace SteamMini
                 HttpResponseMessage result = client.PostAsJsonAsync($"api/games", savedGameDTOs).Result;
                 var contentResult = result.Content.ReadAsStringAsync().Result;
                 Response<GameDTOs> gameResponse = JsonConvert.DeserializeObject<Response<GameDTOs>>(contentResult);
+                callback.Invoke(null,null);
             }
+
         }
     }
 }
