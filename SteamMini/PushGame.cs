@@ -19,6 +19,7 @@ namespace SteamMini
         int publisherIndex = 0;
         EventHandler getPublisherCallBack;
         EventHandler pushGameCallBack;
+        Guid gameID;
         public PushGame()
         {
             InitializeComponent();
@@ -42,10 +43,11 @@ namespace SteamMini
         }
         private void _pushGameCallBack(object sender, EventArgs e)
         {
-            ImageToPushGame image1 = new ImageToPushGame(publisherDTOs[publisherIndex].Id,_txtLink1.Text,"");
-            ImageToPushGame image2 = new ImageToPushGame(publisherDTOs[publisherIndex].Id, _txtLink2.Text, "");
-            ImageToPushGame image3 = new ImageToPushGame(publisherDTOs[publisherIndex].Id, _txtLink3.Text, "");
-            ImageToPushGame image4 = new ImageToPushGame(publisherDTOs[publisherIndex].Id, _txtLink4.Text, "");
+            GameEventArgs gameEventArgs = (GameEventArgs)e;
+            ImageToPushGame image1 = new ImageToPushGame(gameEventArgs.gameID,txtLink1.Text,"");
+            ImageToPushGame image2 = new ImageToPushGame(gameEventArgs.gameID, txtLink2.Text, "");
+            ImageToPushGame image3 = new ImageToPushGame(gameEventArgs.gameID, txtLink3.Text, "");
+            ImageToPushGame image4 = new ImageToPushGame(gameEventArgs.gameID, txtLink4.Text, "");
 
             ImageGameController imageGameController = new ImageGameController();
             imageGameController.PostImage(image1);

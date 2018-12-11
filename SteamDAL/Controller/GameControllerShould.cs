@@ -10,6 +10,15 @@ using System.Collections.ObjectModel;
 
 namespace SteamMini
 {
+    public class GameEventArgs: EventArgs
+    {
+       public Guid gameID { get; set; }
+        public GameEventArgs(Guid a)
+        {
+            gameID = a;
+        }
+        
+    }
     public class GameControllerShould : Controller
     {
         public Responses<GameDTOs> GetAllGamesController()
@@ -69,7 +78,7 @@ namespace SteamMini
                 HttpResponseMessage result = client.PostAsJsonAsync($"api/games", savedGameDTOs).Result;
                 var contentResult = result.Content.ReadAsStringAsync().Result;
                 Response<GameDTOs> gameResponse = JsonConvert.DeserializeObject<Response<GameDTOs>>(contentResult);
-                callback.Invoke(null,null);
+                callback.Invoke(null,new GameEventArgs(gameResponse.Payload.Id));
             }
 
         }
