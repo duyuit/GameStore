@@ -22,7 +22,12 @@ namespace SteamMini
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync("api/publishers").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<PublisherDTOs> publishersResponse = JsonConvert.DeserializeObject<Responses<PublisherDTOs>>(content);
@@ -39,7 +44,12 @@ namespace SteamMini
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync($"api/publishers/{Id}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<PublisherDTOs> publisherResponse = JsonConvert.DeserializeObject<Response<PublisherDTOs>>(content);
@@ -58,7 +68,12 @@ namespace SteamMini
             };
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.PostAsJsonAsync($"api/publishers", savedPublisherDTOs).Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<PublisherDTOs> freeCodeResponse = JsonConvert.DeserializeObject<Response<PublisherDTOs>>(content);

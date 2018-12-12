@@ -21,11 +21,16 @@ namespace SteamMini
     }
     public class GameControllerShould : Controller
     {
-        public Responses<GameDTOs> GetAllGamesController()
+        public static Responses<GameDTOs> GetAllGamesController()
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync("api/games").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<GameDTOs> gamesResponse = JsonConvert.DeserializeObject<Responses<GameDTOs>>(content);
@@ -34,11 +39,16 @@ namespace SteamMini
 
         }
 
-        public Response<GameDTOs> GetGameByIdController(string Id)
+        public static Response<GameDTOs> GetGameByIdController(string Id)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync($"api/games/{Id}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<GameDTOs> gamesResponse = JsonConvert.DeserializeObject<Response<GameDTOs>>(content);

@@ -104,8 +104,7 @@ namespace SteamMini
 
         public void LoadDatabase(string UserId)
         {
-            GameControllerShould gameControl = new GameControllerShould();
-            GameResponse = gameControl.GetAllGamesController();
+            GameResponse = GameControllerShould.GetAllGamesController();
             User = AccountsControllerShould.GetUserByIdController(UserId);
 
 
@@ -119,8 +118,7 @@ namespace SteamMini
 
             foreach (TitleGame a in User.Games)
             {
-                GameControllerShould gameControl2 = new GameControllerShould();
-                Response<GameDTOs> temp = gameControl2.GetGameByIdController(a.Id.ToString());
+                Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(a.Id.ToString());
                 GameObject gameobj = toGameObject(temp.Payload);
                 user_game.Add(gameobj);
             }
@@ -140,21 +138,21 @@ namespace SteamMini
                 this.PriceLabel.Text = "Price: " + gameobject.Price.ToString() + " VND";
             try
             {
-                this.GameDetailPicBox1.Load(gameobject.GameImages.ElementAt(0));
-                this.GameDetailPicBox2.Load(gameobject.GameImages.ElementAt(1));
-                this.GameDetailPicBox3.Load(gameobject.GameImages.ElementAt(2));
-                this.GameDetailPicBox4.Load(gameobject.GameImages.ElementAt(3));
-                this.GameDetailPicBox5.Load(gameobject.GameImages.ElementAt(4));
-                this.GameDetailPicBox6.Load(gameobject.GameImages.ElementAt(5));
+                this.GameDetailPicBox1.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox2.Image = GetImagebyURI(gameobject.GameImages.ElementAt(1));
+                this.GameDetailPicBox3.Image = GetImagebyURI(gameobject.GameImages.ElementAt(2));
+                this.GameDetailPicBox4.Image = GetImagebyURI(gameobject.GameImages.ElementAt(3));
+                this.GameDetailPicBox5.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox6.Image = GetImagebyURI(gameobject.GameImages.ElementAt(1));
             }
             catch (Exception e)
             {
-                this.GameDetailPicBox1.Load(gameobject.GameImages.ElementAt(0));
-                this.GameDetailPicBox2.Load(gameobject.GameImages.ElementAt(0));
-                this.GameDetailPicBox3.Load(gameobject.GameImages.ElementAt(0));
-                this.GameDetailPicBox4.Load(gameobject.GameImages.ElementAt(0));
-                this.GameDetailPicBox5.Load(gameobject.GameImages.ElementAt(0));
-                this.GameDetailPicBox6.Load(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox1.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox2.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox3.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox4.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox5.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
+                this.GameDetailPicBox6.Image = GetImagebyURI(gameobject.GameImages.ElementAt(0));
             }
 
             var embed = "<html><head>" +
@@ -318,6 +316,17 @@ namespace SteamMini
             a.Font = new Font("Microsoft Sans Serif", 24);
         }
 
+        public Bitmap GetImagebyURI(string Uri)
+        {
+            System.Net.WebRequest request1 = System.Net.WebRequest.Create(Uri);
+            System.Net.WebResponse resp1 = request1.GetResponse();
+            System.IO.Stream respStream1 = resp1.GetResponseStream();
+            Bitmap bmp1 = new Bitmap(respStream1);
+            respStream1.Dispose();
+
+            return bmp1;
+        }
+
         private void listGame_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listGame.SelectedItems.Count > 0)
@@ -334,13 +343,7 @@ namespace SteamMini
                 lbl_game_name.Text = item.Text;
                 img_game.Image = selectedgame.Logo.Image;
 
-                System.Net.WebRequest request1 = System.Net.WebRequest.Create(selectedgame.GameImages.ElementAt(1));
-                System.Net.WebResponse resp1 = request1.GetResponse();
-                System.IO.Stream respStream1 = resp1.GetResponseStream();
-                Bitmap bmp1 = new Bitmap(respStream1);
-                respStream1.Dispose();
-
-                lib_panel.BackgroundImage = bmp1;
+                lib_panel.BackgroundImage = GetImagebyURI(selectedgame.GameImages.ElementAt(1));
                 item.Focused = false;
                 //rest of your logic
             }
@@ -638,7 +641,29 @@ namespace SteamMini
 
         private void btn_AddWishList_Click(object sender, EventArgs e)
         {
+            TitleGame wishgame = new TitleGame();
+            Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(currGame.Id.ToString());
+            wishgame.Id = temp.Payload.Id;
+            wishgame.ImageGames = temp.Payload.ImageGames;
+            wishgame.Name = temp.Payload.Name;
+            wishgame.ReleaseDate = temp.Payload.PurchaseDate;
+            User.WishGames.Add(wishgame);
 
+            
+
+            var response = AccountsControllerShould.UpdateAccountController(User, this.id);
+
+            var rs = response.IsSuccess.ToString();
+            var mess = response.Message;
+
+            if (rs == "False")
+            {
+                MessageBox.Show("Fail to add to wishlist", "Error");
+            }
+            else
+            {
+                MessageBox.Show("Wish list updated", "Error");
+            }
         }
 
         private void GameDetailPicBox2_Click(object sender, EventArgs e)
