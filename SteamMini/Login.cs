@@ -75,7 +75,7 @@ namespace SteamMini
                 else // login correctly, received token, id
                 {
                     string id = rs;
-                    MyHome a = new MyHome(id);
+                    MyHome a = new MyHome(id, txtPass.Text); //pass: //add wishgame
                     a.Show();
                     this.Hide();    
                 }
@@ -124,7 +124,7 @@ namespace SteamMini
                     if (!rs.Equals("user") && !rs.Equals("pass"))
                     {
                         string id = rs;
-                        MyHome a = new MyHome(id);
+                        MyHome a = new MyHome(id, txtPass.Text);
                         a.Show();
                         this.Hide();
                     }

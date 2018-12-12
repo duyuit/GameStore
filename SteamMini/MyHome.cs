@@ -14,6 +14,7 @@ namespace SteamMini
     {
         private Register register = null;
         private string id = null;
+        private string currPass = "";
 
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
@@ -200,11 +201,12 @@ namespace SteamMini
                 store_panel.Controls.Add(temp);
             }
         }
-        public MyHome(string Id)
+        public MyHome(string Id, string pass)
         {
             InitializeComponent();
             LoadDatabase(Id);
             this.id = Id;
+            this.currPass = pass;
             LoadGamePreview();
 
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -649,7 +651,7 @@ namespace SteamMini
             wishgame.ReleaseDate = temp.Payload.PurchaseDate;
             User.WishGames.Add(wishgame);
 
-            
+            User.Password = currPass;
 
             var response = AccountsControllerShould.UpdateAccountController(User, this.id);
 

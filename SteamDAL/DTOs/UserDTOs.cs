@@ -33,16 +33,18 @@ namespace GameStore.DTOs
     }
     public class PayloadBody
     {
-        public virtual ICollection<TitleGame> Games { get; set; }
 
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string Hobbies { get; set; }
         public string FullName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string UserName { get; set; }
+
+        public virtual ICollection<TitleGame> Games { get; set; }
 
         public virtual ICollection<TitleGame> WishGames { get; set; }
 
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
         public TitleImagePublisher ImageUser { get; set; }
         public float Money { get; set; }
     }
