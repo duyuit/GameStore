@@ -63,4 +63,29 @@ namespace GameStore.DTOs
             this.money = money;
         }
     }
+
+    public class FreeCode
+    {
+        public string code { get; set; }
+        
+        public FreeCode(string Code)
+        {
+            this.code = Code;
+        }
+    }
+
+    public class GetFreeCodeResponse
+    {
+        public string IsSuccess { set; get; }
+        public string Message { set; get; }
+        public PayloadFreeCode Payload { get; set; }
+    }
+
+    public class PayloadFreeCode
+    {
+        public string id { get; set; }
+        public string code { get; set; }
+        public string game { get; set; }
+        public string gameId { get; set; }
+    }
 }

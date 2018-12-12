@@ -46,6 +46,12 @@
     <Compile Include="Class\GameObject.cs" />
     <Compile Include="Class\LoginObject.cs" />
     <Compile Include="Class\RegisterObject.cs" />
+    <Compile Include="Freecode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Freecode.Designer.cs">
+      <DependentUpon>Freecode.cs</DependentUpon>
+    </Compile>
     <Compile Include="GamePreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Store.Designer.cs">
       <DependentUpon>Store.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Freecode.resx">
+      <DependentUpon>Freecode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GamePreview.resx">
       <DependentUpon>GamePreview.cs</DependentUpon>
     </EmbeddedResource>

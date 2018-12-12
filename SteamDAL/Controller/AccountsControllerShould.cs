@@ -119,30 +119,26 @@ namespace SteamMini
             }
         }
 
-        //{
-        //  "isSuccess": true,
-        //  "message": null,
-        //  "payload": {
-        //    "games": [],
-        //    "hobbies": "defaulthobbies",
-        //    "fullName": "TMT",
-        //    "wishGames": [],
-        //    "userName": "tien",
-        //    "email": "tien@gmail.com",
-        //    "phoneNumber": "012525",
-        //    "imageUser": null,
-        //    "money": 20000
-        //  }
-        //}
 
-        //{
-        //  "isSuccess": false,
-        //  "message": "The input is not in right format",
-        //  "payload": null
-        //}
+        public static GetFreeCodeResponse PostEnterFreeCodeAccountController(object accountObject, string Id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                Uri baseAddress = new Uri("http://localhost:49911/");
+                client.BaseAddress = baseAddress;
+
+                HttpResponseMessage result = client.PostAsJsonAsync($"api/Accounts/buy/freecode/{Id}", accountObject).Result;
+
+                var content = result.Content.ReadAsStringAsync().Result;
+
+                var response = JsonConvert.DeserializeObject<GetFreeCodeResponse>(content);
+
+                return response;
+            }
+        }
 
 
-
+        //-----------------------------
         public void TestGetAllUsersController()
         {
             using (HttpClient client = new HttpClient())

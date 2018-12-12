@@ -631,5 +631,12 @@ namespace SteamMini
             this.GameDetailPicBox1.Visible = false;
             this.GameVid.Visible = true;
         }
+
+        private void btnFreeCode_Click(object sender, EventArgs e)
+        {
+            Freecode a = new Freecode(id);
+            a.Show();
+            //this.Enabled = false;
+        }
     }
 }
