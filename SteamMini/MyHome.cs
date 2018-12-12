@@ -17,20 +17,36 @@ namespace SteamMini
 
         List<Image> background = new List<Image>();
         List<Label> recommend_select = new List<Label>();
-        List<GameObject> lib_game = new List<GameObject>();
-        List<GameObject> user_game = new List<GameObject>();
+        public List<GameObject> lib_game = new List<GameObject>();
+        public List<GameObject> user_game = new List<GameObject>();
         Responses<GameDTOs> GameResponse;
         GameStore.DTOs.PayloadBody User;
         GameObject currGame;
         int currRecommend = 0;
 
 
+
+        public void setLibpanelVisible(bool val)
+        {
+            this.lib_panel.Visible = val;
+            
+        }
+
+        public void setStorepanelVisible(bool val)
+        {
+            this.store_panel.Visible = val;
+        }
+
+        public void setGameDetailpanelVisible(bool val)
+        {
+            this.GameDetailPanel.Visible = val;
+        }
         //3 event nay se hien thi chi tiet game khi nguoi choi nhan vao cac phan tu tuong ung' cua gamepreview
         //do object la khac nhau, nen phai co 3 event xu ly khac nhau, tranh loi
         public void GamePreviewClick(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
 
             GamePreview gPre = (GamePreview)sender;
             currGame = gPre.GetGameObject();
@@ -40,8 +56,8 @@ namespace SteamMini
 
         public void GamePreviewPicClick(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
 
             PictureBox picbox = (PictureBox)sender;
             GamePreview gPre = (GamePreview)picbox.Parent;
@@ -52,8 +68,8 @@ namespace SteamMini
 
         public void GamePreviewDescriptonClick(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
 
             RichTextBox picbox = (RichTextBox)sender;
             GamePreview gPre = (GamePreview)picbox.Parent;
@@ -193,7 +209,6 @@ namespace SteamMini
             this.id = Id;
             LoadGamePreview();
 
-            //myhome binh thuong a ui
             this.BackColor = Color.FromArgb(42, 46, 51);
             menuStrip1.BackColor = Color.FromArgb(27, 32, 54);
             steamToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
@@ -238,7 +253,7 @@ namespace SteamMini
 
         }
 
-        private void showListGame()
+        public void showListGame()
         {
             listGame.Clear();
             imageList1.Images.Clear();
@@ -360,15 +375,15 @@ namespace SteamMini
 
         private void label1_Click(object sender, EventArgs e)
         {
-            store_panel.Visible = true;
-            lib_panel.Visible = false;
+            setStorepanelVisible(true);
+            setLibpanelVisible(false);
             panel2.Visible = false;
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-            store_panel.Visible = false;
-            lib_panel.Visible = true;
+            setStorepanelVisible(false);
+            setLibpanelVisible(true);
             panel2.Visible = true;
         }
 
@@ -395,40 +410,40 @@ namespace SteamMini
 
         private void recommend_picture1_Click(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
             currGame = lib_game.ElementAt(0);
             LoadGamePanel(currGame);
         }
 
         private void recommend_picture5_Click(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
             currGame = lib_game.ElementAt(0);
             LoadGamePanel(currGame);
         }
 
         private void recommend_picture2_Click(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
             currGame = lib_game.ElementAt(1);
             LoadGamePanel(currGame);
         }
 
         private void recommend_picture3_Click(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
             currGame = lib_game.ElementAt(2);
             LoadGamePanel(currGame);
         }
 
         private void recommend_picture4_Click(object sender, EventArgs e)
         {
-            this.store_panel.Visible = false;
-            this.GameDetailPanel.Visible = true;
+            setStorepanelVisible(false);
+            setGameDetailpanelVisible(true);
             currGame = lib_game.ElementAt(3);
             LoadGamePanel(currGame);
         }
@@ -608,16 +623,16 @@ namespace SteamMini
                 //tiền đã đc api auto chuyển cho publisher
 
                 //trở về store mua tiếp
-                this.GameDetailPanel.Visible = false;
-                this.store_panel.Visible = true;
+                setStorepanelVisible(true);
+                setGameDetailpanelVisible(false);
                 currGame = null;
             }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.GameDetailPanel.Visible = false;
-            this.store_panel.Visible = true;
+            setStorepanelVisible(true);
+            setGameDetailpanelVisible(false);
             currGame = null;
         }
 
@@ -634,9 +649,9 @@ namespace SteamMini
 
         private void btnFreeCode_Click(object sender, EventArgs e)
         {
-            Freecode a = new Freecode(id);
+            Freecode a = new Freecode(id, this);
             a.Show();
-            //this.Enabled = false;
+            this.Enabled = false;
         }
     }
 }

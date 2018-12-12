@@ -13,17 +13,21 @@ namespace SteamMini
     public partial class Freecode : Form
     {
         private string id = null;
+        MyHome myHome = null;
 
         public Freecode()
         {
             InitializeComponent();
+            this.BackColor = Color.FromArgb(21, 53, 77);
         }
 
-        public Freecode(string id)
+        public Freecode(string id, MyHome home)
         {
             InitializeComponent();
 
             this.id = id;
+            myHome = home;
+            this.BackColor = Color.FromArgb(21, 53, 77);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -55,18 +59,27 @@ namespace SteamMini
                 else
                 {
                     MessageBox.Show("Get game success!");
+                    for (int i = 0; i < myHome.lib_game.Count(); i++)
+                    {
+                        if (myHome.lib_game.ElementAt(i).Id.ToString() == response.Payload.gameId)
+                        {
+                            myHome.user_game.Add(myHome.lib_game.ElementAt(i));
+                            break;
+                        }
+                    }
+                    myHome.showListGame();
+                    myHome.setLibpanelVisible(true);
+                    myHome.setStorepanelVisible(false);
                     this.Close();
 
-
-                    //update temp game on library
-
-                    //enable form MyHome
+                    myHome.Enabled = true;
                 }
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            myHome.Enabled = true;
             this.Close();
          
             //enable form MyHome

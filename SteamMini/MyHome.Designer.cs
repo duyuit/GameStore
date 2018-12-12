@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyHome));
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,10 +74,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.main_achievement = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.search_icon = new System.Windows.Forms.PictureBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.listGame = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.store_panel = new System.Windows.Forms.Panel();
             this.btnFreeCode = new System.Windows.Forms.Button();
@@ -128,6 +124,10 @@
             this.btn_buy = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Label();
             this.GameDetailPanel = new System.Windows.Forms.Panel();
+            this.listGame = new System.Windows.Forms.ListView();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.search_icon = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.lib_panel.SuspendLayout();
             this.panel_play.SuspendLayout();
@@ -136,8 +136,6 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
             this.panel1.SuspendLayout();
             this.store_panel.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -158,6 +156,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GameIcon)).BeginInit();
             this.panel6.SuspendLayout();
             this.GameDetailPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -174,7 +174,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1055, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1059, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -608,54 +608,9 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "ACHIEVEMENTS";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.search_icon);
-            this.panel2.Controls.Add(this.txtSearch);
-            this.panel2.Controls.Add(this.listGame);
-            this.panel2.Location = new System.Drawing.Point(0, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(238, 692);
-            this.panel2.TabIndex = 0;
-            // 
-            // search_icon
-            // 
-            this.search_icon.InitialImage = global::SteamMini.Properties.Resources.search_icon_white;
-            this.search_icon.Location = new System.Drawing.Point(3, 0);
-            this.search_icon.Name = "search_icon";
-            this.search_icon.Size = new System.Drawing.Size(37, 25);
-            this.search_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.search_icon.TabIndex = 10;
-            this.search_icon.TabStop = false;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtSearch.Location = new System.Drawing.Point(44, 0);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(188, 25);
-            this.txtSearch.TabIndex = 9;
-            // 
-            // listGame
-            // 
-            this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "listViewGroup1";
-            this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3});
-            this.listGame.Location = new System.Drawing.Point(3, 28);
-            this.listGame.Name = "listGame";
-            this.listGame.Size = new System.Drawing.Size(229, 455);
-            this.listGame.TabIndex = 0;
-            this.listGame.UseCompatibleStateImageBehavior = false;
-            this.listGame.View = System.Windows.Forms.View.List;
-            this.listGame.SelectedIndexChanged += new System.EventHandler(this.listGame_SelectedIndexChanged);
-            // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.store_panel);
@@ -663,7 +618,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1055, 831);
+            this.panel1.Size = new System.Drawing.Size(1059, 835);
             this.panel1.TabIndex = 4;
             // 
             // store_panel
@@ -689,13 +644,15 @@
             // btnFreeCode
             // 
             this.btnFreeCode.AutoSize = true;
+            this.btnFreeCode.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnFreeCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnFreeCode.ForeColor = System.Drawing.Color.Black;
             this.btnFreeCode.Location = new System.Drawing.Point(453, 44);
             this.btnFreeCode.Name = "btnFreeCode";
             this.btnFreeCode.Size = new System.Drawing.Size(236, 35);
             this.btnFreeCode.TabIndex = 16;
             this.btnFreeCode.Text = "ENTER FREE CODE";
-            this.btnFreeCode.UseVisualStyleBackColor = true;
+            this.btnFreeCode.UseVisualStyleBackColor = false;
             this.btnFreeCode.Click += new System.EventHandler(this.btnFreeCode_Click);
             // 
             // panel3
@@ -1262,11 +1219,57 @@
             this.GameDetailPanel.Controls.Add(this.panel5);
             this.GameDetailPanel.Controls.Add(this.btn_AddWishList);
             this.GameDetailPanel.Controls.Add(this.GameNameLabel);
-            this.GameDetailPanel.Location = new System.Drawing.Point(2, 95);
+            this.GameDetailPanel.Location = new System.Drawing.Point(0, 81);
             this.GameDetailPanel.Name = "GameDetailPanel";
             this.GameDetailPanel.Size = new System.Drawing.Size(1040, 634);
             this.GameDetailPanel.TabIndex = 16;
             this.GameDetailPanel.Visible = false;
+            // 
+            // listGame
+            // 
+            this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listGame.ForeColor = System.Drawing.SystemColors.Control;
+            listViewGroup8.Header = "ListViewGroup";
+            listViewGroup8.Name = "listViewGroup1";
+            this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup8});
+            this.listGame.Location = new System.Drawing.Point(3, 28);
+            this.listGame.Name = "listGame";
+            this.listGame.Size = new System.Drawing.Size(229, 455);
+            this.listGame.TabIndex = 0;
+            this.listGame.UseCompatibleStateImageBehavior = false;
+            this.listGame.View = System.Windows.Forms.View.List;
+            this.listGame.SelectedIndexChanged += new System.EventHandler(this.listGame_SelectedIndexChanged);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtSearch.Location = new System.Drawing.Point(44, 0);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(188, 25);
+            this.txtSearch.TabIndex = 9;
+            // 
+            // search_icon
+            // 
+            this.search_icon.InitialImage = global::SteamMini.Properties.Resources.search_icon_white;
+            this.search_icon.Location = new System.Drawing.Point(3, 0);
+            this.search_icon.Name = "search_icon";
+            this.search_icon.Size = new System.Drawing.Size(37, 25);
+            this.search_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.search_icon.TabIndex = 10;
+            this.search_icon.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.search_icon);
+            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.listGame);
+            this.panel2.Location = new System.Drawing.Point(0, 7);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(238, 692);
+            this.panel2.TabIndex = 0;
             // 
             // MyHome
             // 
@@ -1276,12 +1279,12 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1055, 795);
+            this.Controls.Add(this.GameDetailPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.GameDetailPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.MainMenuStrip = this.menuStrip1;
@@ -1304,9 +1307,6 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.store_panel.ResumeLayout(false);
@@ -1334,6 +1334,9 @@
             this.panel6.PerformLayout();
             this.GameDetailPanel.ResumeLayout(false);
             this.GameDetailPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1384,10 +1387,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox main_achievement;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox search_icon;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.ListView listGame;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel store_panel;
         private System.Windows.Forms.Panel panel3;
@@ -1438,5 +1437,9 @@
         private System.Windows.Forms.Label btnBack;
         private System.Windows.Forms.Panel GameDetailPanel;
         private System.Windows.Forms.Button btnFreeCode;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox search_icon;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ListView listGame;
     }
 }
