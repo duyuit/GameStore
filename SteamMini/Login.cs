@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SteamMini
@@ -36,7 +37,10 @@ namespace SteamMini
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            progressBar.Value = 20;
+            progressBar.Minimum = 0;
+            progressBar.Maximum = 100;
+            progressBar.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -59,25 +63,37 @@ namespace SteamMini
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int check = 0;
+
             //txtID: username/email
             if (txtID.Text != "" && txtPass.Text != "")
             {
+                //Loading_Bar(check);
+
                 LoginObject loginObject = new LoginObject(txtID.Text, txtPass.Text);
                 string rs = AuthsControllerShould.LoginController(loginObject);
                 if (rs.Equals("user"))
                 {
+                    check = 1;
+                    //Loading_Bar(check);
                     MessageBox.Show("Account does not exist!\nYou should register it!", "Error");
                 }
                 else if (rs.Equals("pass"))
                 {
+                    check = 2;
+                    //Loading_Bar(check);
                     MessageBox.Show("Password incorrect!", "Error");
                 }
                 else // login correctly, received token, id
                 {
                     string id = rs;
                     MyHome a = new MyHome(id, txtPass.Text); //pass: //add wishgame
+
+                    check = 3;
+                    //Loading_Bar(check);
+
                     a.Show();
-                    this.Hide();    
+                    this.Hide();
                 }
             }
             else MessageBox.Show("Information is not enough!");
@@ -139,6 +155,32 @@ namespace SteamMini
             //{
             //    e.Handled = true;
             //}
+        }
+
+        public void Loading_Bar(int check)
+        {
+            int i = 1;
+            progressBar.Show();
+            if (check == 0)
+            {
+                for (int j=0; ;j++)
+                {
+                    Thread.Sleep(10);
+                    progressBar.Value = i;
+                    progressBar.Update();
+
+                    if (i == 100)
+                    {
+                        i = -1;
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                progressBar.Hide();
+            }
+
         }
 
        

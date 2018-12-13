@@ -40,6 +40,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.progressBar = new CircularProgressBar.CircularProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,12 +170,45 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // progressBar
+            // 
+            this.progressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.progressBar.AnimationSpeed = 200;
+            this.progressBar.BackColor = System.Drawing.Color.Black;
+            this.progressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.progressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.progressBar.InnerColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar.InnerMargin = 0;
+            this.progressBar.InnerWidth = 35;
+            this.progressBar.Location = new System.Drawing.Point(313, 144);
+            this.progressBar.MarqueeAnimationSpeed = 2000;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.OuterColor = System.Drawing.Color.Gray;
+            this.progressBar.OuterMargin = -25;
+            this.progressBar.OuterWidth = 26;
+            this.progressBar.ProgressColor = System.Drawing.Color.SteelBlue;
+            this.progressBar.ProgressWidth = 25;
+            this.progressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.progressBar.Size = new System.Drawing.Size(79, 81);
+            this.progressBar.StartAngle = 270;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.progressBar.SubscriptMargin = new System.Windows.Forms.Padding(0);
+            this.progressBar.SubscriptText = ".23";
+            this.progressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.progressBar.SuperscriptMargin = new System.Windows.Forms.Padding(5, 20, 0, 0);
+            this.progressBar.SuperscriptText = "%";
+            this.progressBar.TabIndex = 11;
+            this.progressBar.TextMargin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.progressBar.Value = 30;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(697, 407);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -213,6 +247,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private CircularProgressBar.CircularProgressBar progressBar;
     }
 }
 
