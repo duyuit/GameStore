@@ -71,18 +71,19 @@ namespace SteamMini
                     myHome.setLibpanelVisible(true);
                     myHome.setStorepanelVisible(false);
                     this.Close();
-
-                    myHome.Enabled = true;
                 }
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            myHome.Enabled = true;
             this.Close();
          
-            //enable form MyHome
+        }
+
+        private void Freecode_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myHome.Enabled = true;
         }
     }
 }

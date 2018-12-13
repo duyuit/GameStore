@@ -91,6 +91,7 @@
             this.Name = "Freecode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Free Code";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Freecode_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

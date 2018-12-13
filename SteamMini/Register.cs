@@ -16,6 +16,8 @@ namespace SteamMini
     public partial class Register : Form
     {
         private Login login = null;
+        private MyHome myHome = null;
+
 
         public event EventHandler OnDataAvailable;
         public string idChange { get; set; }
@@ -34,7 +36,7 @@ namespace SteamMini
             txtPhone.BackColor = Color.FromArgb(42, 46, 51);
         }
 
-        public Register(string id)
+        public Register(string id, MyHome home)
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -47,6 +49,7 @@ namespace SteamMini
             txtPhone.BackColor = Color.FromArgb(42, 46, 51);
             this.idCheckChange = true;
             this.idChange = id;
+            this.myHome = home;
             this.Text = "Change Account";
             this.button1.Text = "UPDATE";
 
@@ -427,6 +430,11 @@ namespace SteamMini
                 txtWarningPhone.Visible = true;
             }
 
+        }
+
+        private void Register_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myHome.Enabled = true;
         }
     }
 }

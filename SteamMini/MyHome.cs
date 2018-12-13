@@ -590,7 +590,9 @@ namespace SteamMini
         //thai.caodu changeaccount event khi click
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.register = new Register(this.id, this);
+            this.register.Show();
+            this.Enabled = false;
         }
         //thai.caodu exit event khi click
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
