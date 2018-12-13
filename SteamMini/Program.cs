@@ -15,9 +15,10 @@ namespace SteamMini
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new MyHome(""));
+            //Application.Run(new MyHome(""));
             Application.Run(new Login());
             //Application.Run(new PushGame());
+            //Application.Run(new GameSale());
 
         }
     }
