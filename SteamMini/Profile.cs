@@ -15,35 +15,16 @@ namespace SteamMini
         List<Image> background = new List<Image>();
         GameStore.DTOs.PayloadBody user = null;
 
-        public void SetUser(GameStore.DTOs.PayloadBody input)
+        public Profile(GameStore.DTOs.PayloadBody input)
         {
             user = input;
-        }
-        public Profile()
-        {
             InitializeComponent();
             panel1.BackColor=Color.FromArgb(42, 46, 51);
             avatar.Image = Properties.Resources.gta5;
             listGame.BackColor = Color.FromArgb(42, 46, 51);
 
             listGame.SmallImageList = imageList1;
-            listGame.Items.Add(new ListViewItem("  GTA V", 0));
-            imageList1.Images.Add(Properties.Resources.gta5);
-            background.Add(Properties.Resources.gta5_background);
-
-
-            listGame.Items.Add(new ListViewItem("  CS:GO", 1));
-            imageList1.Images.Add(Properties.Resources.csgo_icon);
-            background.Add(Properties.Resources.csgo_background);
-
-            listGame.Items.Add(new ListViewItem("  PAYDAY 2", 2));
-            imageList1.Images.Add(Properties.Resources.payday2_icon);
-            background.Add(Properties.Resources.pd2_background);
-
-            listGame.Items.Add(new ListViewItem("  PUBG", 3));
-            imageList1.Images.Add(Properties.Resources.pubg_icon);
-            background.Add(Properties.Resources.pubg_background);
-
+            LoadPurchased();
             SoDuText.Text = "Money: " + user.Money.ToString();
         }
 
@@ -52,7 +33,54 @@ namespace SteamMini
             UserName.Text = user.UserName;
             //avatar.Load(user.ImageUser.UrlOnline);
         }
+        private void LoadPurchased()
+        {
+            listGame.Clear();
+            foreach (TitleGame game in user.Games)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Name = game.Id.ToString();
+                item.Text = game.Name;
 
+                //add logo cho itemlistview
+                System.Net.WebRequest request = System.Net.WebRequest.Create(game.ImageGames.ElementAt(0).UrlOnline);
+                System.Net.WebResponse resp = request.GetResponse();
+                System.IO.Stream respStream = resp.GetResponseStream();
+                Bitmap bmp = new Bitmap(respStream);
+                respStream.Dispose();
+
+                imageList1.Images.Add("Icon" + game.Name, bmp);
+                item.ImageKey = "Icon" + game.Name;
+
+                listGame.Items.Add(item);
+            }
+            Wished.BorderStyle = BorderStyle.None;
+            Purchased.BorderStyle = BorderStyle.Fixed3D;
+        }
+        private void LoadWish()
+        {
+            listGame.Clear();
+            foreach (TitleGame game in user.WishGames)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Name = game.Id.ToString();
+                item.Text = game.Name;
+
+                //add logo cho itemlistview
+                System.Net.WebRequest request = System.Net.WebRequest.Create(game.ImageGames.ElementAt(0).UrlOnline);
+                System.Net.WebResponse resp = request.GetResponse();
+                System.IO.Stream respStream = resp.GetResponseStream();
+                Bitmap bmp = new Bitmap(respStream);
+                respStream.Dispose();
+
+                imageList1.Images.Add("Icon" + game.Name, bmp);
+                item.ImageKey = "Icon" + game.Name;
+
+                listGame.Items.Add(item);
+            }
+            Wished.BorderStyle = BorderStyle.Fixed3D;
+            Purchased.BorderStyle = BorderStyle.None;
+        }
         private void label5_Click(object sender, EventArgs e)
         {
 
@@ -77,6 +105,16 @@ namespace SteamMini
         private void RechargeTextBox_KeyUp(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            LoadPurchased();
+        }
+
+        private void Wished_Click(object sender, EventArgs e)
+        {
+            LoadWish();
         }
     }
 }

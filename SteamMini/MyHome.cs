@@ -373,8 +373,7 @@ namespace SteamMini
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Profile a = new Profile();
-            a.SetUser(User);
+            Profile a = new Profile(User);
             a.Show();
         }
 
@@ -666,7 +665,7 @@ namespace SteamMini
             }
             else
             {
-                MessageBox.Show("Wish list updated", "Error");
+                MessageBox.Show("Wish list updated", "Success");
             }
         }
 
