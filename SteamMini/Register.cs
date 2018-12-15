@@ -85,16 +85,7 @@ namespace SteamMini
             if (OnDataAvailable != null)
                 OnDataAvailable(this, EventArgs.Empty);
 
-            if (!idCheckChange)
-            {
-                this.Close();
-                this.login = new Login();
-            }
-            else
-            {
-                this.Close();
-            }
-
+            this.Close();
         }
 
         private void Register_Load(object sender, EventArgs e)
@@ -148,9 +139,6 @@ namespace SteamMini
                     {
                         MessageBox.Show("Register success!");
                         this.Close();
-
-                        this.login = new Login();
-                        this.login.Show();
                     }
                     else //rs = failed msg
                     {
@@ -434,7 +422,15 @@ namespace SteamMini
 
         private void Register_FormClosing(object sender, FormClosingEventArgs e)
         {
-            myHome.Enabled = true;
+            if (idCheckChange) //change acc
+            {
+                myHome.Enabled = true;
+            }
+            else //register
+            {
+                this.login = new Login();
+            }
+
         }
     }
 }
