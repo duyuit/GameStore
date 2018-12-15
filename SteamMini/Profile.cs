@@ -13,9 +13,14 @@ namespace SteamMini
     public partial class Profile : Form
     {
         List<Image> background = new List<Image>();
-        GameStore.DTOs.PayloadBody user = null;
+        private static GameStore.DTOs.PayloadBody user = null;
+        private MyHome myHome = null;
 
-        public Profile(GameStore.DTOs.PayloadBody input)
+        private static string id = "";
+        private static float currmoney = 0;
+
+
+        public Profile(GameStore.DTOs.PayloadBody input, MyHome home)
         {
             user = input;
             InitializeComponent();
@@ -25,7 +30,16 @@ namespace SteamMini
 
             listGame.SmallImageList = imageList1;
             LoadPurchased();
-            SoDuText.Text = "Money: " + user.Money.ToString();
+
+            SoDuText.Text = "Money: $" + Math.Round(user.Money, 2).ToString();
+            this.myHome = home;
+        }
+
+        public static void SetUser(GameStore.DTOs.PayloadBody inputUser, string Id)
+        {
+            user = inputUser;
+            id = Id;
+            currmoney = inputUser.Money;
         }
 
         private void Profile_Load(object sender, EventArgs e)
@@ -91,20 +105,37 @@ namespace SteamMini
 
         }
 
-        //thai.caodu nut nap tien
         private void RechargeButton_Click(object sender, EventArgs e)
         {
+            if (RechargeTextBox.Text != "")
+            {
+                float addmoney = float.Parse(RechargeTextBox.Text);
+                var response = AccountsControllerShould.UpdateMoneyAccountController(new RechargeObject(currmoney + addmoney), id);
 
+                if (response.IsSuccess.ToString() == "False")
+                {
+                    MessageBox.Show("Recharge failed!\nUser Id is wrong!", "Error");
+                }
+                else
+                {
+                    RechargeTextBox.Text = "";
+                    currmoney += addmoney;
+                    SoDuText.Text = "Money: $" + Math.Round(currmoney, 2);
+
+                    MessageBox.Show($"Recharge success!\nYour account has ${Math.Round(currmoney, 2)}!", "Success");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Money have not entered yet!", "Error");
+            }
         }
-        //thai.caodu textbox text change
+
         private void RechargeTextBox_TextChanged(object sender, EventArgs e)
         {
-
         }
-        //thai.caodu textbox key up
         private void RechargeTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -115,6 +146,25 @@ namespace SteamMini
         private void Wished_Click(object sender, EventArgs e)
         {
             LoadWish();
+        }
+
+        private void Profile_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myHome.Enabled = true;
+        }
+
+        private void RechargeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

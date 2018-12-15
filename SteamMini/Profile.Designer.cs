@@ -32,6 +32,8 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Wished = new System.Windows.Forms.Label();
             this.RechargeButton = new System.Windows.Forms.Button();
             this.RechargeTextBox = new System.Windows.Forms.TextBox();
             this.SoDuText = new System.Windows.Forms.Label();
@@ -44,7 +46,6 @@
             this.UserName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listGame = new System.Windows.Forms.ListView();
-            this.Wished = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
@@ -70,6 +71,7 @@
             // panel3
             // 
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.Wished);
             this.panel3.Controls.Add(this.RechargeButton);
             this.panel3.Controls.Add(this.RechargeTextBox);
@@ -86,24 +88,48 @@
             this.panel3.Size = new System.Drawing.Size(797, 214);
             this.panel3.TabIndex = 10;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(439, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Recharge $:";
+            // 
+            // Wished
+            // 
+            this.Wished.AutoSize = true;
+            this.Wished.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Wished.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Wished.Location = new System.Drawing.Point(208, 183);
+            this.Wished.Name = "Wished";
+            this.Wished.Size = new System.Drawing.Size(96, 24);
+            this.Wished.TabIndex = 12;
+            this.Wished.Text = "WISHLIST";
+            this.Wished.Click += new System.EventHandler(this.Wished_Click);
+            // 
             // RechargeButton
             // 
-            this.RechargeButton.Location = new System.Drawing.Point(673, 150);
+            this.RechargeButton.Location = new System.Drawing.Point(712, 67);
             this.RechargeButton.Name = "RechargeButton";
             this.RechargeButton.Size = new System.Drawing.Size(75, 23);
             this.RechargeButton.TabIndex = 11;
-            this.RechargeButton.Text = "Recharge";
+            this.RechargeButton.Text = "Submit";
             this.RechargeButton.UseVisualStyleBackColor = true;
             this.RechargeButton.Click += new System.EventHandler(this.RechargeButton_Click);
             // 
             // RechargeTextBox
             // 
             this.RechargeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.RechargeTextBox.Location = new System.Drawing.Point(661, 116);
+            this.RechargeTextBox.Location = new System.Drawing.Point(553, 69);
             this.RechargeTextBox.Name = "RechargeTextBox";
-            this.RechargeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.RechargeTextBox.Size = new System.Drawing.Size(153, 20);
             this.RechargeTextBox.TabIndex = 10;
             this.RechargeTextBox.TextChanged += new System.EventHandler(this.RechargeTextBox_TextChanged);
+            this.RechargeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RechargeTextBox_KeyPress);
             this.RechargeTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RechargeTextBox_KeyUp);
             // 
             // SoDuText
@@ -113,9 +139,9 @@
             this.SoDuText.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.SoDuText.Location = new System.Drawing.Point(153, 66);
             this.SoDuText.Name = "SoDuText";
-            this.SoDuText.Size = new System.Drawing.Size(78, 24);
+            this.SoDuText.Size = new System.Drawing.Size(88, 24);
             this.SoDuText.TabIndex = 9;
-            this.SoDuText.Text = "Money: ";
+            this.SoDuText.Text = "Money: $";
             // 
             // avatar
             // 
@@ -218,18 +244,6 @@
             this.listGame.UseCompatibleStateImageBehavior = false;
             this.listGame.View = System.Windows.Forms.View.List;
             // 
-            // Wished
-            // 
-            this.Wished.AutoSize = true;
-            this.Wished.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Wished.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Wished.Location = new System.Drawing.Point(208, 183);
-            this.Wished.Name = "Wished";
-            this.Wished.Size = new System.Drawing.Size(96, 24);
-            this.Wished.TabIndex = 12;
-            this.Wished.Text = "WISHLIST";
-            this.Wished.Click += new System.EventHandler(this.Wished_Click);
-            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +253,7 @@
             this.Name = "Profile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Profile_FormClosing);
             this.Load += new System.EventHandler(this.Profile_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -267,5 +282,6 @@
         private System.Windows.Forms.TextBox RechargeTextBox;
         private System.Windows.Forms.Button RechargeButton;
         private System.Windows.Forms.Label Wished;
+        private System.Windows.Forms.Label label1;
     }
 }

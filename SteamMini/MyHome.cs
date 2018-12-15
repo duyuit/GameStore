@@ -373,8 +373,11 @@ namespace SteamMini
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Profile a = new Profile(User);
+            Profile.SetUser(User, id);
+
+            Profile a = new Profile(User, this);
             a.Show();
+            this.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
