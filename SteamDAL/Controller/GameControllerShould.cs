@@ -57,6 +57,51 @@ namespace SteamMini
 
         }
 
+        // get all games are saling
+        public static GetAllGameSaleResponse GetAllGamesSaleController()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                if (BASE_URI != null)
+                {
+                    client.BaseAddress = BASE_URI;
+                }
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
+
+                HttpResponseMessage result = client.GetAsync("api/Games/sale").Result;
+                var content = result.Content.ReadAsStringAsync().Result;
+
+                var response = JsonConvert.DeserializeObject<GetAllGameSaleResponse>(content);
+
+                return response;
+            }
+        }
+
+        // put game sale by id. gamesaleObject => GameSaleRequest
+        public static PutGameSaleResponse PutGameSaleByGameIdController(object gamesaleObject, string GameId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
+
+                HttpResponseMessage result = client.PutAsJsonAsync($"api/Games/sale{GameId}", gamesaleObject).Result;
+
+                var content = result.Content.ReadAsStringAsync().Result;
+
+                var response = JsonConvert.DeserializeObject<PutGameSaleResponse>(content);
+
+                return response;
+            }
+        }
+
         public void PostNewGameController(string name, string publisherId,
                                               string members1, string members2,
                                               string favoriteMembers1, string favoriteMembers2,

@@ -311,6 +311,7 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
             this.Name = "GameSale";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameSale";
             ((System.ComponentModel.ISupportInitialize)(this.Days)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Hours)).EndInit();
