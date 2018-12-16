@@ -80,7 +80,7 @@ namespace SteamMini
             }
         }
 
-        // put game sale by id. gamesaleObject => GameSaleRequest
+        // put game sale by id. gamesaleObject => truyền từ class GameSaleRequest
         public static PutGameSaleResponse PutGameSaleByGameIdController(object gamesaleObject, string GameId)
         {
             using (HttpClient client = new HttpClient())
