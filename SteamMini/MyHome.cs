@@ -132,6 +132,13 @@ namespace SteamMini
                 GameObject gameobj = toGameObject(a);
                 sale_game.Add(gameobj);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                if (sale_game.ElementAt(i) == null)
+                {
+                    sale_game.Add(lib_game.ElementAt(i));
+                }
+            }
         }
 
         public void LoadGamePanel(GameObject gameobject)
