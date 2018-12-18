@@ -19,6 +19,7 @@ namespace SteamMini.Class
         public string Content { get; set; }
         public DateTime PurchaseDate { get; set; }
         public List<String> GameImages { get; set; }
+        public float Sale { get; set; }
 
 
         public GameObject()

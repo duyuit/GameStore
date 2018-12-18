@@ -15,9 +15,11 @@ namespace SteamMini
     {
         public List<GameObject> lib_game = new List<GameObject>();
         GameObject selectedgamed;
-        public GameSale()
+        MyHome myHome = null;
+        public GameSale(MyHome input)
         {
 
+            myHome = input;
             InitializeComponent();
             Responses<GameDTOs> GameResponse = GameControllerShould.GetAllGamesController();
             List<GameDTOs> gameDTOs = GameResponse.Payload;
@@ -83,7 +85,9 @@ namespace SteamMini
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            myHome.Enabled = true;
             this.Close();
+            myHome.Show();
         }
 
         private void GameCollection_SelectedIndexChanged(object sender, EventArgs e)

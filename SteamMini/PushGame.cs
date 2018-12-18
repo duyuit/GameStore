@@ -20,8 +20,10 @@ namespace SteamMini
         EventHandler getPublisherCallBack;
         EventHandler pushGameCallBack;
         Guid gameID;
-        public PushGame()
+        MyHome myHome = null;
+        public PushGame(MyHome input)
         {
+            myHome = input;
             InitializeComponent();
             this.BackColor = Color.FromArgb(42, 46, 51);
             PublisherControllerShould publisherController = new PublisherControllerShould();
@@ -109,7 +111,9 @@ namespace SteamMini
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            myHome.Enabled = true;
             this.Close();
+            myHome.Show();
         }
     }
 }

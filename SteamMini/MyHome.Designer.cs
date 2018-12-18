@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +44,7 @@
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saleGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,7 +84,6 @@
             this.btnFreeCode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.recommend_select1 = new System.Windows.Forms.Label();
-            this.recommend_select5 = new System.Windows.Forms.Label();
             this.recommend_select2 = new System.Windows.Forms.Label();
             this.recommend_select4 = new System.Windows.Forms.Label();
             this.recommend_select3 = new System.Windows.Forms.Label();
@@ -92,7 +92,7 @@
             this.btn_search_store = new System.Windows.Forms.Button();
             this.txtSearch_store = new System.Windows.Forms.TextBox();
             this.recommend_panel = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
+            this.oldPrice = new System.Windows.Forms.Label();
             this.recommend_picture1 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -128,6 +128,9 @@
             this.btn_buy = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Label();
             this.GameDetailPanel = new System.Windows.Forms.Panel();
+            this.salePrice = new System.Windows.Forms.Label();
+            this.saleLabel = new System.Windows.Forms.Label();
+            this.saledPriceLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.lib_panel.SuspendLayout();
             this.panel_play.SuspendLayout();
@@ -267,7 +270,8 @@
             // gameToolStripMenuItem
             // 
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.libToolStripMenuItem});
+            this.libToolStripMenuItem,
+            this.saleGamesToolStripMenuItem});
             this.gameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
@@ -278,9 +282,16 @@
             // libToolStripMenuItem
             // 
             this.libToolStripMenuItem.Name = "libToolStripMenuItem";
-            this.libToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.libToolStripMenuItem.Text = "Lib";
-            this.libToolStripMenuItem.Click += new System.EventHandler(this.label2_Click);
+            this.libToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.libToolStripMenuItem.Text = "Publish Games";
+            this.libToolStripMenuItem.Click += new System.EventHandler(this.libToolStripMenuItem_Click);
+            // 
+            // saleGamesToolStripMenuItem
+            // 
+            this.saleGamesToolStripMenuItem.Name = "saleGamesToolStripMenuItem";
+            this.saleGamesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.saleGamesToolStripMenuItem.Text = "Sale Games";
+            this.saleGamesToolStripMenuItem.Click += new System.EventHandler(this.saleGamesToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -612,9 +623,9 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lib_panel);
-            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -655,10 +666,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup5.Header = "ListViewGroup";
+            listViewGroup5.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup5});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);
@@ -705,7 +716,6 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel3.Controls.Add(this.recommend_select1);
-            this.panel3.Controls.Add(this.recommend_select5);
             this.panel3.Controls.Add(this.recommend_select2);
             this.panel3.Controls.Add(this.recommend_select4);
             this.panel3.Controls.Add(this.recommend_select3);
@@ -725,18 +735,6 @@
             this.recommend_select1.Size = new System.Drawing.Size(20, 16);
             this.recommend_select1.TabIndex = 9;
             this.recommend_select1.Click += new System.EventHandler(this.recommend_select1_Click);
-            // 
-            // recommend_select5
-            // 
-            this.recommend_select5.AutoSize = true;
-            this.recommend_select5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.recommend_select5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recommend_select5.Location = new System.Drawing.Point(145, 6);
-            this.recommend_select5.Name = "recommend_select5";
-            this.recommend_select5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.recommend_select5.Size = new System.Drawing.Size(20, 16);
-            this.recommend_select5.TabIndex = 13;
-            this.recommend_select5.Click += new System.EventHandler(this.recommend_select5_Click);
             // 
             // recommend_select2
             // 
@@ -819,7 +817,9 @@
             // recommend_panel
             // 
             this.recommend_panel.BackColor = System.Drawing.SystemColors.InfoText;
-            this.recommend_panel.Controls.Add(this.label17);
+            this.recommend_panel.Controls.Add(this.saleLabel);
+            this.recommend_panel.Controls.Add(this.salePrice);
+            this.recommend_panel.Controls.Add(this.oldPrice);
             this.recommend_panel.Controls.Add(this.recommend_picture1);
             this.recommend_panel.Controls.Add(this.label18);
             this.recommend_panel.Controls.Add(this.label19);
@@ -835,16 +835,16 @@
             this.recommend_panel.Size = new System.Drawing.Size(1031, 300);
             this.recommend_panel.TabIndex = 8;
             // 
-            // label17
+            // oldPrice
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label17.Location = new System.Drawing.Point(694, 262);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 16);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "150.000 VND";
+            this.oldPrice.AutoSize = true;
+            this.oldPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldPrice.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.oldPrice.Location = new System.Drawing.Point(693, 271);
+            this.oldPrice.Name = "oldPrice";
+            this.oldPrice.Size = new System.Drawing.Size(85, 16);
+            this.oldPrice.TabIndex = 11;
+            this.oldPrice.Text = "150.000 VND";
             // 
             // recommend_picture1
             // 
@@ -863,7 +863,7 @@
             this.label18.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.SystemColors.Control;
-            this.label18.Location = new System.Drawing.Point(827, 221);
+            this.label18.Location = new System.Drawing.Point(943, 221);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(5);
             this.label18.Size = new System.Drawing.Size(62, 26);
@@ -876,7 +876,7 @@
             this.label19.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.SystemColors.Control;
-            this.label19.Location = new System.Drawing.Point(755, 221);
+            this.label19.Location = new System.Drawing.Point(943, 261);
             this.label19.Name = "label19";
             this.label19.Padding = new System.Windows.Forms.Padding(5);
             this.label19.Size = new System.Drawing.Size(61, 26);
@@ -889,7 +889,7 @@
             this.label20.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.SystemColors.Control;
-            this.label20.Location = new System.Drawing.Point(697, 221);
+            this.label20.Location = new System.Drawing.Point(890, 221);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(5);
             this.label20.Size = new System.Drawing.Size(47, 26);
@@ -1209,11 +1209,12 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.saledPriceLabel);
             this.panel6.Controls.Add(this.PriceLabel);
             this.panel6.Controls.Add(this.btn_buy);
             this.panel6.Location = new System.Drawing.Point(591, 476);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(412, 59);
+            this.panel6.Size = new System.Drawing.Size(412, 93);
             this.panel6.TabIndex = 15;
             // 
             // PriceLabel
@@ -1270,6 +1271,41 @@
             this.GameDetailPanel.Size = new System.Drawing.Size(1040, 634);
             this.GameDetailPanel.TabIndex = 16;
             this.GameDetailPanel.Visible = false;
+            // 
+            // salePrice
+            // 
+            this.salePrice.AutoSize = true;
+            this.salePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salePrice.ForeColor = System.Drawing.Color.LimeGreen;
+            this.salePrice.Location = new System.Drawing.Point(693, 231);
+            this.salePrice.Name = "salePrice";
+            this.salePrice.Size = new System.Drawing.Size(131, 24);
+            this.salePrice.TabIndex = 12;
+            this.salePrice.Text = "150.000 VND";
+            // 
+            // saleLabel
+            // 
+            this.saleLabel.AutoSize = true;
+            this.saleLabel.BackColor = System.Drawing.Color.LimeGreen;
+            this.saleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saleLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.saleLabel.Location = new System.Drawing.Point(11, 14);
+            this.saleLabel.Name = "saleLabel";
+            this.saleLabel.Size = new System.Drawing.Size(110, 25);
+            this.saleLabel.TabIndex = 13;
+            this.saleLabel.Text = "On Sale: ";
+            // 
+            // saledPriceLabel
+            // 
+            this.saledPriceLabel.AutoSize = true;
+            this.saledPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saledPriceLabel.ForeColor = System.Drawing.Color.Lime;
+            this.saledPriceLabel.Location = new System.Drawing.Point(131, 58);
+            this.saledPriceLabel.Name = "saledPriceLabel";
+            this.saledPriceLabel.Size = new System.Drawing.Size(119, 31);
+            this.saledPriceLabel.TabIndex = 14;
+            this.saledPriceLabel.Text = "180000đ";
+            this.saledPriceLabel.Visible = false;
             // 
             // MyHome
             // 
@@ -1391,7 +1427,6 @@
         private System.Windows.Forms.Panel store_panel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label recommend_select1;
-        private System.Windows.Forms.Label recommend_select5;
         private System.Windows.Forms.Label recommend_select2;
         private System.Windows.Forms.Label recommend_select4;
         private System.Windows.Forms.Label recommend_select3;
@@ -1400,7 +1435,7 @@
         private System.Windows.Forms.Button btn_search_store;
         private System.Windows.Forms.TextBox txtSearch_store;
         private System.Windows.Forms.Panel recommend_panel;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label oldPrice;
         private System.Windows.Forms.PictureBox recommend_picture1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -1441,5 +1476,9 @@
         private System.Windows.Forms.PictureBox search_icon;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ListView listGame;
+        private System.Windows.Forms.ToolStripMenuItem saleGamesToolStripMenuItem;
+        private System.Windows.Forms.Label saleLabel;
+        private System.Windows.Forms.Label salePrice;
+        private System.Windows.Forms.Label saledPriceLabel;
     }
 }

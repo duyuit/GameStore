@@ -20,7 +20,9 @@ namespace SteamMini
         List<Label> recommend_select = new List<Label>();
         public List<GameObject> lib_game = new List<GameObject>();
         public List<GameObject> user_game = new List<GameObject>();
+        public List<GameObject> sale_game = new List<GameObject>();
         Responses<GameDTOs> GameResponse;
+        GetAllGameSaleResponse GameSaleResponse;
         GameStore.DTOs.PayloadBody User;
         GameObject currGame;
         int currRecommend = 0;
@@ -92,6 +94,7 @@ namespace SteamMini
             temp1.VideoUrl = a.VideoUrl;
             temp1.Logo = new PictureBox();
             temp1.Logo.Load(a.ImageGames.ElementAt(0).UrlOnline);
+            temp1.Sale = a.Sale;
             for (int i = 0; i < a.ImageGames.Count(); i++)
             {
                 if (temp1.GameImages == null)
@@ -107,7 +110,7 @@ namespace SteamMini
         {
             GameResponse = GameControllerShould.GetAllGamesController();
             User = AccountsControllerShould.GetUserByIdController(UserId);
-
+            GameSaleResponse = GameControllerShould.GetAllGamesSaleController();
 
 
             List<GameDTOs> gameDTOs = GameResponse.Payload;
@@ -122,6 +125,12 @@ namespace SteamMini
                 Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(a.Id.ToString());
                 GameObject gameobj = toGameObject(temp.Payload);
                 user_game.Add(gameobj);
+            }
+
+            foreach (GameDTOs a in GameSaleResponse.Payload)
+            {
+                GameObject gameobj = toGameObject(a);
+                sale_game.Add(gameobj);
             }
         }
 
@@ -164,6 +173,26 @@ namespace SteamMini
  "</body></html>";
             var url = "https://www.youtube.com/embed/3Q6U3BSbrlY";
             this.GameVid.DocumentText = string.Format(embed, url);
+
+            //xu ly neu game co sale:
+            if (gameobject.Sale != 0)
+            {
+                this.PriceLabel.Font = new Font("Microsoft Sans Serif", 20, FontStyle.Strikeout);
+                this.saledPriceLabel.Visible = true;
+                float saledprice = gameobject.Price - (gameobject.Price * gameobject.Sale / (float)100);
+                if (saledprice < 0)
+                    saledprice = 0;
+                if (saledprice == 0)
+                    this.saledPriceLabel.Text = "FREE";
+                else
+                    this.saledPriceLabel.Text = "Price: " + saledprice.ToString() + " VND";
+            }
+            else
+            {
+                this.PriceLabel.Font = new Font("Microsoft Sans Serif", 20, FontStyle.Regular);
+                this.saledPriceLabel.Visible = false;
+            }
+
         }
 
         public void LoadGamePreview()
@@ -243,13 +272,14 @@ namespace SteamMini
 
             //Recommend Game Init
             panel3.BackColor = Color.FromArgb(21, 53, 77);
-            recommend_picture1.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
-            recommend_picture2.Load(lib_game.ElementAt(1).GameImages.ElementAt(0));
-            recommend_picture3.Load(lib_game.ElementAt(2).GameImages.ElementAt(0));
-            recommend_picture4.Load(lib_game.ElementAt(3).GameImages.ElementAt(0));
-            recommend_picture5.Load(lib_game.ElementAt(0).GameImages.ElementAt(0));
-            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(0).Name;
+            recommend_picture1.Load(sale_game.ElementAt(0).GameImages.ElementAt(0));
+            recommend_picture2.Load(sale_game.ElementAt(1).GameImages.ElementAt(0));
+            recommend_picture3.Load(sale_game.ElementAt(2).GameImages.ElementAt(0));
+            recommend_picture4.Load(sale_game.ElementAt(3).GameImages.ElementAt(0));
+            recommend_picture5.Load(sale_game.ElementAt(0).GameImages.ElementAt(0));
+            oldPrice.Text = sale_game.ElementAt(0).Price.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(0).Sale.ToString() + "%";
+            recommend_game_name.Text = sale_game.ElementAt(0).Name;
 
         }
 
@@ -419,7 +449,7 @@ namespace SteamMini
         {
             setStorepanelVisible(false);
             setGameDetailpanelVisible(true);
-            currGame = lib_game.ElementAt(0);
+            currGame = sale_game.ElementAt(0);
             LoadGamePanel(currGame);
         }
 
@@ -427,7 +457,7 @@ namespace SteamMini
         {
             setStorepanelVisible(false);
             setGameDetailpanelVisible(true);
-            currGame = lib_game.ElementAt(0);
+            currGame = sale_game.ElementAt(0);
             LoadGamePanel(currGame);
         }
 
@@ -435,7 +465,7 @@ namespace SteamMini
         {
             setStorepanelVisible(false);
             setGameDetailpanelVisible(true);
-            currGame = lib_game.ElementAt(1);
+            currGame = sale_game.ElementAt(1);
             LoadGamePanel(currGame);
         }
 
@@ -443,7 +473,7 @@ namespace SteamMini
         {
             setStorepanelVisible(false);
             setGameDetailpanelVisible(true);
-            currGame = lib_game.ElementAt(2);
+            currGame = sale_game.ElementAt(2);
             LoadGamePanel(currGame);
         }
 
@@ -451,7 +481,7 @@ namespace SteamMini
         {
             setStorepanelVisible(false);
             setGameDetailpanelVisible(true);
-            currGame = lib_game.ElementAt(3);
+            currGame = sale_game.ElementAt(3);
             LoadGamePanel(currGame);
         }
 
@@ -461,10 +491,14 @@ namespace SteamMini
             recommend_select2.BackColor = Color.Black;
             recommend_select3.BackColor = Color.Black;
             recommend_select4.BackColor = Color.Black;
-            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture5.Image;
-            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
             recommend_game_name.Text = lib_game.ElementAt(0).Name;
+            oldPrice.Text = sale_game.ElementAt(0).Price.ToString() + " VND";
+            float salepriceint = sale_game.ElementAt(0).Price - (sale_game.ElementAt(0).Price * sale_game.ElementAt(0).Sale/ (float)100);
+            if (salepriceint < 0)
+                salepriceint = 0;
+            salePrice.Text = salepriceint.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(0).Sale.ToString() + "%";
             currRecommend = 0;
         }
 
@@ -474,10 +508,13 @@ namespace SteamMini
             recommend_select2.BackColor = Color.Silver;
             recommend_select3.BackColor = Color.Black;
             recommend_select4.BackColor = Color.Black;
-            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture2.Image;
-            label17.Text = lib_game.ElementAt(1).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(1).Name;
+            oldPrice.Text = sale_game.ElementAt(1).Price.ToString() + " VND";
+            float salepriceint = sale_game.ElementAt(1).Price - (sale_game.ElementAt(1).Price * sale_game.ElementAt(1).Sale / (float)100);
+            if (salepriceint < 0)
+                salepriceint = 0;
+            salePrice.Text = salepriceint.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(1).Sale.ToString() + "%";
             currRecommend = 1;
         }
 
@@ -487,10 +524,13 @@ namespace SteamMini
             recommend_select2.BackColor = Color.Black;
             recommend_select3.BackColor = Color.Silver;
             recommend_select4.BackColor = Color.Black;
-            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture3.Image;
-            label17.Text = lib_game.ElementAt(2).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(2).Name;
+            oldPrice.Text = sale_game.ElementAt(2).Price.ToString() + " VND";
+            float salepriceint = sale_game.ElementAt(2).Price - (sale_game.ElementAt(2).Price * sale_game.ElementAt(2).Sale / (float)100);
+            if (salepriceint < 0)
+                salepriceint = 0;
+            salePrice.Text = salepriceint.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(2).Sale.ToString() + "%";
             currRecommend = 2;
         }
 
@@ -500,32 +540,22 @@ namespace SteamMini
             recommend_select2.BackColor = Color.Black;
             recommend_select3.BackColor = Color.Black;
             recommend_select4.BackColor = Color.Silver;
-            recommend_select5.BackColor = Color.Black;
             recommend_picture1.Image = recommend_picture4.Image;
-            label17.Text = lib_game.ElementAt(3).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(3).Name;
+            oldPrice.Text = sale_game.ElementAt(3).Price.ToString() + " VND";
+            float salepriceint = sale_game.ElementAt(3).Price - (sale_game.ElementAt(3).Price * sale_game.ElementAt(3).Sale / (float)100);
+            if (salepriceint < 0)
+                salepriceint = 0;
+            salePrice.Text = salepriceint.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(3).Sale.ToString() + "%";
             currRecommend = 3;
-        }
-
-        private void recommend_select5_Click(object sender, EventArgs e)
-        {
-            recommend_select1.BackColor = Color.Black;
-            recommend_select2.BackColor = Color.Black;
-            recommend_select3.BackColor = Color.Black;
-            recommend_select4.BackColor = Color.Black;
-            recommend_select5.BackColor = Color.Silver;
-            recommend_picture1.Image = recommend_picture5.Image;
-            label17.Text = lib_game.ElementAt(0).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(0).Name;
-            currRecommend = 0;
         }
 
         private void recommend_image_MouseEnter(object sender, EventArgs e)
         {
             PictureBox a = (PictureBox)sender;
             recommend_picture1.Image = a.Image;
-            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+            oldPrice.Text = sale_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            recommend_game_name.Text = sale_game.ElementAt(currRecommend).Name;
         }
 
         private void recommend_image5_MouseEnter(object sender, EventArgs e)
@@ -533,8 +563,9 @@ namespace SteamMini
             PictureBox a = (PictureBox)sender;
             recommend_picture1.Image = a.Image;
             currRecommend = 0;
-            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+            oldPrice.Text = sale_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(currRecommend).Sale.ToString() + "%";
+            recommend_game_name.Text = sale_game.ElementAt(currRecommend).Name;
         }
 
         private void recommend_image2_MouseEnter(object sender, EventArgs e)
@@ -542,8 +573,9 @@ namespace SteamMini
             PictureBox a = (PictureBox)sender;
             recommend_picture1.Image = a.Image;
             currRecommend = 1;
-            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+            oldPrice.Text = sale_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(currRecommend).Sale.ToString() + "%";
+            recommend_game_name.Text = sale_game.ElementAt(currRecommend).Name;
         }
 
         private void recommend_image3_MouseEnter(object sender, EventArgs e)
@@ -551,8 +583,9 @@ namespace SteamMini
             PictureBox a = (PictureBox)sender;
             recommend_picture1.Image = a.Image;
             currRecommend = 2;
-            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+            oldPrice.Text = sale_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(currRecommend).Sale.ToString() + "%";
+            recommend_game_name.Text = sale_game.ElementAt(currRecommend).Name;
         }
 
         private void recommend_image4_MouseEnter(object sender, EventArgs e)
@@ -560,8 +593,9 @@ namespace SteamMini
             PictureBox a = (PictureBox)sender;
             recommend_picture1.Image = a.Image;
             currRecommend = 3;
-            label17.Text = lib_game.ElementAt(currRecommend).Price.ToString() + " VND";
-            recommend_game_name.Text = lib_game.ElementAt(currRecommend).Name;
+            oldPrice.Text = sale_game.ElementAt(currRecommend).Price.ToString() + " VND";
+            saleLabel.Text = "On Sale: " + sale_game.ElementAt(currRecommend).Sale.ToString() + "%";
+            recommend_game_name.Text = sale_game.ElementAt(currRecommend).Name;
         }
 
         private void testNapTienUser()
@@ -681,6 +715,21 @@ namespace SteamMini
         private void btnFreeCode_Click(object sender, EventArgs e)
         {
             Freecode a = new Freecode(id, this);
+            a.Show();
+            this.Enabled = false;
+        }
+
+        //show push game
+        private void libToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PushGame a = new PushGame(this);
+            a.Show();
+            this.Enabled = false;
+        }
+
+        private void saleGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GameSale a = new GameSale(this);
             a.Show();
             this.Enabled = false;
         }
