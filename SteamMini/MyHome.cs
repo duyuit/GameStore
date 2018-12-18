@@ -132,9 +132,9 @@ namespace SteamMini
                 GameObject gameobj = toGameObject(a);
                 sale_game.Add(gameobj);
             }
-            for (int i = 0; i < 4; i++)
+            if (sale_game.Count() < 4)
             {
-                if (sale_game.ElementAt(i) == null)
+                for (int i = 0; i < 4; i ++)
                 {
                     sale_game.Add(lib_game.ElementAt(i));
                 }
