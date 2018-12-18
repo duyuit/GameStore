@@ -43,21 +43,15 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblChooseGame = new System.Windows.Forms.Label();
             this.lblChooseSale = new System.Windows.Forms.Label();
+            this.StartDate = new System.Windows.Forms.DateTimePicker();
+            this.EndDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Days = new System.Windows.Forms.NumericUpDown();
-            this.Hours = new System.Windows.Forms.NumericUpDown();
-            this.Mins = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.Days)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hours)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Mins)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(312, 348);
+            this.btnCancel.Location = new System.Drawing.Point(312, 358);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(133, 38);
             this.btnCancel.TabIndex = 40;
@@ -68,7 +62,7 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(115, 348);
+            this.btnOK.Location = new System.Drawing.Point(115, 358);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(144, 38);
             this.btnOK.TabIndex = 39;
@@ -102,11 +96,11 @@
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTime.Location = new System.Drawing.Point(12, 289);
+            this.lblTime.Location = new System.Drawing.Point(8, 278);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(43, 20);
+            this.lblTime.Size = new System.Drawing.Size(83, 20);
             this.lblTime.TabIndex = 33;
-            this.lblTime.Text = "Time";
+            this.lblTime.Text = "Start Date";
             // 
             // txbAfter
             // 
@@ -127,9 +121,9 @@
             this.lblAfter.ForeColor = System.Drawing.SystemColors.Control;
             this.lblAfter.Location = new System.Drawing.Point(11, 233);
             this.lblAfter.Name = "lblAfter";
-            this.lblAfter.Size = new System.Drawing.Size(76, 20);
+            this.lblAfter.Size = new System.Drawing.Size(89, 20);
             this.lblAfter.TabIndex = 31;
-            this.lblAfter.Text = "AfterSale";
+            this.lblAfter.Text = "Saled Price";
             // 
             // txbPercent
             // 
@@ -226,62 +220,32 @@
             this.lblChooseSale.Text = "Choose sales";
             this.lblChooseSale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // StartDate
+            // 
+            this.StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDate.Location = new System.Drawing.Point(115, 277);
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Size = new System.Drawing.Size(200, 20);
+            this.StartDate.TabIndex = 44;
+            // 
+            // EndDate
+            // 
+            this.EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDate.Location = new System.Drawing.Point(115, 312);
+            this.EndDate.Name = "EndDate";
+            this.EndDate.Size = new System.Drawing.Size(200, 20);
+            this.EndDate.TabIndex = 45;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(186, 289);
+            this.label1.Location = new System.Drawing.Point(8, 313);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 20);
-            this.label1.TabIndex = 48;
-            this.label1.Text = "Days";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(308, 289);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 20);
-            this.label2.TabIndex = 49;
-            this.label2.Text = "Hours";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(437, 289);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
-            this.label3.TabIndex = 50;
-            this.label3.Text = "Minutes";
-            // 
-            // Days
-            // 
-            this.Days.Location = new System.Drawing.Point(115, 289);
-            this.Days.Name = "Days";
-            this.Days.Size = new System.Drawing.Size(65, 20);
-            this.Days.TabIndex = 51;
-            this.Days.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // Hours
-            // 
-            this.Hours.Location = new System.Drawing.Point(237, 289);
-            this.Hours.Name = "Hours";
-            this.Hours.Size = new System.Drawing.Size(65, 20);
-            this.Hours.TabIndex = 52;
-            this.Hours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // Mins
-            // 
-            this.Mins.Location = new System.Drawing.Point(366, 289);
-            this.Mins.Name = "Mins";
-            this.Mins.Size = new System.Drawing.Size(65, 20);
-            this.Mins.TabIndex = 53;
-            this.Mins.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label1.Size = new System.Drawing.Size(77, 20);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "End Date";
             // 
             // GameSale
             // 
@@ -289,12 +253,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(545, 417);
-            this.Controls.Add(this.Mins);
-            this.Controls.Add(this.Hours);
-            this.Controls.Add(this.Days);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.EndDate);
+            this.Controls.Add(this.StartDate);
             this.Controls.Add(this.lblChooseSale);
             this.Controls.Add(this.lblChooseGame);
             this.Controls.Add(this.btnCancel);
@@ -313,9 +274,6 @@
             this.Name = "GameSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameSale";
-            ((System.ComponentModel.ISupportInitialize)(this.Days)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hours)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Mins)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,11 +295,8 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblChooseGame;
         private System.Windows.Forms.Label lblChooseSale;
+        private System.Windows.Forms.DateTimePicker StartDate;
+        private System.Windows.Forms.DateTimePicker EndDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown Days;
-        private System.Windows.Forms.NumericUpDown Hours;
-        private System.Windows.Forms.NumericUpDown Mins;
     }
 }

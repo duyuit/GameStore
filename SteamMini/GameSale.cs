@@ -60,14 +60,24 @@ namespace SteamMini
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            int Secs = 0;
-            if (Days.Value == 0 && Hours.Value == 0 && Mins.Value < 60)
+            DateTime start = StartDate.Value;
+            DateTime end = EndDate.Value;
+            if (start.CompareTo(end) > 0)
             {
-                MessageBox.Show("Error", "The time for sale is too low");
+                MessageBox.Show("End date has to be later than Start date", "Error");
             }
             else
             {
-                Secs = Convert.ToInt32(Days.Value) * 24 * 60 * 60 + Convert.ToInt32(Hours.Value) * 60 * 60 + Convert.ToInt32(Mins.Value) * 60;
+                GameSaleRequest sale = new GameSaleRequest(Convert.ToInt32(txbPercent.Text), start, end);
+                var response = GameControllerShould.PutGameSaleByGameIdController(sale, selectedgamed.Id.ToString());
+                if (response.IsSuccess == "True")
+                {
+                    MessageBox.Show("GameSale has been published", "Succeeded" );
+                }
+                else
+                {
+                    MessageBox.Show("Sale request response was a failure", "Error");
+                }
             }
         }
 
@@ -94,7 +104,13 @@ namespace SteamMini
         private void txbPercent_TextChanged(object sender, EventArgs e)
         {
             if (txbPercent.Text != "")
-                txbAfter.Text = (selectedgamed.Price - (selectedgamed.Price * Convert.ToInt32(txbPercent.Text) / (float)100)) + " VND";
+            {
+                float saledprice = selectedgamed.Price - (selectedgamed.Price * Convert.ToInt32(txbPercent.Text) / (float)100);
+                if (saledprice < 0)
+                    saledprice = 0;
+                txbAfter.Text = saledprice.ToString() + " VND";
+            }
+                
             else
             {
                 txbPercent.Text = "0";
