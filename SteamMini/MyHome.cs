@@ -20,6 +20,7 @@ namespace SteamMini
         List<Label> recommend_select = new List<Label>();
         public List<GameObject> lib_game = new List<GameObject>();
         public List<GameObject> user_game = new List<GameObject>();
+        public List<GameObject> user_wishgame = new List<GameObject>();
         public List<GameObject> sale_game = new List<GameObject>();
         Responses<GameDTOs> GameResponse;
         GetAllGameSaleResponse GameSaleResponse;
@@ -125,6 +126,13 @@ namespace SteamMini
                 Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(a.Id.ToString());
                 GameObject gameobj = toGameObject(temp.Payload);
                 user_game.Add(gameobj);
+            }
+
+            foreach (TitleGame a in User.WishGames)
+            {
+                Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(a.Id.ToString());
+                GameObject gameobj = toGameObject(temp.Payload);
+                user_wishgame.Add(gameobj);
             }
 
             foreach (GameDTOs a in GameSaleResponse.Payload)
@@ -248,9 +256,6 @@ namespace SteamMini
             this.BackColor = Color.FromArgb(42, 46, 51);
             menuStrip1.BackColor = Color.FromArgb(27, 32, 54);
             steamToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
-            //viewToolStripMenuItem1.BackColor = Color.FromArgb(42, 46, 51);
-            //gameToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
-            //helpToolStripMenuItem.BackColor = Color.FromArgb(42, 46, 51);
           
             viewToolStripMenuItem1.ForeColor = Color.White;
             gameToolStripMenuItem.ForeColor = Color.White;
@@ -260,14 +265,23 @@ namespace SteamMini
             txtSearch.BackColor = Color.FromArgb(42, 46, 51);
             listGame.BackColor = Color.FromArgb(42, 46, 51);
 
+            if (user_game != null)
+            {
+                main_achievement.Image = GetImagebyURI(user_game.ElementAt(0).GameImages.ElementAt(0));
+                lbl_game_name.Text = user_game.ElementAt(0).Name;
+                img_game.Image = GetImagebyURI(user_game.ElementAt(0).GameImages.ElementAt(1));
+                lib_panel.BackgroundImage = GetImagebyURI(user_game.ElementAt(0).GameImages.ElementAt(2));
+
+            }
             game_name_panel.BackColor = Color.FromArgb(80, Color.Black);
             lbl_game_name.BackColor = Color.FromArgb(00, Color.Black);
             panel_play.BackColor = Color.FromArgb(100, Color.Black);
             panel4.BackColor = Color.FromArgb(100, Color.Black);
             listGame.SmallImageList = imageList1;
-            main_achievement.Image = Properties.Resources._100;
             progressBar1.Value = 13;
             pictureBox1.Image = Properties.Resources.demo;
+            //main_achievement.Image = Properties.Resources._100;
+
 
             //Listview Game Library Init
             this.showListGame();
@@ -421,6 +435,7 @@ namespace SteamMini
         {
             setStorepanelVisible(true);
             setLibpanelVisible(false);
+            setGameDetailpanelVisible(false);
             panel2.Visible = false;
         }
 
@@ -690,11 +705,24 @@ namespace SteamMini
         {
             TitleGame wishgame = new TitleGame();
             Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(currGame.Id.ToString());
+
+            if (user_wishgame != null)
+            {
+                foreach(GameObject a in user_wishgame)
+                {
+                    if (temp.Payload.Id == a.Id)
+                    {
+                        MessageBox.Show("Game already exist in wishlist", "Error");
+                        return;
+                    }
+                }
+            }
             wishgame.Id = temp.Payload.Id;
             wishgame.ImageGames = temp.Payload.ImageGames;
             wishgame.Name = temp.Payload.Name;
             wishgame.ReleaseDate = temp.Payload.PurchaseDate;
             User.WishGames.Add(wishgame);
+            user_wishgame.Add(toGameObject(temp.Payload));
 
             User.Password = currPass;
 
