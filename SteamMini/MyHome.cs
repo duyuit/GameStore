@@ -835,24 +835,103 @@ namespace SteamMini
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Count() > 3)
+
+        }
+
+        private void DefaultSort_Click(object sender, EventArgs e)
+        {
+            DefaultSort.ForeColor = Color.Green;
+            Rating.ForeColor = Color.White;
+            PriceSort.ForeColor = Color.White;
+            foreach (GamePreview a in saveGamePreviews)
             {
-                listGame.Clear();
-                foreach (ListViewItem item in saveUserListViewItem)
-                {
-                    if (item.Name.ToLower().Contains(txtSearch.Text.ToLower()))
-                    {
-                        listGame.Items.Add(item);
-                    }
-                }
+                store_panel.Controls.Remove(a);
             }
-            else if (txtSearch.Text == "")
+
+            int i = 0;
+            int lastY = 0;
+            foreach (GamePreview preview in saveGamePreviews)
             {
-                listGame.Clear();
-                foreach (ListViewItem item in saveUserListViewItem)
+                if (i == 0)
                 {
-                    listGame.Items.Add(item);
+                    preview.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * preview.Height) + 40);
+                    lastY = preview.Location.Y;
                 }
+                else
+                {
+                    preview.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + preview.Height + 10);
+                    lastY = preview.Location.Y;
+                }
+                store_panel.Controls.Add(preview);
+                i++;
+            }
+        }
+
+        private void PriceSort_Click(object sender, EventArgs e)
+        {
+            DefaultSort.ForeColor = Color.White;
+            Rating.ForeColor = Color.White;
+            PriceSort.ForeColor = Color.Green;
+            foreach (GamePreview a in saveGamePreviews)
+            {
+                store_panel.Controls.Remove(a);
+            }
+
+            //tao list gamepreview co sap xep
+            List<GamePreview> temp = saveGamePreviews;
+            temp.Sort((x, y) => (x.gameO.Price.CompareTo(y.gameO.Price)));
+
+            //them lai vao store
+            int iterate = 0;
+            int lastY = 0;
+            foreach (GamePreview preview in temp)
+            {
+                if (iterate == 0)
+                {
+                    preview.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (iterate * preview.Height) + 40);
+                    lastY = preview.Location.Y;
+                }
+                else
+                {
+                    preview.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + preview.Height + 10);
+                    lastY = preview.Location.Y;
+                }
+                store_panel.Controls.Add(preview);
+                iterate++;
+            }
+        }
+
+        private void RatingSort_Click(object sender, EventArgs e)
+        {
+            DefaultSort.ForeColor = Color.White;
+            Rating.ForeColor = Color.Green;
+            PriceSort.ForeColor = Color.White;
+            foreach (GamePreview a in saveGamePreviews)
+            {
+                store_panel.Controls.Remove(a);
+            }
+
+            //tao list gamepreview co sap xep
+            List<GamePreview> temp = saveGamePreviews;
+            temp.Sort((x, y) => (x.gameO.Rating.CompareTo(y.gameO.Rating)));
+
+            //them lai vao store
+            int iterate = 0;
+            int lastY = 0;
+            foreach (GamePreview preview in temp)
+            {
+                if (iterate == 0)
+                {
+                    preview.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (iterate * preview.Height) + 40);
+                    lastY = preview.Location.Y;
+                }
+                else
+                {
+                    preview.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + preview.Height + 10);
+                    lastY = preview.Location.Y;
+                }
+                store_panel.Controls.Add(preview);
+                iterate++;
             }
         }
     }
