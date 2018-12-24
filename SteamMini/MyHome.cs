@@ -23,6 +23,7 @@ namespace SteamMini
         public List<GameObject> user_wishgame = new List<GameObject>();
         public List<GameObject> sale_game = new List<GameObject>();
         List<GamePreview> saveGamePreviews = new List<GamePreview>();
+        List<ListViewItem> saveUserListViewItem = new List<ListViewItem>();
         Responses<GameDTOs> GameResponse;
         GetAllGameSaleResponse GameSaleResponse;
         GameStore.DTOs.PayloadBody User;
@@ -319,7 +320,7 @@ namespace SteamMini
             foreach (GameObject a in user_game)
             {
                 ListViewItem item = new ListViewItem();
-                item.Name = a.Id.ToString();
+                item.Name = a.Name.ToString();
                 item.Text = a.Name;
 
                 //add logo cho itemlistview
@@ -333,7 +334,7 @@ namespace SteamMini
                 item.ImageKey = "Icon" + a.Name;
 
                 listGame.Items.Add(item);
-
+                saveUserListViewItem.Add(item);
                 //add background
             }
         }
@@ -344,8 +345,6 @@ namespace SteamMini
             a.ForeColor = Color.Black;
 
         }
-
-
 
         private void steamToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
         {
@@ -684,6 +683,7 @@ namespace SteamMini
                 //add and re-show listgame in lib
                 user_game.Add(this.currGame);
                 this.showListGame();
+                this.panel2.Visible = false;
 
                 //tiền đã đc api auto chuyển cho publisher
 
@@ -829,6 +829,29 @@ namespace SteamMini
                     }
                     store_panel.Controls.Add(preview);
                     i++;
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Count() > 3)
+            {
+                listGame.Clear();
+                foreach (ListViewItem item in saveUserListViewItem)
+                {
+                    if (item.Name.ToLower().Contains(txtSearch.Text.ToLower()))
+                    {
+                        listGame.Items.Add(item);
+                    }
+                }
+            }
+            else if (txtSearch.Text == "")
+            {
+                listGame.Clear();
+                foreach (ListViewItem item in saveUserListViewItem)
+                {
+                    listGame.Items.Add(item);
                 }
             }
         }
