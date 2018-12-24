@@ -22,6 +22,7 @@ namespace SteamMini
         public List<GameObject> user_game = new List<GameObject>();
         public List<GameObject> user_wishgame = new List<GameObject>();
         public List<GameObject> sale_game = new List<GameObject>();
+        List<GamePreview> saveGamePreviews = new List<GamePreview>();
         Responses<GameDTOs> GameResponse;
         GetAllGameSaleResponse GameSaleResponse;
         GameStore.DTOs.PayloadBody User;
@@ -225,6 +226,7 @@ namespace SteamMini
                 temp.Click += GamePreviewClick;
                 temp.GamePictureBox.Click += GamePreviewPicClick; //thai.caodu them event khi click cho picture cua game se thuc hien thao tac tuong tu nhu khi click vao control
                 temp.GameDescription.Click += GamePreviewDescriptonClick;
+                temp.Name = gO.Name;
                 if (gO.Price == 0)
                 {
                     temp.GamePriceText = "Free";
@@ -243,7 +245,9 @@ namespace SteamMini
                 }
                 i++;
                 store_panel.Controls.Add(temp);
+                
             }
+            saveGamePreviews = store_panel.Controls.OfType<GamePreview>().ToList();
         }
         public MyHome(string Id, string pass)
         {
@@ -332,10 +336,6 @@ namespace SteamMini
 
                 //add background
             }
-        }
-
-        private void MyHome_Load(object sender, EventArgs e)
-        {
         }
 
         private void steamToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
@@ -767,6 +767,70 @@ namespace SteamMini
             GameSale a = new GameSale(this);
             a.Show();
             this.Enabled = false;
+        }
+
+        private void btn_search_store_Click(object sender, EventArgs e)
+        {
+            List<GamePreview> match = new List<GamePreview>();
+
+            foreach (GamePreview a in saveGamePreviews)
+            {
+                store_panel.Controls.Remove(a);
+            }
+            String searchText = txtSearch_store.Text;
+            foreach (GamePreview preview in saveGamePreviews)
+            {
+                if (preview.Name.ToLower().Contains(searchText.ToLower()))
+                {
+                    match.Add(preview);
+                }
+            }
+            int i = 0;
+            int lastY = 0;
+            foreach (GamePreview matches in match)
+            {
+                if (i == 0)
+                {
+                    matches.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * matches.Height) + 40);
+                    lastY = matches.Location.Y;
+                }
+                else
+                {
+                    matches.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + matches.Height + 10);
+                    lastY = matches.Location.Y;
+                }
+                store_panel.Controls.Add(matches);
+                i++;
+            }
+
+        }
+
+        private void txtSearch_store_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch_store.Text.Count() > 3)
+            {
+                btn_search_store_Click(sender, e);
+            }
+            else if (txtSearch_store.Text == "")
+            {
+                int i = 0;
+                int lastY = 0;
+                foreach (GamePreview preview in saveGamePreviews)
+                {
+                    if (i == 0)
+                    {
+                        preview.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * preview.Height) + 40);
+                        lastY = preview.Location.Y;
+                    }
+                    else
+                    {
+                        preview.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + preview.Height + 10);
+                        lastY = preview.Location.Y;
+                    }
+                    store_panel.Controls.Add(preview);
+                    i++;
+                }
+            }
         }
     }
 }
