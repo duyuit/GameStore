@@ -1080,10 +1080,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup2.Header = "ListViewGroup";
-            listViewGroup2.Name = "listViewGroup1";
+            listViewGroup6.Header = "ListViewGroup";
+            listViewGroup6.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup2});
+            listViewGroup6});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);

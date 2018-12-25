@@ -773,16 +773,6 @@ namespace SteamMini
         private void btn_search_store_Click(object sender, EventArgs e)
         {
             
-            List<GamePreview> match = new List<GamePreview>();
-
-            foreach (GamePreview a in saveGamePreviews)
-
-
-            {
-                MessageBox.Show("Please enter more than 3 characters to search", "Error");
-            }
-            else
-            {
                 List<GamePreview> match = new List<GamePreview>();
 
                 foreach (GamePreview a in saveGamePreviews)
@@ -813,7 +803,6 @@ namespace SteamMini
                     }
                     store_panel.Controls.Add(matches);
                     i++;
-                }
             }
 
 
