@@ -306,6 +306,7 @@ namespace SteamMini
             oldPrice.Text = sale_game.ElementAt(0).Price.ToString() + " VND";
             saleLabel.Text = "On Sale: " + sale_game.ElementAt(0).Sale.ToString() + "%";
             recommend_game_name.Text = sale_game.ElementAt(0).Name;
+            txtSearch_store.Multiline = false;
 
         }
 
@@ -771,6 +772,7 @@ namespace SteamMini
 
         private void btn_search_store_Click(object sender, EventArgs e)
         {
+            
             List<GamePreview> match = new List<GamePreview>();
 
             foreach (GamePreview a in saveGamePreviews)
@@ -807,11 +809,8 @@ namespace SteamMini
 
         private void txtSearch_store_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearch_store.Text.Count() > 3)
-            {
-                btn_search_store_Click(sender, e);
-            }
-            else if (txtSearch_store.Text == "")
+      
+             if (txtSearch_store.Text == "")
             {
                 int i = 0;
                 int lastY = 0;
@@ -840,7 +839,7 @@ namespace SteamMini
 
         private void DefaultSort_Click(object sender, EventArgs e)
         {
-            DefaultSort.ForeColor = Color.Green;
+            DefaultSort.ForeColor = Color.Blue;
             Rating.ForeColor = Color.White;
             PriceSort.ForeColor = Color.White;
             foreach (GamePreview a in saveGamePreviews)
@@ -871,7 +870,7 @@ namespace SteamMini
         {
             DefaultSort.ForeColor = Color.White;
             Rating.ForeColor = Color.White;
-            PriceSort.ForeColor = Color.Green;
+            PriceSort.ForeColor = Color.Blue;
             foreach (GamePreview a in saveGamePreviews)
             {
                 store_panel.Controls.Remove(a);
@@ -904,7 +903,7 @@ namespace SteamMini
         private void RatingSort_Click(object sender, EventArgs e)
         {
             DefaultSort.ForeColor = Color.White;
-            Rating.ForeColor = Color.Green;
+            Rating.ForeColor = Color.Blue;
             PriceSort.ForeColor = Color.White;
             foreach (GamePreview a in saveGamePreviews)
             {
@@ -932,6 +931,14 @@ namespace SteamMini
                 }
                 store_panel.Controls.Add(preview);
                 iterate++;
+            }
+        }
+
+        private void txtSearch_store_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btn_search_store_Click(null, null);
             }
         }
     }

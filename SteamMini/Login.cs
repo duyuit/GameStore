@@ -19,9 +19,7 @@ namespace SteamMini
         public Login()
         {
             InitializeComponent();
-            pictureBox1.Image = Image.FromFile(@"..\..\Resources\" + "logo-facebook" + ".png");
             string a =System.IO.Directory.GetCurrentDirectory();
-            pictureBox2.Image = Properties.Resources.logo_facebook;
             pictureBox3.Image = Properties.Resources.steam_logo;
             this.BackColor = Color.FromArgb(42, 46, 51);
             txtID.BackColor = Color.FromArgb(42, 46, 51);
