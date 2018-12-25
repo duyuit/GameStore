@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -671,10 +671,10 @@
             this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "listViewGroup1";
+            listViewGroup6.Header = "ListViewGroup";
+            listViewGroup6.Name = "listViewGroup1";
             this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3});
+            listViewGroup6});
             this.listGame.Location = new System.Drawing.Point(3, 28);
             this.listGame.Name = "listGame";
             this.listGame.Size = new System.Drawing.Size(229, 455);
@@ -1364,9 +1364,9 @@
             this.GameDetailPanel.Controls.Add(this.panel5);
             this.GameDetailPanel.Controls.Add(this.btn_AddWishList);
             this.GameDetailPanel.Controls.Add(this.GameNameLabel);
-            this.GameDetailPanel.Location = new System.Drawing.Point(0, 81);
+            this.GameDetailPanel.Location = new System.Drawing.Point(0, 86);
             this.GameDetailPanel.Name = "GameDetailPanel";
-            this.GameDetailPanel.Size = new System.Drawing.Size(1040, 634);
+            this.GameDetailPanel.Size = new System.Drawing.Size(1055, 629);
             this.GameDetailPanel.TabIndex = 16;
             this.GameDetailPanel.Visible = false;
             // 
