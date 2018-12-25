@@ -33,6 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picBox = new System.Windows.Forms.PictureBox();
             this.RatingText = new System.Windows.Forms.Label();
+            this.Description = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
@@ -93,11 +94,26 @@
             this.RatingText.TabIndex = 4;
             this.RatingText.Text = "4.5";
             // 
+            // Description
+            // 
+            this.Description.BackColor = System.Drawing.Color.DarkGray;
+            this.Description.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Description.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Description.Location = new System.Drawing.Point(272, 25);
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Size = new System.Drawing.Size(566, 123);
+            this.Description.TabIndex = 5;
+            this.Description.Text = "";
+            this.Description.MouseEnter += new System.EventHandler(this.GamePreview_MouseEnter);
+            this.Description.MouseLeave += new System.EventHandler(this.GamePreview_MouseLeave);
+            // 
             // GamePreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BackColor = System.Drawing.Color.DarkGray;
+            this.Controls.Add(this.Description);
             this.Controls.Add(this.RatingText);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbPrice);
@@ -123,5 +139,6 @@
         private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label RatingText;
+        private System.Windows.Forms.RichTextBox Description;
     }
 }

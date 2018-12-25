@@ -33,16 +33,18 @@ namespace GameStore.DTOs
     }
     public class PayloadBody
     {
-        public virtual ICollection<TitleGame> Games { get; set; }
 
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string Hobbies { get; set; }
         public string FullName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string UserName { get; set; }
+
+        public virtual ICollection<TitleGame> Games { get; set; }
 
         public virtual ICollection<TitleGame> WishGames { get; set; }
 
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
         public TitleImagePublisher ImageUser { get; set; }
         public float Money { get; set; }
     }
@@ -62,5 +64,30 @@ namespace GameStore.DTOs
         {
             this.money = money;
         }
+    }
+
+    public class FreeCode
+    {
+        public string code { get; set; }
+        
+        public FreeCode(string Code)
+        {
+            this.code = Code;
+        }
+    }
+
+    public class GetFreeCodeResponse
+    {
+        public string IsSuccess { set; get; }
+        public string Message { set; get; }
+        public PayloadFreeCode Payload { get; set; }
+    }
+
+    public class PayloadFreeCode
+    {
+        public string id { get; set; }
+        public string code { get; set; }
+        public string game { get; set; }
+        public string gameId { get; set; }
     }
 }

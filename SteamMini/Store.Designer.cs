@@ -52,7 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.GameIcon = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -64,7 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GameIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // txtGameName
@@ -169,7 +169,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.GameIcon);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(980, 392);
@@ -341,15 +341,15 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Content";
             // 
-            // pictureBox2
+            // GameIcon
             // 
-            this.pictureBox2.Image = global::SteamMini.Properties.Resources.gta5;
-            this.pictureBox2.Location = new System.Drawing.Point(585, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(398, 112);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
+            this.GameIcon.Image = global::SteamMini.Properties.Resources.gta5;
+            this.GameIcon.Location = new System.Drawing.Point(585, 3);
+            this.GameIcon.Name = "GameIcon";
+            this.GameIcon.Size = new System.Drawing.Size(398, 112);
+            this.GameIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GameIcon.TabIndex = 22;
+            this.GameIcon.TabStop = false;
             // 
             // Store
             // 
@@ -375,7 +375,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GameIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,7 +392,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox GameIcon;
         private System.Windows.Forms.Label txt_addwishlist;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox8;

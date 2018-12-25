@@ -19,8 +19,13 @@ namespace GameStore.DTOs
         public string Content { get; set; }
         public virtual ICollection<TitleCategory> Categories { get; set; }
         public DateTime PurchaseDate { get; set; }
-        public string Price { get; set; }
         public ICollection<TitleImagePublisher> ImageGames { get; set; }
+        public string Price { get; set; }
+        public float Sale { get; set; }
+        public DateTime StartDateSale { get; set; }
+        public DateTime EndDateSale { get; set; }
+
+
         public GameDTOs()
         {
             Members = new Collection<TitleUser>();
@@ -36,6 +41,39 @@ namespace GameStore.DTOs
         public BuyGameObject(string idgame)
         {
             id = idgame;
+        }
+    }
+
+    public class PutGameSaleResponse
+    {
+        public string IsSuccess { set; get; }
+        public string Message { set; get; }
+        public GameDTOs Payload { get; set; }
+    }
+
+    public class GetAllGameSaleResponse
+    {
+        public string IsSuccess { set; get; }
+        public string Message { set; get; }
+        public ICollection<GameDTOs> Payload { get; set; }
+
+        public GetAllGameSaleResponse()
+        {
+            Payload = new Collection<GameDTOs>();
+        }
+    }
+
+    public class GameSaleRequest
+    {
+        public float Sale { get; set; }
+        public DateTime StartDateSale { get; set; }
+        public DateTime EndDateSale { get; set; }
+
+        public GameSaleRequest(float sale, DateTime start, DateTime end)
+        {
+            this.Sale = sale;
+            this.StartDateSale = start;
+            this.EndDateSale = end;
         }
     }
 }

@@ -8,26 +8,48 @@ using System.Text;
 
 namespace SteamMini
 {
+    public class PublisherEventArgs:EventArgs
+    {
+        public Responses<PublisherDTOs> respone { get; set; }
+        public PublisherEventArgs(Responses<PublisherDTOs> a)
+        {
+            respone = a;
+        }
+    }
   public  class PublisherControllerShould : Controller
     {
-        public Responses<PublisherDTOs> GetAllPublishersController()
+        public Responses<PublisherDTOs> GetAllPublishersController(EventHandler callback = null)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync("api/publishers").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<PublisherDTOs> publishersResponse = JsonConvert.DeserializeObject<Responses<PublisherDTOs>>(content);
+
+                if(publishersResponse.IsSuccess)
+                callback.Invoke(null, new PublisherEventArgs(publishersResponse));
                 return publishersResponse;
             }
+            
 
         }
 
-        public Response<PublisherDTOs> GetPublisherByIdController(string Id)
+        public static Response<PublisherDTOs> GetPublisherByIdController(string Id)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync($"api/publishers/{Id}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<PublisherDTOs> publisherResponse = JsonConvert.DeserializeObject<Response<PublisherDTOs>>(content);
@@ -46,7 +68,12 @@ namespace SteamMini
             };
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.PostAsJsonAsync($"api/publishers", savedPublisherDTOs).Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<PublisherDTOs> freeCodeResponse = JsonConvert.DeserializeObject<Response<PublisherDTOs>>(content);

@@ -10,13 +10,27 @@ using System.Collections.ObjectModel;
 
 namespace SteamMini
 {
+    public class GameEventArgs: EventArgs
+    {
+       public Guid gameID { get; set; }
+        public GameEventArgs(Guid a)
+        {
+            gameID = a;
+        }
+        
+    }
     public class GameControllerShould : Controller
     {
-        public Responses<GameDTOs> GetAllGamesController()
+        public static Responses<GameDTOs> GetAllGamesController()
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync("api/games").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Responses<GameDTOs> gamesResponse = JsonConvert.DeserializeObject<Responses<GameDTOs>>(content);
@@ -25,11 +39,16 @@ namespace SteamMini
 
         }
 
-        public Response<GameDTOs> GetGameByIdController(string Id)
+        public static Response<GameDTOs> GetGameByIdController(string Id)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = BASE_URI;
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
                 HttpResponseMessage result = client.GetAsync($"api/games/{Id}").Result;
                 var content = result.Content.ReadAsStringAsync().Result;
                 Response<GameDTOs> gamesResponse = JsonConvert.DeserializeObject<Response<GameDTOs>>(content);
@@ -38,13 +57,59 @@ namespace SteamMini
 
         }
 
+        // get all games are saling
+        public static GetAllGameSaleResponse GetAllGamesSaleController()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                if (BASE_URI != null)
+                {
+                    client.BaseAddress = BASE_URI;
+                }
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
+
+                HttpResponseMessage result = client.GetAsync("api/Games/sale").Result;
+                var content = result.Content.ReadAsStringAsync().Result;
+
+                var response = JsonConvert.DeserializeObject<GetAllGameSaleResponse>(content);
+
+                return response;
+            }
+        }
+
+        // put game sale by id. gamesaleObject => truyền từ class GameSaleRequest
+        public static PutGameSaleResponse PutGameSaleByGameIdController(object gamesaleObject, string GameId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                if (BASE_URI != null)
+                    client.BaseAddress = BASE_URI;
+                else
+                {
+                    client.BaseAddress = new Uri("http://localhost:49911/");
+                }
+
+                HttpResponseMessage result = client.PutAsJsonAsync($"api/Games/sale{GameId}", gamesaleObject).Result;
+
+                var content = result.Content.ReadAsStringAsync().Result;
+
+                var response = JsonConvert.DeserializeObject<PutGameSaleResponse>(content);
+
+                return response;
+            }
+        }
+
         public void PostNewGameController(string name, string publisherId,
                                               string members1, string members2,
                                               string favoriteMembers1, string favoriteMembers2,
                                               float rating,string logo,
                                               string videoUrl,string content,
                                               string categories1,string categories2,
-                                              float price)
+                                              float price,
+                                              EventHandler callback = null)
         {
         //    Init(49914);
 
@@ -52,13 +117,13 @@ namespace SteamMini
             {
                 Name = name,
                 PublisherId = publisherId.ToGuid(),
-                Members = new Collection<Guid>{ members1.ToGuid(), members2.ToGuid()},
-                FavoriteMembers= new Collection<Guid> { favoriteMembers1.ToGuid(), favoriteMembers2.ToGuid() },
+                Members = new Collection<Guid>{},
+                FavoriteMembers= new Collection<Guid> {},
                 Rating=rating,
                 Logo=logo,
                 VideoUrl=videoUrl,
                 Content=content,
-                Categories=new Collection<Guid> { categories1.ToGuid(),categories2.ToGuid()},
+                Categories=new Collection<Guid> {},
                 Price=price,
                 PurchaseDate=DateTime.Now
             };
@@ -68,7 +133,9 @@ namespace SteamMini
                 HttpResponseMessage result = client.PostAsJsonAsync($"api/games", savedGameDTOs).Result;
                 var contentResult = result.Content.ReadAsStringAsync().Result;
                 Response<GameDTOs> gameResponse = JsonConvert.DeserializeObject<Response<GameDTOs>>(contentResult);
+                callback.Invoke(null,new GameEventArgs(gameResponse.Payload.Id));
             }
+
         }
     }
 }
