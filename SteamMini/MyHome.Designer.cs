@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +76,15 @@
             this.main_achievement = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.search_icon = new System.Windows.Forms.PictureBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.listGame = new System.Windows.Forms.ListView();
             this.store_panel = new System.Windows.Forms.Panel();
+            this.RatingSort = new System.Windows.Forms.Label();
+            this.PriceSort = new System.Windows.Forms.Label();
+            this.DefaultSort = new System.Windows.Forms.Label();
+            this.SortBy = new System.Windows.Forms.Label();
             this.btnFreeCode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.recommend_select1 = new System.Windows.Forms.Label();
@@ -100,10 +108,6 @@
             this.recommend_picture2 = new System.Windows.Forms.PictureBox();
             this.recommend_picture5 = new System.Windows.Forms.PictureBox();
             this.recommend_game_name = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.search_icon = new System.Windows.Forms.PictureBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.listGame = new System.Windows.Forms.ListView();
             this.GameNameLabel = new System.Windows.Forms.Label();
             this.btn_AddWishList = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -131,10 +135,6 @@
             this.btn_buy = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Label();
             this.GameDetailPanel = new System.Windows.Forms.Panel();
-            this.SortBy = new System.Windows.Forms.Label();
-            this.DefaultSort = new System.Windows.Forms.Label();
-            this.PriceSort = new System.Windows.Forms.Label();
-            this.RatingSort = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.lib_panel.SuspendLayout();
             this.panel_play.SuspendLayout();
@@ -144,6 +144,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
             this.store_panel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.recommend_panel.SuspendLayout();
@@ -152,8 +154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture5)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox6)).BeginInit();
@@ -627,13 +627,61 @@
             this.panel1.AutoSize = true;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Controls.Add(this.lib_panel);
+            this.panel1.Controls.Add(this.store_panel);
             this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 835);
             this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.search_icon);
+            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.listGame);
+            this.panel2.Location = new System.Drawing.Point(0, 7);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(238, 692);
+            this.panel2.TabIndex = 0;
+            // 
+            // search_icon
+            // 
+            this.search_icon.InitialImage = global::SteamMini.Properties.Resources.search_icon_white;
+            this.search_icon.Location = new System.Drawing.Point(3, 0);
+            this.search_icon.Name = "search_icon";
+            this.search_icon.Size = new System.Drawing.Size(37, 25);
+            this.search_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.search_icon.TabIndex = 10;
+            this.search_icon.TabStop = false;
+            this.search_icon.Click += new System.EventHandler(this.search_icon_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtSearch.Location = new System.Drawing.Point(44, 0);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(188, 25);
+            this.txtSearch.TabIndex = 9;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // listGame
+            // 
+            this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listGame.ForeColor = System.Drawing.SystemColors.Control;
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup1";
+            this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup3});
+            this.listGame.Location = new System.Drawing.Point(3, 28);
+            this.listGame.Name = "listGame";
+            this.listGame.Size = new System.Drawing.Size(229, 455);
+            this.listGame.TabIndex = 0;
+            this.listGame.UseCompatibleStateImageBehavior = false;
+            this.listGame.View = System.Windows.Forms.View.List;
+            this.listGame.SelectedIndexChanged += new System.EventHandler(this.listGame_SelectedIndexChanged);
             // 
             // store_panel
             // 
@@ -658,6 +706,58 @@
             this.store_panel.Size = new System.Drawing.Size(1055, 831);
             this.store_panel.TabIndex = 6;
             this.store_panel.Visible = false;
+            // 
+            // RatingSort
+            // 
+            this.RatingSort.AutoSize = true;
+            this.RatingSort.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.RatingSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RatingSort.ForeColor = System.Drawing.SystemColors.Control;
+            this.RatingSort.Location = new System.Drawing.Point(935, 413);
+            this.RatingSort.Name = "RatingSort";
+            this.RatingSort.Padding = new System.Windows.Forms.Padding(5);
+            this.RatingSort.Size = new System.Drawing.Size(63, 26);
+            this.RatingSort.TabIndex = 19;
+            this.RatingSort.Text = "Rating";
+            this.RatingSort.Click += new System.EventHandler(this.RatingSort_Click);
+            // 
+            // PriceSort
+            // 
+            this.PriceSort.AutoSize = true;
+            this.PriceSort.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PriceSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PriceSort.ForeColor = System.Drawing.SystemColors.Control;
+            this.PriceSort.Location = new System.Drawing.Point(871, 413);
+            this.PriceSort.Name = "PriceSort";
+            this.PriceSort.Padding = new System.Windows.Forms.Padding(5);
+            this.PriceSort.Size = new System.Drawing.Size(54, 26);
+            this.PriceSort.TabIndex = 18;
+            this.PriceSort.Text = "Price";
+            this.PriceSort.Click += new System.EventHandler(this.PriceSort_Click);
+            // 
+            // DefaultSort
+            // 
+            this.DefaultSort.AutoSize = true;
+            this.DefaultSort.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DefaultSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DefaultSort.ForeColor = System.Drawing.SystemColors.Control;
+            this.DefaultSort.Location = new System.Drawing.Point(796, 413);
+            this.DefaultSort.Name = "DefaultSort";
+            this.DefaultSort.Padding = new System.Windows.Forms.Padding(5);
+            this.DefaultSort.Size = new System.Drawing.Size(67, 26);
+            this.DefaultSort.TabIndex = 14;
+            this.DefaultSort.Text = "Default";
+            this.DefaultSort.Click += new System.EventHandler(this.DefaultSort_Click);
+            // 
+            // SortBy
+            // 
+            this.SortBy.AutoSize = true;
+            this.SortBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortBy.Location = new System.Drawing.Point(688, 410);
+            this.SortBy.Name = "SortBy";
+            this.SortBy.Size = new System.Drawing.Size(102, 29);
+            this.SortBy.TabIndex = 17;
+            this.SortBy.Text = "Sort by:";
             // 
             // btnFreeCode
             // 
@@ -938,52 +1038,6 @@
             this.recommend_game_name.Size = new System.Drawing.Size(95, 31);
             this.recommend_game_name.TabIndex = 0;
             this.recommend_game_name.Text = "GTA V";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.search_icon);
-            this.panel2.Controls.Add(this.txtSearch);
-            this.panel2.Controls.Add(this.listGame);
-            this.panel2.Location = new System.Drawing.Point(0, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(238, 692);
-            this.panel2.TabIndex = 0;
-            // 
-            // search_icon
-            // 
-            this.search_icon.InitialImage = global::SteamMini.Properties.Resources.search_icon_white;
-            this.search_icon.Location = new System.Drawing.Point(3, 0);
-            this.search_icon.Name = "search_icon";
-            this.search_icon.Size = new System.Drawing.Size(37, 25);
-            this.search_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.search_icon.TabIndex = 10;
-            this.search_icon.TabStop = false;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtSearch.Location = new System.Drawing.Point(44, 0);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(188, 25);
-            this.txtSearch.TabIndex = 9;
-            // 
-            // listGame
-            // 
-            this.listGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listGame.ForeColor = System.Drawing.SystemColors.Control;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup1";
-            this.listGame.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5});
-            this.listGame.Location = new System.Drawing.Point(3, 28);
-            this.listGame.Name = "listGame";
-            this.listGame.Size = new System.Drawing.Size(229, 455);
-            this.listGame.TabIndex = 0;
-            this.listGame.UseCompatibleStateImageBehavior = false;
-            this.listGame.View = System.Windows.Forms.View.List;
-            this.listGame.SelectedIndexChanged += new System.EventHandler(this.listGame_SelectedIndexChanged);
             // 
             // GameNameLabel
             // 
@@ -1316,58 +1370,6 @@
             this.GameDetailPanel.TabIndex = 16;
             this.GameDetailPanel.Visible = false;
             // 
-            // SortBy
-            // 
-            this.SortBy.AutoSize = true;
-            this.SortBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortBy.Location = new System.Drawing.Point(688, 410);
-            this.SortBy.Name = "SortBy";
-            this.SortBy.Size = new System.Drawing.Size(102, 29);
-            this.SortBy.TabIndex = 17;
-            this.SortBy.Text = "Sort by:";
-            // 
-            // DefaultSort
-            // 
-            this.DefaultSort.AutoSize = true;
-            this.DefaultSort.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.DefaultSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DefaultSort.ForeColor = System.Drawing.SystemColors.Control;
-            this.DefaultSort.Location = new System.Drawing.Point(796, 413);
-            this.DefaultSort.Name = "DefaultSort";
-            this.DefaultSort.Padding = new System.Windows.Forms.Padding(5);
-            this.DefaultSort.Size = new System.Drawing.Size(67, 26);
-            this.DefaultSort.TabIndex = 14;
-            this.DefaultSort.Text = "Default";
-            this.DefaultSort.Click += new System.EventHandler(this.DefaultSort_Click);
-            // 
-            // PriceSort
-            // 
-            this.PriceSort.AutoSize = true;
-            this.PriceSort.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PriceSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PriceSort.ForeColor = System.Drawing.SystemColors.Control;
-            this.PriceSort.Location = new System.Drawing.Point(871, 413);
-            this.PriceSort.Name = "PriceSort";
-            this.PriceSort.Padding = new System.Windows.Forms.Padding(5);
-            this.PriceSort.Size = new System.Drawing.Size(54, 26);
-            this.PriceSort.TabIndex = 18;
-            this.PriceSort.Text = "Price";
-            this.PriceSort.Click += new System.EventHandler(this.PriceSort_Click);
-            // 
-            // RatingSort
-            // 
-            this.RatingSort.AutoSize = true;
-            this.RatingSort.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.RatingSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RatingSort.ForeColor = System.Drawing.SystemColors.Control;
-            this.RatingSort.Location = new System.Drawing.Point(935, 413);
-            this.RatingSort.Name = "RatingSort";
-            this.RatingSort.Padding = new System.Windows.Forms.Padding(5);
-            this.RatingSort.Size = new System.Drawing.Size(63, 26);
-            this.RatingSort.TabIndex = 19;
-            this.RatingSort.Text = "Rating";
-            this.RatingSort.Click += new System.EventHandler(this.RatingSort_Click);
-            // 
             // MyHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1405,6 +1407,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.main_achievement)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
             this.store_panel.ResumeLayout(false);
             this.store_panel.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1416,9 +1421,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recommend_picture5)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.search_icon)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();

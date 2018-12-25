@@ -387,7 +387,7 @@ namespace SteamMini
                 GameObject selectedgame = null;
                 foreach (GameObject a in user_game)
                 {
-                    if (a.Id.ToString() == item.Name)
+                    if (a.Name == item.Name)
                     {
                         selectedgame = a;
                     }
@@ -771,37 +771,45 @@ namespace SteamMini
 
         private void btn_search_store_Click(object sender, EventArgs e)
         {
-            List<GamePreview> match = new List<GamePreview>();
+            if (txtSearch_store.Text.Count() <= 3)
+            {
+                MessageBox.Show("Please enter more than 3 characters to search", "Error");
+            }
+            else
+            {
+                List<GamePreview> match = new List<GamePreview>();
 
-            foreach (GamePreview a in saveGamePreviews)
-            {
-                store_panel.Controls.Remove(a);
-            }
-            String searchText = txtSearch_store.Text;
-            foreach (GamePreview preview in saveGamePreviews)
-            {
-                if (preview.Name.ToLower().Contains(searchText.ToLower()))
+                foreach (GamePreview a in saveGamePreviews)
                 {
-                    match.Add(preview);
+                    store_panel.Controls.Remove(a);
+                }
+                String searchText = txtSearch_store.Text;
+                foreach (GamePreview preview in saveGamePreviews)
+                {
+                    if (preview.Name.ToLower().Contains(searchText.ToLower()))
+                    {
+                        match.Add(preview);
+                    }
+                }
+                int i = 0;
+                int lastY = 0;
+                foreach (GamePreview matches in match)
+                {
+                    if (i == 0)
+                    {
+                        matches.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * matches.Height) + 40);
+                        lastY = matches.Location.Y;
+                    }
+                    else
+                    {
+                        matches.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + matches.Height + 10);
+                        lastY = matches.Location.Y;
+                    }
+                    store_panel.Controls.Add(matches);
+                    i++;
                 }
             }
-            int i = 0;
-            int lastY = 0;
-            foreach (GamePreview matches in match)
-            {
-                if (i == 0)
-                {
-                    matches.Location = new System.Drawing.Point(label32.Location.X + 10, label32.Location.Y + (i * matches.Height) + 40);
-                    lastY = matches.Location.Y;
-                }
-                else
-                {
-                    matches.Location = new System.Drawing.Point(label32.Location.X + 10, lastY + matches.Height + 10);
-                    lastY = matches.Location.Y;
-                }
-                store_panel.Controls.Add(matches);
-                i++;
-            }
+
 
         }
 
@@ -831,11 +839,6 @@ namespace SteamMini
                     i++;
                 }
             }
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void DefaultSort_Click(object sender, EventArgs e)
@@ -914,6 +917,7 @@ namespace SteamMini
             //tao list gamepreview co sap xep
             List<GamePreview> temp = saveGamePreviews;
             temp.Sort((x, y) => (x.gameO.Rating.CompareTo(y.gameO.Rating)));
+            temp.Reverse();
 
             //them lai vao store
             int iterate = 0;
@@ -932,6 +936,48 @@ namespace SteamMini
                 }
                 store_panel.Controls.Add(preview);
                 iterate++;
+            }
+        }
+
+        private void search_icon_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Count() <= 3)
+            {
+                MessageBox.Show("Please enter more than 3 characters to search", "Error");
+            }
+            else
+            {
+                listGame.Clear();
+                foreach (ListViewItem item in saveUserListViewItem)
+                {
+                    if (item.Name.ToLower().Contains(txtSearch.Text.ToLower()))
+                    {
+                        listGame.Items.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                listGame.Clear();
+                foreach (ListViewItem item in saveUserListViewItem)
+                {
+                    listGame.Items.Add(item);
+                }
+            }
+            else if (txtSearch.Text.Count() > 3)
+            {
+                listGame.Clear();
+                foreach (ListViewItem item in saveUserListViewItem)
+                {
+                    if (item.Name.ToLower().Contains(txtSearch.Text.ToLower()))
+                    {
+                        listGame.Items.Add(item);
+                    }
+                }
             }
         }
     }
