@@ -270,7 +270,7 @@ namespace SteamMini
             txtSearch.BackColor = Color.FromArgb(42, 46, 51);
             listGame.BackColor = Color.FromArgb(42, 46, 51);
 
-            if (user_game != null)
+            if (user_game != null && user_game.Count > 0)
             {
                 main_achievement.Image = GetImagebyURI(user_game.ElementAt(0).GameImages.ElementAt(0));
                 lbl_game_name.Text = user_game.ElementAt(0).Name;
