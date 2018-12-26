@@ -78,7 +78,9 @@ namespace SteamMini
                 pushGameCallBack += _pushGameCallBack;
                 GameControllerShould gameControllerShould = new GameControllerShould();
                 gameControllerShould.PostNewGameController(txtName.Text,
-                 publisherDTOs[publisherIndex].Id.ToString(), "", "", "", "", 2,"", "", txtContent.Text, "128bbdf2-5038-498b-a32e-31ace3068cfe", "128bbdf2-5038-498b-a32e-31ace3068cfe", int.Parse(txtPrice.Text), pushGameCallBack);
+                publisherDTOs[publisherIndex].Id.ToString(), "", "", "", "", 2,"", "", txtContent.Text, "128bbdf2-5038-498b-a32e-31ace3068cfe", "128bbdf2-5038-498b-a32e-31ace3068cfe", int.Parse(txtPrice.Text), pushGameCallBack);
+
+                this.Close();
             }
             else
             {
@@ -111,9 +113,12 @@ namespace SteamMini
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            myHome.Enabled = true;
             this.Close();
-            myHome.Show();
+        }
+
+        private void PushGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myHome.Enabled = true;
         }
     }
 }

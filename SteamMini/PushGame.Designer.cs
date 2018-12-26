@@ -284,7 +284,9 @@
             this.Controls.Add(this._txtContent);
             this.Controls.Add(this.label1);
             this.Name = "PushGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PushGame";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PushGame_FormClosing);
             this.Load += new System.EventHandler(this.PushGame_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

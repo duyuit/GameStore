@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.GameDetailPanel = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.PriceLabel = new System.Windows.Forms.Label();
             this.btn_buy = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.GameDetailPicBox5 = new System.Windows.Forms.PictureBox();
             this.GameDetailPicBox4 = new System.Windows.Forms.PictureBox();
             this.GameDetailPicBox3 = new System.Windows.Forms.PictureBox();
+            this.GameDetailPicBox2 = new System.Windows.Forms.PictureBox();
             this.GameDetailPicBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -44,18 +46,16 @@
             this.label26 = new System.Windows.Forms.Label();
             this.Publisher = new System.Windows.Forms.Label();
             this.Content = new System.Windows.Forms.Label();
-            this.GameNameLabel = new System.Windows.Forms.Label();
-            this.GameDetailPicBox2 = new System.Windows.Forms.PictureBox();
             this.btn_AddWishList = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Label();
+            this.GameNameLabel = new System.Windows.Forms.Label();
             this.GameDetailPanel.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // GameDetailPanel
@@ -70,6 +70,20 @@
             this.GameDetailPanel.Name = "GameDetailPanel";
             this.GameDetailPanel.Size = new System.Drawing.Size(1040, 598);
             this.GameDetailPanel.TabIndex = 17;
+            // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.BackColor = System.Drawing.Color.Crimson;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnBack.Location = new System.Drawing.Point(19, 534);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
+            this.btnBack.Size = new System.Drawing.Size(135, 49);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.Text = "Back";
             // 
             // panel6
             // 
@@ -172,6 +186,18 @@
             this.GameDetailPicBox3.TabStop = false;
             this.GameDetailPicBox3.MouseEnter += new System.EventHandler(this.GameDetailPicBox3_MouseEnter);
             // 
+            // GameDetailPicBox2
+            // 
+            this.GameDetailPicBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GameDetailPicBox2.Image = global::SteamMini.Properties.Resources.GTAV2;
+            this.GameDetailPicBox2.Location = new System.Drawing.Point(3, 317);
+            this.GameDetailPicBox2.Name = "GameDetailPicBox2";
+            this.GameDetailPicBox2.Size = new System.Drawing.Size(110, 71);
+            this.GameDetailPicBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GameDetailPicBox2.TabIndex = 31;
+            this.GameDetailPicBox2.TabStop = false;
+            this.GameDetailPicBox2.MouseEnter += new System.EventHandler(this.GameDetailPicBox3_MouseEnter);
+            // 
             // GameDetailPicBox1
             // 
             this.GameDetailPicBox1.Image = global::SteamMini.Properties.Resources.GTAV2;
@@ -254,30 +280,6 @@
             this.Content.TabIndex = 23;
             this.Content.Text = "Content";
             // 
-            // GameNameLabel
-            // 
-            this.GameNameLabel.AutoSize = true;
-            this.GameNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GameNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.GameNameLabel.Location = new System.Drawing.Point(8, 9);
-            this.GameNameLabel.Name = "GameNameLabel";
-            this.GameNameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.GameNameLabel.Size = new System.Drawing.Size(360, 51);
-            this.GameNameLabel.TabIndex = 0;
-            this.GameNameLabel.Text = "GameNameLabel";
-            // 
-            // GameDetailPicBox2
-            // 
-            this.GameDetailPicBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GameDetailPicBox2.Image = global::SteamMini.Properties.Resources.GTAV2;
-            this.GameDetailPicBox2.Location = new System.Drawing.Point(3, 317);
-            this.GameDetailPicBox2.Name = "GameDetailPicBox2";
-            this.GameDetailPicBox2.Size = new System.Drawing.Size(110, 71);
-            this.GameDetailPicBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.GameDetailPicBox2.TabIndex = 31;
-            this.GameDetailPicBox2.TabStop = false;
-            this.GameDetailPicBox2.MouseEnter += new System.EventHandler(this.GameDetailPicBox3_MouseEnter);
-            // 
             // btn_AddWishList
             // 
             this.btn_AddWishList.AutoSize = true;
@@ -292,19 +294,17 @@
             this.btn_AddWishList.TabIndex = 14;
             this.btn_AddWishList.Text = "Add to wishlist";
             // 
-            // btnBack
+            // GameNameLabel
             // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.BackColor = System.Drawing.Color.Crimson;
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(19, 534);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
-            this.btnBack.Size = new System.Drawing.Size(135, 49);
-            this.btnBack.TabIndex = 14;
-            this.btnBack.Text = "Back";
+            this.GameNameLabel.AutoSize = true;
+            this.GameNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.GameNameLabel.Location = new System.Drawing.Point(8, 9);
+            this.GameNameLabel.Name = "GameNameLabel";
+            this.GameNameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.GameNameLabel.Size = new System.Drawing.Size(360, 51);
+            this.GameNameLabel.TabIndex = 0;
+            this.GameNameLabel.Text = "GameNameLabel";
             // 
             // PushPreview
             // 
@@ -313,6 +313,7 @@
             this.ClientSize = new System.Drawing.Size(1032, 587);
             this.Controls.Add(this.GameDetailPanel);
             this.Name = "PushPreview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PushPreview";
             this.Load += new System.EventHandler(this.PushPreview_Load);
             this.GameDetailPanel.ResumeLayout(false);
@@ -324,8 +325,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GameDetailPicBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
