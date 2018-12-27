@@ -20,7 +20,7 @@ namespace SteamMini
         List<Label> recommend_select = new List<Label>();
         public List<GameObject> lib_game = new List<GameObject>();
         public List<GameObject> user_game = new List<GameObject>();
-        public List<GameObject> user_wishgame = new List<GameObject>();
+        //public List<GameObject> user_wishgame = new List<GameObject>();
         public List<GameObject> sale_game = new List<GameObject>();
         List<GamePreview> saveGamePreviews = new List<GamePreview>();
         List<ListViewItem> saveUserListViewItem = new List<ListViewItem>();
@@ -130,12 +130,12 @@ namespace SteamMini
                 user_game.Add(gameobj);
             }
 
-            foreach (TitleGame a in User.WishGames)
-            {
-                Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(a.Id.ToString());
-                GameObject gameobj = toGameObject(temp.Payload);
-                user_wishgame.Add(gameobj);
-            }
+            //foreach (TitleGame a in User.WishGames)
+            //{
+            //    Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(a.Id.ToString());
+            //    GameObject gameobj = toGameObject(temp.Payload);
+            //    user_wishgame.Add(gameobj);
+            //}
 
             foreach (GameDTOs a in GameSaleResponse.Payload)
             {
@@ -706,38 +706,36 @@ namespace SteamMini
         {
             TitleGame wishgame = new TitleGame();
             Response<GameDTOs> temp = GameControllerShould.GetGameByIdController(currGame.Id.ToString());
+            //if (user_wishgame != null)
+            //{
+            //    foreach(GameObject a in user_wishgame)
+            //    {
+            //        if (temp.Payload.Id == a.Id)
+            //        {
+            //            MessageBox.Show("Game already exist in wishlist", "Error");
+            //            return;
+            //        }
+            //    }
+            //}
+            //user_wishgame.Add(toGameObject(temp.Payload));
 
-            if (user_wishgame != null)
-            {
-                foreach(GameObject a in user_wishgame)
-                {
-                    if (temp.Payload.Id == a.Id)
-                    {
-                        MessageBox.Show("Game already exist in wishlist", "Error");
-                        return;
-                    }
-                }
-            }
             wishgame.Id = temp.Payload.Id;
             wishgame.ImageGames = temp.Payload.ImageGames;
             wishgame.Name = temp.Payload.Name;
             wishgame.ReleaseDate = temp.Payload.PurchaseDate;
-            User.WishGames.Add(wishgame);
-            user_wishgame.Add(toGameObject(temp.Payload));
 
-            User.Password = currPass;
+            //User.Password = currPass;
+            //var response = AccountsControllerShould.UpdateAccountController(User, this.id);
+            var response = AccountsControllerShould.PostAccountLikeGameController(new BuyGameObject(this.currGame.Id.ToString()), this.id);
 
-            var response = AccountsControllerShould.UpdateAccountController(User, this.id);
-
-            var rs = response.IsSuccess.ToString();
-            var mess = response.Message;
-
-            if (rs == "False")
+            if (response == "False")
             {
-                MessageBox.Show("Fail to add to wishlist", "Error");
+                MessageBox.Show("Fail or Duplicate game to add to wishlist", "Error");
             }
             else
             {
+                User.WishGames.Add(wishgame);
+
                 MessageBox.Show("Wish list updated", "Success");
             }
         }

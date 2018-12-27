@@ -34,6 +34,22 @@ namespace SteamMini
             }
         }
 
+        public static string PostAccountLikeGameController(object gameObject, string Id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                Uri baseAddress = new Uri("http://localhost:49911/");
+                client.BaseAddress = baseAddress;
+
+                HttpResponseMessage result = client.PostAsJsonAsync($"/api/Accounts/like/{Id}", gameObject).Result;
+                var content = result.Content.ReadAsStringAsync().Result;
+                Response<string> response = JsonConvert.DeserializeObject<Response<string>>(content);
+                var rs = response.IsSuccess.ToString();
+
+                return rs; // "True", "False"
+            }
+        }
+
         public static GetUserResponse UpdateAccountController(object accountObject, string Id)
         {
             using (HttpClient client = new HttpClient())
