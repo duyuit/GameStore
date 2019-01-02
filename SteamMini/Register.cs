@@ -36,7 +36,7 @@ namespace SteamMini
             txtPhone.BackColor = Color.FromArgb(42, 46, 51);
         }
 
-        public Register(string id, MyHome home)
+        public Register(string id, string pass, MyHome home)
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(42, 46, 51);
@@ -52,6 +52,8 @@ namespace SteamMini
             this.myHome = home;
             this.Text = "Change Account";
             this.button1.Text = "UPDATE";
+            this.txtPass.Text = pass;
+            this.txtRe.Text = pass;
 
             //get account by id
             var resultGet = AccountsControllerShould.GetUserByIdController(this.idChange);
