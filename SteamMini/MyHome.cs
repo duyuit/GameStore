@@ -668,8 +668,16 @@ namespace SteamMini
             }
             else if (response == "notenoughmoney")
             {
-                MessageBox.Show("Your account don't enought money to buy this game!\n"
-                    + "You have to recharge!", "Error");
+                DialogResult result = MessageBox.Show("Your account don't have enough money to buy this game!\nDo you want to recharge!", "Error", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Profile a = new Profile(User, this);
+                    a.Show();
+                    this.Enabled = false;
+                }
+                else if (result == DialogResult.No)
+                {
+                }
             }
             else if (response == "youhavepurchase")
             {
