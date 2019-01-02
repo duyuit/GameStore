@@ -31,7 +31,8 @@ namespace SteamMini
             listGame.SmallImageList = imageList1;
             LoadPurchased();
 
-            SoDuText.Text = "Money: $" + Math.Round(user.Money, 2).ToString();
+            currmoney = AccountsControllerShould.GetUserByIdController(id).Money;
+            SoDuText.Text = "Money: $" + Math.Round(currmoney, 2).ToString();
             this.myHome = home;
         }
 
