@@ -32,7 +32,7 @@ namespace SteamMini
             LoadPurchased();
 
             currmoney = AccountsControllerShould.GetUserByIdController(id).Money;
-            SoDuText.Text = "Money: $" + Math.Round(currmoney, 2).ToString();
+            SoDuText.Text = "Money: VND" + Math.Round(currmoney, 2).ToString();
             this.myHome = home;
         }
 
@@ -121,9 +121,9 @@ namespace SteamMini
                 {
                     RechargeTextBox.Text = "";
                     currmoney += addmoney;
-                    SoDuText.Text = "Money: $" + Math.Round(currmoney, 2);
+                    SoDuText.Text = "Money: VND" + Math.Round(currmoney, 2);
 
-                    MessageBox.Show($"Recharge success!\nYour account has ${Math.Round(currmoney, 2)}!", "Success");
+                    MessageBox.Show($"Recharge success!\nYour account has VND {Math.Round(currmoney, 2)}!", "Success");
                 }
             }
             else
@@ -166,6 +166,11 @@ namespace SteamMini
             {
                 e.Handled = true;
             }
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

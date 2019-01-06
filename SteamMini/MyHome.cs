@@ -671,6 +671,8 @@ namespace SteamMini
                 DialogResult result = MessageBox.Show("Your account don't have enough money to buy this game!\nDo you want to recharge!", "Error", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    Profile.SetUser(User, id);
+
                     Profile a = new Profile(User, this);
                     a.Show();
                     this.Enabled = false;
