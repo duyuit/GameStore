@@ -244,6 +244,7 @@
             this.listGame.TabIndex = 7;
             this.listGame.UseCompatibleStateImageBehavior = false;
             this.listGame.View = System.Windows.Forms.View.List;
+            this.listGame.SelectedIndexChanged += new System.EventHandler(this.listGame_SelectedIndexChanged);
             // 
             // Profile
             // 

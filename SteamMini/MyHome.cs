@@ -22,12 +22,12 @@ namespace SteamMini
         public List<GameObject> user_game = new List<GameObject>();
         //public List<GameObject> user_wishgame = new List<GameObject>();
         public List<GameObject> sale_game = new List<GameObject>();
-        List<GamePreview> saveGamePreviews = new List<GamePreview>();
-        List<ListViewItem> saveUserListViewItem = new List<ListViewItem>();
+        public List<GamePreview> saveGamePreviews = new List<GamePreview>();
+        public List<ListViewItem> saveUserListViewItem = new List<ListViewItem>();
         Responses<GameDTOs> GameResponse;
         GetAllGameSaleResponse GameSaleResponse;
         GameStore.DTOs.PayloadBody User;
-        GameObject currGame;
+        public GameObject currGame;
         int currRecommend = 0;
 
 

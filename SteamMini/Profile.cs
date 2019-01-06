@@ -72,13 +72,32 @@ namespace SteamMini
             Wished.BorderStyle = BorderStyle.None;
             Purchased.BorderStyle = BorderStyle.Fixed3D;
         }
+
+        private void WishListOnclick(string name)
+        {
+            this.Close();
+            myHome.Show();
+
+            myHome.setLibpanelVisible(false);
+            myHome.setGameDetailpanelVisible(true);
+
+            for (int i = 0; i < myHome.saveGamePreviews.Count(); i++)
+            {
+                if (myHome.saveGamePreviews.ElementAt(i).gameO.Name == name)
+                {
+                    myHome.currGame = myHome.saveGamePreviews.ElementAt(i).gameO;
+                    myHome.LoadGamePanel(myHome.currGame);
+                }
+            }
+        }
+
         private void LoadWish()
         {
             listGame.Clear();
             foreach (TitleGame game in user.WishGames)
             {
                 ListViewItem item = new ListViewItem();
-                item.Name = game.Id.ToString();
+                item.Name = game.Name.ToString();
                 item.Text = game.Name;
 
                 //add logo cho itemlistview
@@ -171,6 +190,11 @@ namespace SteamMini
         private void label1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void listGame_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WishListOnclick(listGame.SelectedItems[0].Name);
         }
     }
 }
